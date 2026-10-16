@@ -1765,7 +1765,7 @@ const Ascent=(()=>{
   const N=STAGES.length;
   // Points de la voie : [x, z, altitude, nom]
   // Voie recalée sur le relief IGN (x vers l'est, z vers le sud, 1 unité = 50 m) ; altitudes officielles pour l'affichage
-  const ROUTE=[[-41.09,-90.67,1008,'Les Houches'],[-64.98,-53.96,1790,''],[-41.04,-15.2,2372,"Nid d'Aigle"],[-11.78,-11.4,3167,'Tête Rousse'],[-1.43,-7.45,3300,'Grand Couloir'],[9.12,-3.42,3835,'Refuge du Goûter'],[28.88,15.96,4304,'Dôme du Goûter'],[42.18,25.08,4362,'Abri Vallot'],[53.67,33.7,4560,'Arête des Bosses'],[60.42,38.76,4808,'Sommet']];
+  const ROUTE=[[-41.09,-90.67,1008,'Les Houches'],[-64.98,-53.96,1790,''],[-41.04,-15.2,2372,"Nid d'Aigle"],[-11.78,-11.4,3167,'Tête Rousse'],[-1.43,-7.45,3300,'Grand Couloir'],[9.12,-3.42,3835,'Refuge du Goûter'],[28.88,15.96,4304,'Dôme du Goûter'],[42.18,25.08,4362,'Abri Vallot'],[53.67,33.7,4560,'Arête des Bosses'],[60.42,38.76,4807,'Sommet']];
   const BERANGERE=[-71.88,104.98,3425];
   let DEM=null,TJSON=null;
   const VS=.024, Y=a=>(a-1000)*VS;
@@ -2585,7 +2585,7 @@ const Ascent=(()=>{
     running=true;last=0;cancelAnimationFrame(raf);raf=requestAnimationFrame(frame);
     const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(!glOK||reduce||!hasWebGL()){root.classList.add('nogl');const ld=document.getElementById('asc-load');ld&&ld.classList.add('off');return}
-    if(!renderer&&!loading){const ld=document.getElementById('asc-load');let la=1008;const tick=setInterval(()=>{la=la>=4808?1008:la+76;ld.textContent='Préparation de la montagne · '+fmt(la)+' m'},40);loading=new Promise(r=>setTimeout(r,60)).then(build3D).then(()=>{SHOTS=shots();onResize();computeAnchors();clearInterval(tick);ld&&ld.classList.add('off')}).catch(e=>{console.warn(e);clearInterval(tick);glOK=false;root.classList.add('nogl');ld&&ld.classList.add('off')})}else{const ld=document.getElementById('asc-load');ld&&ld.classList.add('off')}
+    if(!renderer&&!loading){const ld=document.getElementById('asc-load');let la=1008;const tick=setInterval(()=>{la=la>=4807?1008:la+76;ld.textContent='Préparation de la montagne · '+fmt(la)+' m'},40);loading=new Promise(r=>setTimeout(r,60)).then(build3D).then(()=>{SHOTS=shots();onResize();computeAnchors();clearInterval(tick);ld&&ld.classList.add('off')}).catch(e=>{console.warn(e);clearInterval(tick);glOK=false;root.classList.add('nogl');ld&&ld.classList.add('off')})}else{const ld=document.getElementById('asc-load');ld&&ld.classList.add('off')}
   }
   function leave(){running=false;cancelAnimationFrame(raf);removeEventListener('scroll',onScroll)}
   return{enter,leave};
@@ -2863,7 +2863,7 @@ void main(){float z=aS.z;float x=fract(aS.x+uT*mix(.018,.11,z)*uWind*(.75+.5*aS.
     cv.addEventListener('pointerup',e=>{const d=ptr.down;ptr.down=null;if(!d||Math.hypot(e.clientX-d.x,e.clientY-d.y)>12)return;
       if(hitFlag(e.clientX,e.clientY))open(false);else if(isOpen)close(false);else kick=Math.max(kick,.5)})}
 
-  function setAlt(p){const f=$j('jn-alt')._fl;if(!f)return;const s=String(Math.round(4808*clamp(p,0,1))).padStart(4,'0');[...s].forEach((c,i)=>{if(f.spans[i])f.spans[i].textContent=c})}
+  function setAlt(p){const f=$j('jn-alt')._fl;if(!f)return;const s=String(Math.round(4807*clamp(p,0,1))).padStart(4,'0');[...s].forEach((c,i)=>{if(f.spans[i])f.spans[i].textContent=c})}
   function loaderLoop(now){const p=Math.min(loadP,(now-loadT0)/1300);setAlt(eOut(p));loaderRaf=requestAnimationFrame(loaderLoop)}
   async function build(){wire();onResize();key=pickKey();sc=SC[key];
     loadP=0;let n=0;const set=await loadSet(key,()=>{n++;loadP=n/4}).catch(e=>{console.warn('jn',e);return null});
@@ -3024,7 +3024,7 @@ function doRoute(){
 addEventListener('hashchange',route);
 
 /* ================= Site public ================= */
-const PTS=[[0,1008,'Les Houches'],[0.22,2372,'Nid d\'Aigle'],[0.40,3167,'Tête Rousse'],[0.56,3835,'Goûter'],[0.80,4362,'Vallot'],[1,4808,'Sommet']];
+const PTS=[[0,1008,'Les Houches'],[0.22,2372,'Nid d\'Aigle'],[0.40,3167,'Tête Rousse'],[0.56,3835,'Goûter'],[0.80,4362,'Vallot'],[1,4807,'Sommet']];
 (function profile(el,W,H){
   const L=10,R=10,T=30,Bm=46,ymin=800,ymax=5100,X=f=>L+f*(W-L-R),Y=a=>T+(1-(a-ymin)/(ymax-ymin))*(H-T-Bm);
   const pts=PTS.map(p=>[X(p[0]),Y(p[1])]);const line=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
