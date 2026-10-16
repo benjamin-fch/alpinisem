@@ -1,5 +1,16 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Alpinis&#39;EM (Copy)</title>
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Alpinis'EM · Objectif Mont-Blanc</title>
+<meta name="description" content="Alpinis'EM, l'association étudiante de l'EM Normandie qui emmène une cordée d'étudiants au sommet du Mont-Blanc. Suivez l'aventure et soutenez l'expédition.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alpinis'EM · Objectif Mont-Blanc">
+<meta property="og:description" content="Une promo d'étudiants, un an d'entraînement, et le drapeau de l'EM Normandie planté à 4 808 m. Soutenez l'expédition.">
+<meta property="og:image" content="assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/logo.jpg">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -691,113 +702,96 @@ body:has(#ascent:not([hidden])) .modebar{display:none}
 @media (prefers-reduced-motion:reduce){.asc-cards .asc-card,.asc-cards .asc-card.on>*{transition:opacity .2s;animation:none;transform:none}}
 @media (min-width:861px){.asc-cards .asc-card{max-height:calc(100vh - max(110px,20vh) - 24px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(220,224,232,.25) transparent}}
 
-/* ===== Nous rejoindre : camp de base de nuit (scène 3D plein écran), la tente ouvre la candidature =====
-   Page volontairement nocturne dans les deux thèmes : ciel marine, neige au clair de lune, braise de la tente. */
-.jn{position:fixed;inset:0;overflow:hidden;background:#05081a;color:#EEF2FB;color-scheme:dark;
-  --jn-ink:#EEF2FB;--jn-dim:rgba(214,224,246,.76);--jn-line:rgba(196,212,250,.16);--jn-fire:#FFB25E;--jn-ember:#FF7A30;--jn-cream:#FFE9CC}
-#jn-gl{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:manipulation;outline:none}
-.jn.jn-nogl #jn-gl{display:none}
-.jn.jn-nogl{background:radial-gradient(90% 45% at 55% 100%,rgba(255,122,48,.22) 0,rgba(255,122,48,0) 60%),linear-gradient(#03050e 0,#0b1434 55%,#26386e 100%)}
-.jn-veil{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(70% 60% at 0% 100%,rgba(3,6,20,.55) 0,rgba(3,6,20,0) 70%),radial-gradient(130% 100% at 55% 58%,rgba(2,4,12,0) 52%,rgba(2,4,12,.62) 100%)}
-@media (max-width:759px){.jn-veil{background:linear-gradient(rgba(3,6,20,.5) 0,rgba(3,6,20,0) 42%),radial-gradient(130% 100% at 50% 58%,rgba(2,4,12,0) 52%,rgba(2,4,12,.62) 100%)}}
-.jn-veil::after{content:"";position:absolute;inset:0;opacity:.55;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.jn-fade{position:absolute;inset:0;z-index:20;background:#03050e;display:grid;place-items:end center;padding-bottom:calc(44px + env(safe-area-inset-bottom,0px));pointer-events:none;transition:opacity 2s ease .15s,visibility 0s 2.2s}
-.jn-fade span{font:600 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:#7f8fbf;animation:jnblink 1.4s ease-in-out infinite}
-.jn-fade.off{opacity:0;visibility:hidden}
-@keyframes jnblink{50%{opacity:.35}}
-.jn-eb{font:600 11px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--jn-fire)}
-
-/* barre du haut : retour, et le repère du refuge */
-.jn-top{position:absolute;top:0;left:0;right:0;z-index:6;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
-  padding:calc(16px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) 0 max(20px,env(safe-area-inset-left,0px));pointer-events:none}
+/* ===== Nous rejoindre : descente le long d'une corde jusqu'à une grotte de glace ===== */
+.jn{position:relative;min-height:100vh;overflow-x:clip;background:#0b1422;color:#EEF4FA;--rx:30vw;--ice-txt:#EEF4FA}
+#jn-gl,#jn-cv{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
+.jn-nogl #jn-gl{display:none}
+.jn.jn-nogl{background:linear-gradient(#cfe0f0 0,#7aa6cf 15%,#1f3d63 55%,#0a1220 100%)}
+.jn-top{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) var(--gutr) 14px var(--gut);pointer-events:none}
 .jn-top>*{pointer-events:auto}
-.jn-back{display:inline-flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:9px 14px;border-radius:99px;background:rgba(8,12,30,.5);border:1px solid rgba(220,230,250,.2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.jn-back{display:inline-flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:9px 14px;border-radius:99px;background:rgba(10,20,36,.55);border:1px solid rgba(220,234,248,.2);backdrop-filter:blur(8px)}
 .jn-back svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.jn-alt{display:grid;justify-items:end;gap:6px;text-align:right;padding-top:4px}
-.jn-alt span{font:600 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#93a3d1}
-.jn-alt b{font:600 15px/1 var(--mono);color:#fff;font-variant-numeric:tabular-nums}
+.jn-depth{display:grid;justify-items:end;gap:3px;padding:8px 12px;border-radius:12px;background:rgba(10,20,36,.5);border:1px solid rgba(220,234,248,.18);backdrop-filter:blur(8px)}
+.jn-depth span{font:600 9.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#9fb6cf}
+.jn-depth b{font:600 18px/1 var(--mono);font-variant-numeric:tabular-nums;color:#fff}
+.jn-track{position:relative;z-index:2}
+.jn-eb{font:600 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#C8323F}
 
-/* titre en bas à gauche */
-.jn-intro{position:absolute;z-index:5;left:max(4.5vw,24px,env(safe-area-inset-left,0px));bottom:calc(7vh + env(safe-area-inset-bottom,0px));width:min(540px,calc(100% - 48px));display:flex;flex-direction:column;gap:14px;pointer-events:none;transition:opacity .7s,filter .7s}
-.jn-intro>*{pointer-events:auto;opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1.2s cubic-bezier(.2,.7,.2,1)}
-.jn-ready .jn-intro>*{opacity:1;transform:none}
-.jn-ready .jn-intro>:nth-child(2){transition-delay:.12s}.jn-ready .jn-intro>:nth-child(3){transition-delay:.28s}.jn-ready .jn-intro>:nth-child(4){transition-delay:.44s}
-.jn-intro h1{font:900 clamp(64px,9.4vw,148px)/.84 var(--stamp);text-transform:uppercase;letter-spacing:.005em;color:var(--jn-ink);text-shadow:0 4px 40px rgba(3,6,20,.65);margin:0}
-.jn-intro p{font-size:17px;line-height:1.55;color:var(--jn-dim);max-width:30em;text-shadow:0 1px 16px rgba(3,6,20,.8)}
-.jn-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-.jn-ghost{color:#fff;border-color:rgba(230,236,252,.42);background:rgba(8,12,32,.4);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.jn.jn-opened .jn-intro,.jn.jn-reading .jn-intro{opacity:0;filter:blur(2px)}
-.jn.jn-opened .jn-intro>*,.jn.jn-reading .jn-intro>*{pointer-events:none}
+/* écran d'accueil : titre à droite, falaise et corde à gauche (dessinées sur le canvas) */
+.jn-hero{min-height:100vh;min-height:100svh;display:grid;align-items:center;padding:110px var(--gutr) 60px calc(var(--rx) + 9vw)}
+.jn-hero-txt{max-width:560px;justify-self:start}
+.jn-hero h1{font:900 clamp(64px,10vw,150px)/.86 var(--stamp);text-transform:uppercase;color:#141C42;margin:14px 0 22px;letter-spacing:.005em}
+.jn-hero p{font-size:18px;line-height:1.55;color:#26335f;max-width:30em}
+.jn-hint{margin-top:30px;display:flex;align-items:center;gap:12px;font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#4a5a86}
+.jn-hint i{width:2px;height:30px;border-radius:2px;background:linear-gradient(#4a5a86,transparent);animation:jnhint 1.6s ease-in-out infinite}
+@keyframes jnhint{0%{transform:translateY(-6px);opacity:0}50%{opacity:1}100%{transform:translateY(8px);opacity:0}}
 
-/* repère accroché au-dessus de la tente (placé par le script) */
-.jn-tag{position:absolute;left:0;top:0;z-index:4;display:inline-flex;align-items:center;gap:9px;padding:8px 14px 8px 11px;border-radius:99px;border:1px solid rgba(255,214,166,.34);background:rgba(22,12,10,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  color:#FFE3C2;font:600 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .5s,background .3s,color .3s;will-change:transform;cursor:pointer}
-.jn-tag::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:22px;background:linear-gradient(rgba(255,214,166,.6),rgba(255,214,166,0))}
-.jn-tag i{width:8px;height:8px;border-radius:50%;background:var(--jn-fire);animation:jnping 1.8s ease-out infinite}
-.jn-tag.on{opacity:1;pointer-events:auto}
-.jn-tag.hot{background:#C8323F;border-color:transparent;color:#fff}
-.jn-tag.hot i{background:#fff}
-@keyframes jnping{0%{box-shadow:0 0 0 0 rgba(255,178,94,.7)}80%,100%{box-shadow:0 0 0 10px rgba(255,178,94,0)}}
-
-/* carte qui s'ouvre au clic sur la tente */
-.jn-pop{position:absolute;z-index:7;left:0;top:0;width:min(380px,calc(100vw - 32px));display:grid;gap:12px;padding:24px 24px 22px;border-radius:20px;
-  background:rgba(14,10,20,.74);border:1px solid rgba(255,200,150,.22);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 70px rgba(255,122,48,.14);
-  opacity:0;visibility:hidden;transform:translateY(14px) scale(.98);transition:opacity .4s,transform .5s cubic-bezier(.2,.7,.2,1),visibility 0s .5s}
-.jn-pop.on{opacity:1;visibility:visible;transform:none;transition:opacity .55s .35s,transform .8s .35s cubic-bezier(.2,.7,.2,1)}
-.jn-pop h2{font:900 38px/.92 var(--stamp);text-transform:uppercase;color:var(--jn-cream);padding-right:36px;margin:0}
-.jn-pop p{font-size:15px;line-height:1.55;color:rgba(255,236,214,.86)}
-.jn-go{font-size:17px;padding:15px 28px;justify-self:start;margin-top:4px;animation:jnpulse 2.4s ease-in-out infinite}
-@keyframes jnpulse{50%{box-shadow:0 0 0 12px rgba(255,120,40,0),0 0 40px rgba(255,120,40,.35)}}
-.jn-q{font-size:13.5px!important;color:rgba(255,236,214,.66)!important}
-.jn-q span{color:#FFD6A6;user-select:all;-webkit-user-select:all;overflow-wrap:anywhere}
-.jn-x{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,220,190,.22);background:transparent;color:#fff;font-size:22px;line-height:1;cursor:pointer}
-
-/* tiroir « Tout savoir » */
-.jn-info{position:absolute;z-index:8;top:0;right:0;bottom:0;width:min(500px,100%);overflow-y:auto;overscroll-behavior:contain;display:grid;gap:24px;align-content:start;
-  background:rgba(7,11,30,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-left:1px solid var(--jn-line);
-  padding:calc(20px + env(safe-area-inset-top,0px)) max(24px,env(safe-area-inset-right,0px)) calc(36px + env(safe-area-inset-bottom,0px)) 28px;
-  transform:translateX(104%);visibility:hidden;transition:transform .55s cubic-bezier(.2,.7,.2,1),visibility 0s .55s}
-.jn-info.on{transform:none;visibility:visible;transition:transform .55s cubic-bezier(.2,.7,.2,1)}
-.jn-info-h{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.jn-info .jn-x{position:static}
-.jn-info h2{font:900 clamp(42px,5vw,58px)/.88 var(--stamp);text-transform:uppercase;color:#fff;margin:0}
-.jn-info section{display:grid;gap:10px;padding-top:20px;border-top:1px solid var(--jn-line)}
-.jn-info h3{font:800 20px/1.1 var(--display);font-stretch:88%;color:#fff;margin:0}
-.jn-info p,.jn-info li{font-size:15px;line-height:1.6;color:var(--jn-dim)}
-.jn-info .jn-lead{color:#fff;font-weight:600;font-size:17px}
-.jn-info ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
-.jn-info ul li{position:relative;padding-left:18px}
-.jn-info ul li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--jn-fire)}
-.jn-info b{color:#fff}
+/* nœuds : une fiche à côté de la corde */
+.jn-sec{min-height:92vh;display:flex;align-items:center;padding:8vh var(--gutr) 8vh calc(var(--rx) + 64px)}
+.jn-sec.step{min-height:62vh}
+.jn-card{position:relative;max-width:500px;padding:24px 26px 26px;border-radius:22px;background:rgba(9,20,36,.62);border:1px solid rgba(190,220,245,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:grid;gap:12px;
+  opacity:0;transform:translateX(-26px);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.jn-card.wide{max-width:640px}
+.jn-card.in{opacity:1;transform:none}
+.jn-card::before{content:"";position:absolute;left:-58px;top:34px;width:52px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(220,236,250,.55))}
+.jn-n{font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#E8A04A}
+.jn-card h2{font:900 clamp(30px,3.4vw,46px)/.95 var(--stamp);text-transform:uppercase;color:#fff;letter-spacing:.005em}
+.jn-card p{font-size:15.5px;line-height:1.6;color:rgba(238,244,250,.9)}
+.jn-card .jn-lead{font-size:18px;color:#fff;font-weight:600}
+.jn-card ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.jn-card li{position:relative;padding-left:20px;font-size:15px;line-height:1.5;color:rgba(238,244,250,.9)}
+.jn-card li::before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;border-radius:50%;background:#E8A04A}
 .jn-chips{display:flex;flex-wrap:wrap;gap:7px}
-.jn-chips span{font:600 12.5px/1 var(--body);padding:8px 11px;border-radius:99px;background:rgba(255,178,94,.12);color:#F6D3A8;border:1px solid rgba(255,178,94,.32)}
+.jn-chips span{font:600 12.5px/1 var(--body);padding:8px 11px;border-radius:99px;background:rgba(232,160,74,.14);color:#F6D3A8;border:1px solid rgba(232,160,74,.35)}
 .jn-poles{display:grid;gap:8px}
-.jn-poles div{display:grid;gap:3px;padding:11px 13px;border-radius:12px;background:rgba(200,215,250,.06);border:1px solid rgba(200,215,250,.12)}
-.jn-poles b{font:700 14.5px/1.25 var(--display)}
-.jn-poles span{font-size:13.5px;line-height:1.45;color:rgba(214,224,246,.72)}
-.jn-bureau{font-size:14px!important}
-.jn-steps{list-style:none;margin:0;padding:0;display:grid;counter-reset:st}
-.jn-steps li{counter-increment:st;position:relative;display:grid;grid-template-columns:30px minmax(0,1fr);gap:2px 12px;padding:8px 0}
-.jn-steps li::before{content:counter(st);grid-row:span 2;width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,178,94,.5);color:var(--jn-fire);display:grid;place-items:center;font:600 12px/1 var(--mono)}
-.jn-steps li:not(:last-child)::after{content:"";position:absolute;left:14px;top:40px;bottom:-4px;width:1px;background:rgba(255,178,94,.25)}
-.jn-steps b{font:700 16px/1.3 var(--display)}
-.jn-steps span{font-size:14px;line-height:1.5}
-.jn-go2{justify-self:start;font-size:16px;padding:14px 26px}
+.jn-poles div{display:grid;gap:3px;padding:11px 13px;border-radius:12px;background:rgba(200,225,250,.07);border:1px solid rgba(200,225,250,.12)}
+.jn-poles b{font:700 14.5px/1.25 var(--display);color:#fff}
+.jn-poles span{font-size:13.5px;line-height:1.45;color:rgba(220,234,248,.78)}
+.jn-bureau{font-size:14px!important;color:rgba(220,234,248,.8)!important;border-top:1px solid rgba(200,225,250,.14);padding-top:12px}
+.jn-bureau b{color:#fff}
 
-@media (max-width:759px){
+/* au coin du feu */
+.jn-camp{min-height:150vh;display:grid;align-items:start;justify-items:center;padding:62vh var(--gutr) 0;text-align:center}
+.jn-camp-txt{display:grid;justify-items:center;gap:12px;max-width:520px}
+.jn-camp h2{font:900 clamp(40px,6vw,84px)/.9 var(--stamp);text-transform:uppercase;color:#FFE9CC;text-shadow:0 0 40px rgba(255,140,40,.35)}
+.jn-camp p{font-size:17px;color:rgba(255,236,214,.88)}
+.jn-go{font-size:18px;padding:16px 30px;border-radius:99px;margin-top:8px;box-shadow:0 0 0 0 rgba(255,120,40,.5);animation:jnpulse 2.4s ease-in-out infinite}
+@keyframes jnpulse{50%{box-shadow:0 0 0 14px rgba(255,120,40,0),0 0 40px rgba(255,120,40,.35)}}
+.jn-q{font-size:14px!important;color:rgba(255,236,214,.7)!important}
+.jn-q a{color:#FFD6A6}
+
+/* formulaire */
+.jn-dlg{width:min(640px,calc(100vw - 24px));max-height:calc(100dvh - 24px);border:0;border-radius:22px;padding:0;background:#0f1b2c;color:#EEF4FA;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.jn-dlg::backdrop{background:rgba(4,8,14,.6);backdrop-filter:blur(4px)}
+.jn-dlg form{display:grid;gap:14px;padding:24px}
+.jn-dh{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.jn-dh h2{font:900 34px/.95 var(--stamp);text-transform:uppercase;margin-top:8px}
+.jn-x{width:36px;height:36px;border-radius:10px;border:1px solid rgba(200,225,250,.2);background:transparent;color:#fff;font-size:22px;cursor:pointer}
+.jn-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.jn-dlg label.f{color:#c7d6e6}
+.jn-dlg input,.jn-dlg select,.jn-dlg textarea{background:#16253a;color:#fff;border-color:#2b3f5c}
+.jn-dlg label.chk{color:#c7d6e6;font-size:13.5px}
+.jn-dlg .btn{justify-self:start}
+.jn-done{padding:12px 14px;border-radius:12px;background:rgba(232,160,74,.14);border:1px solid rgba(232,160,74,.4);color:#FFE3C2}
+
+@media (max-width:760px){
+  .jn{--rx:30px}
+  .jn-hero{padding:96px var(--gutr) 50px 56px;align-items:end}
+  .jn-hero h1{font-size:clamp(44px,14.5vw,84px)}
+  .jn-hero-txt{min-width:0;max-width:100%}
+  .jn-hero p{font-size:16px}
+  .jn-sec{padding:6vh var(--gutr) 6vh 54px}
+  .jn-card{padding:18px 16px 20px;border-radius:18px;backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(9,20,36,.82)}
+  .jn-card::before{left:-22px;width:18px;top:28px}
   .jn-back span{display:none}.jn-back{padding:9px 11px}
-  .jn-intro{top:calc(78px + env(safe-area-inset-top,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));left:max(18px,env(safe-area-inset-left,0px));right:max(18px,env(safe-area-inset-right,0px));width:auto;gap:10px}
-  .jn-intro h1{font-size:clamp(50px,15.5vw,84px)}
-  .jn-intro p{font-size:15px;max-width:24em}
-  .jn-acts{margin-top:auto}
-  .jn-acts .btn{flex:1 1 auto}
-  .jn-pop{left:max(12px,env(safe-area-inset-left,0px))!important;right:max(12px,env(safe-area-inset-right,0px));top:auto!important;bottom:calc(12px + env(safe-area-inset-bottom,0px));width:auto;padding:22px 20px 20px}
-  .jn-pop h2{font-size:32px}
-  .jn-info{padding-left:max(20px,env(safe-area-inset-left,0px));border-left:0}
+  .jn-row{grid-template-columns:1fr}
+  .jn-camp{padding-top:58vh}
 }
-@media (prefers-reduced-motion:reduce){.jn-intro>*,.jn-pop,.jn-info{transition-duration:.01s!important}.jn-tag i,.jn-go,.jn-fade span{animation:none}}
+@media (prefers-reduced-motion:reduce){.jn-card{transition:opacity .3s;transform:none}.jn-hint i,.jn-go{animation:none}}
 
 </style>
+</head>
+<body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="mk" viewBox="0 0 30 22"><path d="M1 21 L11 5 L15 11 L19 6 L29 21 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M11 5 L11 1 L15 2.2 L11 3.4" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></symbol>
   <symbol id="trash" viewBox="0 0 24 24"><path d="M5 7h14M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
@@ -1098,7 +1092,6 @@ body:has(#ascent:not([hidden])) .modebar{display:none}
           <label class="f">Encadrement et sécurité<textarea name="securite" maxlength="400"></textarea></label>
           <label class="f">Texte « Soutenir »<textarea name="soutien" maxlength="400"></textarea></label>
           <div class="row"><label class="f">Lien de la cagnotte HelloAsso<input name="helloasso" type="url" maxlength="300" placeholder="https://www.helloasso.com/associations/…"></label><label class="f">Lien du dossier partenaire (PDF)<input name="dossier" type="url" maxlength="300"></label></div>
-          <label class="f">Lien du formulaire de candidature (Google Forms)<input name="formCandidature" type="url" maxlength="400" placeholder="https://forms.gle/…"></label>
           <div class="row"><label class="f">E-mail de contact<input name="email" type="email" maxlength="120"></label><label class="f">Instagram (sans @)<input name="instagram" maxlength="40"></label><label class="f">Campus<input name="campus" maxlength="80"></label></div>
           <label class="chk"><input type="checkbox" name="afficherCollecte"><span>Afficher le montant de la collecte sur l'accueil</span></label>
           <label class="chk"><input type="checkbox" name="recuFiscal"><span>L'association délivre des reçus fiscaux (à cocher seulement après confirmation par l'administration fiscale)</span></label>
@@ -1219,57 +1212,48 @@ body:has(#ascent:not([hidden])) .modebar{display:none}
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="modebar" id="modebar" hidden></div>
 
-<!-- ======================= NOUS REJOINDRE (camp de base de nuit, scène 3D) ======================= -->
+<!-- ======================= NOUS REJOINDRE (descente en crevasse) ======================= -->
 <div id="join" class="jn" hidden>
   <canvas id="jn-gl" aria-hidden="true"></canvas>
-  <div class="jn-veil" aria-hidden="true"></div>
+  <canvas id="jn-cv" aria-hidden="true"></canvas>
   <header class="jn-top">
     <a class="jn-back" href="#accueil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l-6 6 6 6M4 12h16"/></svg><span>Retour au site</span></a>
-    <div class="jn-alt" role="note" aria-label="Refuge de Tête Rousse, 3 167 mètres. Départ pour le sommet à 2 heures."><span>Refuge de Tête Rousse · 3 167 m</span><b>Départ 2 h 00</b></div>
+    <div class="jn-depth" aria-hidden="true"><span>Profondeur</span><b id="jn-depth">0 m</b></div>
   </header>
 
-  <section class="jn-intro">
-    <div class="jn-eb">Recrutement · saison 2026-2027</div>
-    <h1>Nous<br>rejoindre</h1>
-    <p>Veille de sommet au camp de base. Sous la toile, la cordée prépare l'expédition 2027, et il reste de la place. Approche-toi de la lumière.</p>
-    <div class="jn-acts">
-      <button class="btn red" id="jn-enter" type="button">Entrer dans la tente</button>
-      <button class="btn jn-ghost" id="jn-more" type="button" aria-controls="jn-info" aria-expanded="false">Tout savoir sur le recrutement</button>
-    </div>
-  </section>
+  <main class="jn-track">
+    <section class="jn-hero">
+      <div class="jn-hero-txt">
+        <div class="jn-eb">Recrutement · saison 2026-2027</div>
+        <h1>Nous<br>rejoindre</h1>
+        <p>Une corde, un sommet, une équipe. Tout ce qu'il faut savoir pour entrer dans la cordée Alpinis'EM est accroché à ses nœuds&nbsp;: descends le long de la corde.</p>
+        <div class="jn-hint"><i></i>Fais défiler pour descendre</div>
+      </div>
+    </section>
 
-  <button class="jn-tag" id="jn-tag" type="button" tabindex="-1" aria-hidden="true"><i></i><span>Clique sur la tente</span></button>
-
-  <div class="jn-pop" id="jn-pop" role="dialog" aria-labelledby="jn-pop-h">
-    <button class="jn-x" id="jn-x" type="button" aria-label="Fermer">×</button>
-    <div class="jn-eb">Recrutement ouvert</div>
-    <h2 id="jn-pop-h">Il reste une place sous la toile</h2>
-    <p>Cinq minutes de formulaire&nbsp;: le pôle qui t'attire et quelques lignes sur toi. Pas besoin d'être alpiniste.</p>
-    <a class="btn red jn-go" id="jn-go" href="#" target="_blank" rel="noopener">Nous rejoindre</a>
-    <p class="jn-q">Une question avant&nbsp;? Écris-nous à <span id="jn-mail">alpinisemnormandie@gmail.com</span></p>
-  </div>
-
-  <aside class="jn-info" id="jn-info" aria-label="Tout savoir sur le recrutement">
-    <div class="jn-info-h"><div class="jn-eb">Recrutement 2026-2027</div><button class="jn-x" id="jn-info-x" type="button" aria-label="Fermer">×</button></div>
-    <h2>Entrer dans la cordée</h2>
-    <section>
-      <h3>Pourquoi nous rejoindre</h3>
+    <section class="jn-sec"><article class="jn-card" data-knot>
+      <div class="jn-n">Nœud 1</div>
+      <h2>Pourquoi nous rejoindre</h2>
       <p class="jn-lead">Parce qu'on ne monte pas au Mont‑Blanc tout seul.</p>
-      <p>Alpinis'EM prépare pendant un an l'ascension du toit des Alpes, 4&nbsp;808&nbsp;m, à l'été 2027, encadrée par des guides de haute montagne. Au bout, il y a un vrai sommet.</p>
+      <p>Alpinis'EM prépare pendant un an l'ascension du toit des Alpes, 4&nbsp;808&nbsp;m, à l'été 2027, encadrée par des guides de haute montagne. Ce n'est pas une association comme les autres&nbsp;: au bout, il y a un vrai sommet.</p>
       <ul>
         <li>Un projet concret, avec un objectif que tout le monde comprend.</li>
         <li>Une équipe soudée, qui avance ensemble toute l'année.</li>
         <li>Une aventure qui se raconte, en entretien comme autour d'une table.</li>
       </ul>
-    </section>
-    <section>
-      <h3>Ce que tu vas vivre</h3>
+    </article></section>
+
+    <section class="jn-sec"><article class="jn-card" data-knot>
+      <div class="jn-n">Nœud 2</div>
+      <h2>Ce que tu vas vivre</h2>
       <p>Tu ne seras pas spectateur. Chacun porte une partie réelle de l'expédition, et apprend en le faisant.</p>
       <div class="jn-chips"><span>Gérer un vrai projet</span><span>Négocier avec des entreprises</span><span>Créer des contenus</span><span>Organiser des événements</span><span>Préparer une expédition</span><span>Porter une cause</span></div>
       <p>Et entre deux réunions&nbsp;: des sorties en montagne, des entraînements et des soirées avec toute l'équipe.</p>
-    </section>
-    <section>
-      <h3>Les pôles qui recrutent</h3>
+    </article></section>
+
+    <section class="jn-sec"><article class="jn-card wide" data-knot>
+      <div class="jn-n">Nœud 3</div>
+      <h2>Les pôles qui recrutent</h2>
       <p>Chaque pôle compte <b>un responsable et deux membres</b>. Choisis celui qui te ressemble.</p>
       <div class="jn-poles">
         <div><b>Expédition, Logistique &amp; Sécurité</b><span>Guides, refuges, transport, assurances et plan d'urgence.</span></div>
@@ -1279,33 +1263,81 @@ body:has(#ascent:not([hidden])) .modebar{display:none}
         <div><b>Glaciers &amp; Impact</b><span>Sensibiliser à la fonte des glaciers et réduire notre empreinte.</span></div>
       </div>
       <p class="jn-bureau">Le Bureau qui t'accueille&nbsp;: <b>Baptiste F.</b> (président), <b>Benjamin F.</b> et <b>Gautier</b> (vice‑présidents), <b>Tom N.</b> (trésorier et équipement). Il pilote aussi la préparation physique et le matériel.</p>
-    </section>
-    <section>
-      <h3>Comment ça se passe</h3>
-      <ol class="jn-steps">
-        <li><b>Tu candidates</b><span>Le formulaire en ligne&nbsp;: le pôle qui t'attire et quelques lignes sur toi.</span></li>
-        <li><b>On se parle</b><span>Quinze minutes avec un membre du Bureau, pour faire connaissance et répondre à tes questions.</span></li>
-        <li><b>Tu rencontres ton pôle</b><span>Le responsable du pôle choisi te montre ce que tu y ferais.</span></li>
-        <li><b>On te répond</b><span>Une réponse sous une semaine, quelle qu'elle soit.</span></li>
-        <li><b>Tu t'encordes</b><span>Une soirée ou une sortie d'intégration avec toute l'équipe.</span></li>
-      </ol>
-    </section>
-    <section>
-      <h3>Ce qu'on attend de toi</h3>
+    </article></section>
+
+    <section class="jn-sec step"><article class="jn-card" data-knot>
+      <div class="jn-n">Étape 1 sur 5</div>
+      <h2>Tu candidates</h2>
+      <p>Un court formulaire en bas de cette page&nbsp;: le pôle qui t'attire et quelques lignes sur toi. Pas besoin d'être alpiniste.</p>
+    </article></section>
+    <section class="jn-sec step"><article class="jn-card" data-knot>
+      <div class="jn-n">Étape 2 sur 5</div>
+      <h2>On se parle</h2>
+      <p>Un échange de 15 minutes avec un membre du Bureau, pour faire connaissance et répondre à tes questions.</p>
+    </article></section>
+    <section class="jn-sec step"><article class="jn-card" data-knot>
+      <div class="jn-n">Étape 3 sur 5</div>
+      <h2>Tu rencontres ton pôle</h2>
+      <p>Une rencontre avec le responsable du pôle choisi, pour voir concrètement ce que tu y ferais.</p>
+    </article></section>
+    <section class="jn-sec step"><article class="jn-card" data-knot>
+      <div class="jn-n">Étape 4 sur 5</div>
+      <h2>On te répond</h2>
+      <p>Une réponse sous une semaine, quelle qu'elle soit.</p>
+    </article></section>
+    <section class="jn-sec step"><article class="jn-card" data-knot>
+      <div class="jn-n">Étape 5 sur 5</div>
+      <h2>Tu t'encordes</h2>
+      <p>Une soirée ou une sortie d'intégration avec toute l'équipe&nbsp;: bienvenue dans la cordée.</p>
+    </article></section>
+
+    <section class="jn-sec"><article class="jn-card" data-knot>
+      <div class="jn-n">Dernier nœud</div>
+      <h2>Ce qu'on attend de toi</h2>
       <ul>
         <li><b>De la fiabilité</b>&nbsp;: tenir ce qu'on promet à l'équipe.</li>
         <li><b>Du temps</b>&nbsp;: quelques heures par semaine, sur toute l'année.</li>
         <li><b>De l'envie</b>&nbsp;: la montagne s'apprend, l'enthousiasme non.</li>
         <li><b>De l'entraide</b>&nbsp;: dans une cordée, on avance au rythme de tous.</li>
       </ul>
-    </section>
-    <a class="btn red jn-go2" id="jn-go2" href="#" target="_blank" rel="noopener">Nous rejoindre</a>
-  </aside>
+    </article></section>
 
-  <div class="jn-fade" id="jn-fade" aria-hidden="true"><span>On allume le réchaud…</span></div>
+    <section class="jn-camp">
+      <div class="jn-camp-txt">
+        <div class="jn-eb">Au coin du feu</div>
+        <h2>La cordée t'attend.</h2>
+        <p>Tu es descendu jusqu'ici&nbsp;: c'est plutôt bon signe.</p>
+        <button class="btn red jn-go" id="jn-go" type="button">Nous rejoindre</button>
+        <p class="jn-q">Une question avant&nbsp;? <a id="jn-mail"></a></p>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="jn-dlg" id="jn-dlg">
+    <form id="jn-form" method="dialog">
+      <div class="jn-dh"><div><div class="jn-eb">Candidature</div><h2>Rejoindre la cordée</h2></div><button class="jn-x" type="button" id="jn-x" aria-label="Fermer">×</button></div>
+      <div class="jn-row"><label class="f">Prénom et nom<input id="jn-name" required maxlength="80" autocomplete="name"></label><label class="f">E-mail<input id="jn-mail-in" type="email" required maxlength="120" autocomplete="email"></label></div>
+      <div class="jn-row"><label class="f">Formation et année<input id="jn-prog" maxlength="80" placeholder="Ex. : Programme Grande École, 2e année"></label>
+        <label class="f">Pôle souhaité<select id="jn-pole">
+          <option>Expédition, Logistique &amp; Sécurité</option><option>Partenariats, Sponsoring &amp; Subventions</option><option>Communication &amp; Contenus</option><option>Événements &amp; Vie de campus</option><option>Glaciers &amp; Impact</option><option>Je ne sais pas encore</option></select></label></div>
+      <label class="f">Quelques lignes sur toi et ta motivation<textarea id="jn-why" required maxlength="2000" rows="5"></textarea></label>
+      <label class="chk"><input type="checkbox" id="jn-ok" required><span>J'accepte que l'association conserve ces informations pour étudier ma candidature.</span></label>
+      <button class="btn red" type="submit">Envoyer ma candidature</button>
+      <div class="jn-done" id="jn-done" hidden><b>Candidature envoyée.</b> Le Bureau te recontacte très vite. À bientôt sur la corde&nbsp;!</div>
+    </form>
+  </dialog>
 </div>
 
-<script>window.ALPINISEM_CONFIG={};</script>
+<script>
+/* ====== CONFIGURATION (à remplir au déploiement, voir README.md) ======
+   Laisser vide = mode démo (fichier ouvert seul) ou mode artifact claude.ai. */
+window.ALPINISEM_CONFIG = {
+  supabaseUrl: "",      // ex. "https://abcdefgh.supabase.co"
+  supabaseAnonKey: "",  // clé « anon public » (Project Settings → API)
+  publicUrl: "",        // ex. "https://alpinisem.fr"
+  adminUrl: ""          // ex. "https://admin.alpinisem.fr" (vide = même site, /#espace)
+};
+</script>
 <script>
 /* ================= Données : contenus par défaut, démo, et 3 moteurs (Supabase / Claude / démo locale) ================= */
 const PUBLIC_COLS=['site','actus','partenaires','equipe'];
@@ -1319,7 +1351,7 @@ const DEF_SITE={
   glacier:"Les glaciers des Alpes reculent chaque année, la Mer de Glace en tête. On raconte toute l'année ce que leur fonte change pour la montagne et ceux qui y vivent.",
   securite:"L'ascension se fait encordés, avec des guides de haute montagne diplômés, après neuf mois de préparation physique et une acclimatation en altitude.",
   soutien:"Guides, refuges, matériel de sécurité et transport : l'expédition coûte environ 2 700 € par grimpeur. Choisissez votre palier.",
-  helloasso:'',dossier:'',formCandidature:'',email:'alpinisemnormandie@gmail.com',instagram:'alpinisem',campus:'EM Normandie, Paris-Clichy',
+  helloasso:'',dossier:'',email:'alpinisemnormandie@gmail.com',instagram:'alpinisem',campus:'EM Normandie, Paris-Clichy',
   afficherCollecte:false,recuFiscal:false,raised:null,
   mentions:"Éditeur du site\nAlpinis'EM, association loi 1901 · RNA : [W000000000]\nSiège : [adresse du siège]\nContact : alpinisemnormandie@gmail.com\nDirecteur·rice de la publication : [prénom nom, président·e]\n\nHébergement\n[Nom de l'hébergeur, adresse, site web]\n\nPropriété intellectuelle\nLes textes, photos et logos de ce site appartiennent à Alpinis'EM ou à leurs auteurs. Toute reproduction demande une autorisation.",
   confid:"Données collectées\n• Formulaire de contact : nom, e-mail et message, pour vous répondre.\n• Comptes membres : nom, e-mail, pôle et, pour les grimpeurs, une fiche d'urgence remplie volontairement.\n\nQui y a accès\nLe Bureau de l'association uniquement. Une fiche d'urgence n'est visible que par la personne qui l'a remplie et par le Bureau.\n\nDurée de conservation\nMessages : 1 an. Comptes : jusqu'à la fin de la saison suivante. Fiches d'urgence : supprimées après l'expédition.\n\nVos droits\nVous pouvez demander l'accès, la rectification ou la suppression de vos données en écrivant à [e-mail]. Vous pouvez aussi saisir la CNIL (cnil.fr).\n\nCookies\nAucun cookie publicitaire. La connexion à l'espace membres utilise un stockage local nécessaire à la session."
@@ -2419,291 +2451,290 @@ const Ascent=(()=>{
   return{enter,leave};
 })();
 
-/* ================= Nous rejoindre : camp de base de nuit (Three.js) =================
-   Scène entièrement procédurale, sans fichier externe : ciel étoilé, voie lactée et lune, massif enneigé au loin,
-   plateau de neige au clair de lune, tente éclairée de l'intérieur (deux silhouettes sur la toile), drapeau de l'asso,
-   piolets, sac et corde, traces de pas jusqu'à la porte, neige qui tombe, givre qui scintille,
-   et une cordée de frontales qui monte sur l'arête.
-   Clic (ou bouton « Entrer dans la tente ») : la caméra s'approche et la carte « Nous rejoindre » s'ouvre.
-   Lien du formulaire : JOIN_FORM_URL ci-dessous, ou Espace membres > Site > Textes et liens (prioritaire). */
-const JOIN_FORM_URL='';
+/* ================= Nous rejoindre : descente réaliste dans une crevasse jusqu'à une grotte de glace =================
+   Deux couches :
+   - un fond calculé par la carte graphique (WebGL) : ciel et sommets, champ de neige, paroi de glace proche et paroi du fond,
+     glace translucide (absorption : bleue là où elle est épaisse, presque blanche sur les arêtes fines), reflets, strates,
+     neige collée, obscurité qui gagne avec la profondeur, voûte et stalactites de la grotte, lumière du feu sur la glace ;
+   - un calque 2D par-dessus : corde beige tressée (simulée : elle bouge au défilement et à la souris), nœuds, rivière, feu, gouttes, neige. */
 const Join=(()=>{
-  let T=null,root,cv,renderer,scene,camera,ray,ndc,V,V2,built=false,building=null,run=false,raf=0,last=0,time=0,introStart=-1,played=false,firstFrame=false,glOK=false,syncFn=null,wired=false;
-  let tentMat,tentLight,glow,spill,hit,flagGeo,flagBase,skyU,snowU,sparkU,lampU,lampGeo,lampPos,lampPath=[],mist=[];
-  let hoverK=0,openK=0,isHover=false,isOpen=false,infoOpen=false;
-  const ptr={nx:0,ny:0,x:-1,y:-1,mouse:false,down:null};
-  const RM=matchMedia('(prefers-reduced-motion: reduce)').matches,TOUCH=matchMedia('(hover: none)').matches;
-  const $j=id=>document.getElementById(id);
-  const fr=x=>x-Math.floor(x);
-  const h21=(x,y)=>fr(Math.sin(x*127.1+y*311.7)*43758.5453);
+  let root,glc,gl,prog,U={},cv,ctx,run=false,raf=0,W=0,H=0,DPR=1,GQ=1,docH=0,mob=false,G=null,last=0,cy=0,prevCy=0,vScroll=0,T=0,glOK=true;
+  const mouse={x:-999,y:-999,px:-999,vx:0,in:false};
+  const fr=x=>x-Math.floor(x),h11=n=>fr(Math.sin(n)*43758.5453);/* même tirage que les stalactites du fond */
+  const h21=(x,y)=>{let a=fr(x*123.34),b=fr(y*456.21);const d=a*(a+45.32)+b*(b+45.32);a+=d;b+=d;return fr(a*b)};
   const n2=(x,y)=>{const ix=Math.floor(x),iy=Math.floor(y),fx=x-ix,fy=y-iy,ux=fx*fx*(3-2*fx),uy=fy*fy*(3-2*fy);
     const a=h21(ix,iy),b=h21(ix+1,iy),c=h21(ix,iy+1),d=h21(ix+1,iy+1);return a+(b-a)*ux+(c-a)*uy+(a-b-c+d)*ux*uy};
   const sst=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
-  const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
-  const lerp=(a,b,t)=>a+(b-a)*t, L3=(a,b,t)=>[lerp(a[0],b[0],t),lerp(a[1],b[1],t),lerp(a[2],b[2],t)];
 
-  /* relief : massif au loin (arêtes « ridged ») et plateau de neige au premier plan, aplati sous la tente */
-  function ridged(x,z){let s=0,a=1,f=1/240,w=0;for(let i=0;i<5;i++){const r=1-Math.abs(n2(x*f+i*17.3,z*f-i*9.1)*2-1);s+=a*r*r;w+=a;a*=.5;f*=2.07}return s/w}
-  function hBg(x,z){const ramp=sst(170,430,-z),rd=ridged(x,z),g=(cx,cz,sx,sz)=>Math.exp(-(((x-cx)/sx)**2+((z-cz)/sz)**2));
-    const peaks=135*g(80,-660,190,160)+80*g(-280,-780,240,190)+100*g(430,-610,210,170)+55*g(-620,-560,260,200)+70*g(760,-820,300,240);
-    return -2.5+ramp*(rd*72+peaks*(.72+.5*rd))}
-  function hFg(x,z){const r=Math.hypot(x,z*1.1);
-    let h=(n2(x*.045,z*.045)-.5)*3+(n2(x*.13+7,z*.13+3)-.5)+(n2(x*.55,z*.55)-.5)*.16;
-    h*=sst(3,14,r)*(z>0?1-.75*Math.exp(-(((x+1)/7)**2)):1);
-    return h+sst(55,170,-z)*(1-sst(150,205,Math.abs(x)))*(16*n2(x*.022+3,z*.022)+5)}
-
-  /* cadrages : repos, tente ouverte, et départ du survol d'introduction */
-  function poses(){const a=innerWidth/innerHeight;
-    if(a<.85)return{fov:58,idle:{p:[0,3,15],l:[0,3.6,0]},open:{p:[.4,2.4,9.4],l:[0,-1,0]},start:{p:[-20,60,140],l:[30,80,-600]}};
-    return{fov:a>2.1?36:42,idle:{p:[-4.2,2.6,11.5],l:[-2.6,2.8,0]},open:{p:[-.6,1.9,6.6],l:[.9,1.15,0]},start:{p:[-40,70,150],l:[40,90,-600]}}}
-
-  /* textures dessinées au canvas */
-  const mkCanvas=(w,h)=>{const c=document.createElement('canvas');c.width=w;c.height=h;return[c,c.getContext('2d')]};
-  function radialTex(){const[c,g]=mkCanvas(128,128),r=g.createRadialGradient(64,64,0,64,64,64);r.addColorStop(0,'rgba(255,255,255,1)');r.addColorStop(.35,'rgba(255,255,255,.45)');r.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=r;g.fillRect(0,0,128,128);return new T.CanvasTexture(c)}
-  function cloudTex(){const[c,g]=mkCanvas(256,128);for(let i=0;i<34;i++){const x=30+Math.random()*196,y=40+Math.random()*50,r=18+Math.random()*34,gr=g.createRadialGradient(x,y,0,x,y,r);gr.addColorStop(0,'rgba(255,255,255,.22)');gr.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=gr;g.fillRect(0,0,256,128)}return new T.CanvasTexture(c)}
-  function tentTex(){const[c,g]=mkCanvas(1024,512);
-    const v=g.createLinearGradient(0,0,0,512);v.addColorStop(0,'#3a0c06');v.addColorStop(.55,'#a5341a');v.addColorStop(1,'#f27c35');g.fillStyle=v;g.fillRect(0,0,1024,512);
-    const hz=g.createLinearGradient(0,0,1024,0);hz.addColorStop(0,'rgba(0,0,0,.25)');hz.addColorStop(.25,'rgba(0,0,0,0)');hz.addColorStop(.5,'rgba(0,0,0,.3)');hz.addColorStop(.75,'rgba(0,0,0,.5)');hz.addColorStop(1,'rgba(0,0,0,.25)');g.fillStyle=hz;g.fillRect(0,0,1024,512);
-    g.scale(1,2);/* la demi-sphère est 2× plus dense en hauteur : on dessine sur 0-256 */
-    g.strokeStyle='rgba(30,5,2,.35)';g.lineWidth=3;for(let i=0;i<8;i++){const x=i*128+64;g.beginPath();g.moveTo(x,0);g.lineTo(x,256);g.stroke()}
-    g.strokeStyle='rgba(30,5,2,.28)';g.lineWidth=2;g.beginPath();g.moveTo(0,212);g.lineTo(1024,212);g.stroke();
-    g.save();g.filter='blur(6px)';g.fillStyle='rgba(28,6,3,.6)';
-    const sil=(x,y,s)=>{g.beginPath();g.arc(x,y,14*s,0,7);g.fill();g.beginPath();g.ellipse(x,y+38*s,32*s,22*s,0,Math.PI,0);g.fill();g.fillRect(x-32*s,y+37*s,64*s,60)};
-    sil(150,148,1.1);sil(372,160,.95);g.restore();
-    const dx=256,base=256,top=116,hw=44,dg=g.createRadialGradient(dx,236,6,dx,200,130);dg.addColorStop(0,'#fff7e0');dg.addColorStop(.45,'#ffd08a');dg.addColorStop(1,'#ff9440');
-    g.fillStyle=dg;g.beginPath();g.moveTo(dx-hw,base);g.bezierCurveTo(dx-hw,base-74,dx-24,top,dx,top);g.bezierCurveTo(dx+24,top,dx+hw,base-74,dx+hw,base);g.closePath();g.fill();
-    g.strokeStyle='rgba(70,18,6,.65)';g.lineWidth=3;g.stroke();
-    const t=new T.CanvasTexture(c);t.colorSpace=T.SRGBColorSpace;t.anisotropy=4;return t}
-  function flagTex(){const[c,g]=mkCanvas(256,160);g.fillStyle='#C8323F';g.fillRect(0,0,256,160);
-    g.save();g.translate(68,40);g.scale(4,4);g.strokeStyle='#fff';g.fillStyle='#fff';g.lineWidth=1.6;g.lineJoin='round';
-    g.beginPath();g.moveTo(1,21);g.lineTo(11,5);g.lineTo(15,11);g.lineTo(19,6);g.lineTo(29,21);g.closePath();g.stroke();
-    g.beginPath();g.moveTo(11,5);g.lineTo(11,1);g.lineTo(15,2.2);g.lineTo(11,3.4);g.fill();g.stroke();g.restore();
-    const t=new T.CanvasTexture(c);t.colorSpace=T.SRGBColorSpace;return t}
-  function snowNormal(){const N=256,[c,g]=mkCanvas(N,N),img=g.createImageData(N,N),H=new Float32Array(N*N);
-    const grid=G=>Float32Array.from({length:G*G},()=>Math.random()),g1=grid(32),g2=grid(128);
-    const samp=(gr,G,x,y)=>{const fx=x*G/N,fy=y*G/N,ix=Math.floor(fx),iy=Math.floor(fy),tx=fx-ix,ty=fy-iy,at=(i,j)=>gr[((j%G+G)%G)*G+((i%G+G)%G)];
-      const a=at(ix,iy),b=at(ix+1,iy),cc=at(ix,iy+1),d=at(ix+1,iy+1),sx=tx*tx*(3-2*tx),sy=ty*ty*(3-2*ty);return a+(b-a)*sx+(cc-a)*sy+(a-b-cc+d)*sx*sy};
-    for(let y=0;y<N;y++)for(let x=0;x<N;x++)H[y*N+x]=samp(g1,32,x,y)*.7+samp(g2,128,x,y)*.3;
-    for(let y=0;y<N;y++)for(let x=0;x<N;x++){const dx=H[y*N+(x+1)%N]-H[y*N+(x+N-1)%N],dy=H[((y+1)%N)*N+x]-H[((y+N-1)%N)*N+x],nx=-dx*6,ny=-dy*6,l=Math.hypot(nx,ny,1),k=(y*N+x)*4;
-      img.data[k]=(nx/l*.5+.5)*255;img.data[k+1]=(ny/l*.5+.5)*255;img.data[k+2]=(1/l*.5+.5)*255;img.data[k+3]=255}
-    g.putImageData(img,0,0);const t=new T.CanvasTexture(c);t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(36,19);return t}
-
-  async function loadThree(){const urls=[window.ALPINISEM_THREE,'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.min.js','./assets/vendor/three.module.min.js'].filter(Boolean);
-    for(const u of urls){try{return await import(u)}catch(e){console.warn('three',u,e&&e.message)}}return null}
-
-  function wire(){if(wired)return;wired=true;
-    $j('jn-tag').querySelector('span').textContent=TOUCH?'Touche la tente':'Clique sur la tente';
-    $j('jn-enter').onclick=()=>open(true);
-    $j('jn-tag').onclick=()=>open(false);
-    $j('jn-x').onclick=()=>close(true);
-    $j('jn-more').onclick=()=>setInfo(true);
-    $j('jn-info-x').onclick=()=>setInfo(false);
-    $j('jn-info').inert=true;$j('jn-pop').inert=true;
-    cv.addEventListener('pointermove',e=>{ptr.x=e.clientX;ptr.y=e.clientY;ptr.nx=e.clientX/innerWidth*2-1;ptr.ny=e.clientY/innerHeight*2-1;ptr.mouse=e.pointerType==='mouse'});
-    cv.addEventListener('pointerleave',()=>{ptr.x=-1;ptr.nx*=.5;ptr.ny*=.5});
-    cv.addEventListener('pointerdown',e=>{ptr.down={x:e.clientX,y:e.clientY}});
-    cv.addEventListener('pointerup',e=>{const d=ptr.down;ptr.down=null;if(!d||Math.hypot(e.clientX-d.x,e.clientY-d.y)>12)return;
-      if(infoOpen){setInfo(false);return}if(pick(e.clientX,e.clientY))open(false);else if(isOpen)close(false)})}
-
-  function pick(x,y){if(!glOK||!camera)return false;ndc.set(x/innerWidth*2-1,-(y/innerHeight)*2+1);ray.setFromCamera(ndc,camera);return ray.intersectObject(hit,false).length>0}
-  function open(fromKey){if(infoOpen)setInfo(false);isOpen=true;const p=$j('jn-pop');p.inert=false;syncFn&&syncFn();placePop();p.classList.add('on');root.classList.add('jn-opened');
-    if(fromKey)setTimeout(()=>{if(isOpen)$j('jn-go').focus({preventScroll:true})},750)}
-  function close(fromKey){if(!isOpen)return;isOpen=false;const p=$j('jn-pop'),had=p.contains(document.activeElement);p.classList.remove('on');p.inert=true;root.classList.remove('jn-opened');
-    if(fromKey||had)$j('jn-enter').focus({preventScroll:true})}
-  function setInfo(on){infoOpen=on;const d=$j('jn-info');if(on){close(false);syncFn&&syncFn()}d.inert=!on;d.classList.toggle('on',on);root.classList.toggle('jn-reading',on);$j('jn-more').setAttribute('aria-expanded',on);
-    if(on)setTimeout(()=>{if(infoOpen)$j('jn-info-x').focus({preventScroll:true})},80);else if(d.contains(document.activeElement))$j('jn-more').focus({preventScroll:true})}
-  function onKey(e){if(e.key!=='Escape')return;if(infoOpen)setInfo(false);else if(isOpen)close(true)}
-  function placePop(){const pop=$j('jn-pop');if(innerWidth<760){pop.style.left=pop.style.top='';return}
-    const w=pop.offsetWidth,h=pop.offsetHeight;let x=(innerWidth-w)/2,y=(innerHeight-h)/2;
-    if(glOK&&camera){const c=V.set(0,.75,0).project(camera),e=V2.set(1.8,.75,0).project(camera),cx=(c.x+1)/2*innerWidth,cy=(1-c.y)/2*innerHeight,ex=(e.x+1)/2*innerWidth;
-      x=ex+40;y=cy-h*.55;if(x+w>innerWidth-24)x=Math.max(24,cx-(ex-cx)-40-w)}
-    y=Math.max(76,Math.min(innerHeight-h-24,y));pop.style.left=x.toFixed(1)+'px';pop.style.top=y.toFixed(1)+'px'}
-
-  async function build(){root=$j('join');cv=$j('jn-gl');wire();
-    try{T=await loadThree();if(!T)return false;
-      renderer=new T.WebGLRenderer({canvas:cv,antialias:true,powerPreference:'high-performance'})}catch(e){console.warn('jn gl',e);return false}
-    const small=innerWidth<760;
-    renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;
-    scene=new T.Scene();scene.fog=new T.FogExp2('#1c2a5a',.00095);
-    camera=new T.PerspectiveCamera(42,innerWidth/innerHeight,.1,5000);
-    ray=new T.Raycaster();ndc=new T.Vector2();V=new T.Vector3();V2=new T.Vector3();
-    const moonDir=new T.Vector3(-.449,.26,-.855).normalize(),dot=radialTex();
-
-    /* ciel : dégradé de nuit, étoiles qui scintillent, voie lactée, lune */
-    skyU={uT:{value:0},uMoon:{value:moonDir},uTop:{value:new T.Color('#03050e')},uMid:{value:new T.Color('#0b1434')},uHor:{value:new T.Color('#2a3c76')}};
-    const sky=new T.Mesh(new T.SphereGeometry(3200,48,24),new T.ShaderMaterial({uniforms:skyU,side:T.BackSide,depthWrite:false,
-      vertexShader:'varying vec3 vD;void main(){vD=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-      fragmentShader:`uniform float uT;uniform vec3 uMoon,uTop,uMid,uHor;varying vec3 vD;
-        float hs(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-        float ns(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hs(i),hs(i+vec2(1,0)),f.x),mix(hs(i+vec2(0,1)),hs(i+1.),f.x),f.y);}
-        float fbm(vec2 p){float s=0.,a=.5;for(int i=0;i<5;i++){s+=a*ns(p);p*=2.03;a*=.5;}return s;}
-        vec3 stars(vec3 d,float sc,float th){vec2 uv=vec2(atan(d.x,-d.z),asin(clamp(d.y,-1.,1.)))*sc;vec2 id=floor(uv),f=fract(uv)-.5;float r=hs(id);if(r<th)return vec3(0.);
-          vec2 o=vec2(hs(id+3.1),hs(id+7.7))-.5;float dd=length(f-o*.7);float tw=.55+.45*sin(uT*(1.3+r*3.)+r*40.);
-          return mix(vec3(.75,.85,1.),vec3(1.,.88,.72),hs(id+1.3))*smoothstep(.1,0.,dd)*tw*(r-th)/(1.-th);}
-        void main(){vec3 d=normalize(vD);float h=d.y;
-          vec3 col=mix(uHor,uMid,smoothstep(-.02,.2,h));col=mix(col,uTop,smoothstep(.16,.7,h));
-          vec3 bn=normalize(vec3(.55,.35,.76));float band=1.-smoothstep(0.,.3,abs(dot(d,bn)));
-          float mw=fbm(vec2(atan(d.x,-d.z),d.y)*vec2(3.,6.)+3.)*band;col+=vec3(.05,.06,.11)*pow(mw,2.)*2.2*smoothstep(-.05,.3,h);
-          float vis=smoothstep(-.01,.1,h);
-          col+=(stars(d,140.,.965)*1.4+stars(d,320.,.94)*.8*(.4+band*1.5)+stars(d,70.,.992)*2.2)*vis;
-          float m=max(dot(d,uMoon),0.);col+=vec3(.35,.45,.75)*pow(m,60.)*.4+vec3(.12,.16,.3)*pow(m,12.)*.2;
-          vec3 tU=normalize(cross(uMoon,vec3(0,1,0))),tV=cross(tU,uMoon);vec2 mp=vec2(dot(d,tU),dot(d,tV))*90.;
-          col=mix(col,vec3(2.2,2.15,2.)*(1.-fbm(mp*2.+1.)*.4),smoothstep(.99955,.99972,m));
-          gl_FragColor=vec4(col,1.);
-          #include <tonemapping_fragment>
-          #include <colorspace_fragment>
-        }`}));
-    sky.renderOrder=-1;scene.add(sky);
-
-    /* lumières : lune basse à gauche, ciel, et la lampe dans la tente */
-    const moon=new T.DirectionalLight('#bccbff',1.7);moon.position.copy(moonDir).multiplyScalar(60);scene.add(moon,moon.target);
-    moon.castShadow=true;moon.shadow.mapSize.set(small?1024:2048,small?1024:2048);Object.assign(moon.shadow.camera,{left:-14,right:14,top:14,bottom:-14,near:1,far:140});moon.shadow.camera.updateProjectionMatrix();moon.shadow.bias=-.0005;moon.shadow.normalBias=.03;
-    scene.add(new T.HemisphereLight('#5a6fb0','#0a0f22',.6));
-    tentLight=new T.PointLight('#ff8f45',18,0,2);tentLight.position.set(0,.75,.15);scene.add(tentLight);
-
-    /* massif au loin */
-    {const g=new T.PlaneGeometry(2800,1300,small?200:320,small?96:150);g.rotateX(-Math.PI/2);g.translate(0,0,-800);
-      const pa=g.attributes.position;for(let i=0;i<pa.count;i++)pa.setY(i,hBg(pa.getX(i),pa.getZ(i)));g.computeVertexNormals();
-      const nr=g.attributes.normal,col=new Float32Array(pa.count*3);
-      for(let i=0;i<pa.count;i++){const x=pa.getX(i),z=pa.getZ(i),s=sst(.48,.74,nr.getY(i)+(n2(x*.03,z*.03)-.5)*.28);
-        col[i*3]=lerp(.018,.58,s);col[i*3+1]=lerp(.02,.66,s);col[i*3+2]=lerp(.03,.86,s)}
-      g.setAttribute('color',new T.BufferAttribute(col,3));
-      scene.add(new T.Mesh(g,new T.MeshStandardMaterial({vertexColors:true,roughness:.95,metalness:0})))}
-
-    /* plateau de neige */
-    {const g=new T.PlaneGeometry(420,220,small?150:220,small?80:116);g.rotateX(-Math.PI/2);g.translate(0,0,-80);
-      const pa=g.attributes.position,col=new Float32Array(pa.count*3);
-      for(let i=0;i<pa.count;i++){const x=pa.getX(i),z=pa.getZ(i);pa.setY(i,hFg(x,z));const v=.84+.16*n2(x*.3+1,z*.3);col[i*3]=v;col[i*3+1]=v;col[i*3+2]=Math.min(1,v+.03)}
-      g.computeVertexNormals();g.setAttribute('color',new T.BufferAttribute(col,3));
-      const m=new T.Mesh(g,new T.MeshStandardMaterial({color:'#bccae8',roughness:.88,metalness:0,vertexColors:true,normalMap:snowNormal(),normalScale:new T.Vector2(.28,.28)}));
-      m.receiveShadow=true;scene.add(m)}
-
-    /* la tente : dôme rouge éclairé de l'intérieur, deux arceaux croisés, haubans */
-    {const tg=new T.Group();scene.add(tg);const SX=1.7,SY=1.22,SZ=1.38;
-      const dome=new T.SphereGeometry(1,72,28,0,Math.PI*2,0,Math.PI/2);dome.scale(SX,SY,SZ);
-      tentMat=new T.MeshStandardMaterial({color:'#6e1c22',roughness:.8,emissive:'#ffffff',emissiveMap:tentTex(),emissiveIntensity:1.1});
-      const tm=new T.Mesh(dome,tentMat);tm.castShadow=true;tg.add(tm);
-      const pm=new T.MeshStandardMaterial({color:'#1b2032',roughness:.5,metalness:.3});
-      [Math.PI/4,3*Math.PI/4].forEach(a=>{const pts=[];for(let i=0;i<=40;i++){const t=i/40*Math.PI;pts.push(new T.Vector3(Math.cos(t)*Math.cos(a)*SX*1.012,Math.sin(t)*SY*1.012,Math.cos(t)*Math.sin(a)*SZ*1.012))}
-        const m=new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts),60,.022,6,false),pm);m.castShadow=true;tg.add(m)});
-      const lm=new T.LineBasicMaterial({color:'#8392bf',transparent:true,opacity:.55}),sm=new T.MeshStandardMaterial({color:'#9aa6bf',metalness:.7,roughness:.4});
-      [1,3,5,7].forEach(k=>{const a=k*Math.PI/4,t=.85,from=new T.Vector3(Math.cos(t)*Math.cos(a)*SX,Math.sin(t)*SY,Math.cos(t)*Math.sin(a)*SZ),to=new T.Vector3(Math.cos(a)*SX*1.9,0,Math.sin(a)*SZ*1.9);
-        tg.add(new T.Line(new T.BufferGeometry().setFromPoints([from,to]),lm));const st=new T.Mesh(new T.CylinderGeometry(.012,.012,.16,5),sm);st.position.copy(to).setY(.05);tg.add(st)});
-      hit=new T.Mesh(new T.SphereGeometry(1,16,10),new T.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false,colorWrite:false}));hit.scale.set(2.2,1.75,1.95);hit.position.y=.45;scene.add(hit);
-      glow=new T.Sprite(new T.SpriteMaterial({map:dot,color:'#ff7a30',blending:T.AdditiveBlending,transparent:true,depthWrite:false,opacity:.3,fog:false}));glow.scale.set(7.5,5,1);glow.position.set(0,.7,.4);scene.add(glow);
-      const sg=new T.PlaneGeometry(5,7.5,10,15);sg.rotateX(-Math.PI/2);sg.translate(0,0,3);{const p=sg.attributes.position;for(let i=0;i<p.count;i++)p.setY(i,hFg(p.getX(i),p.getZ(i))+.03)}
-      spill=new T.Mesh(sg,new T.MeshBasicMaterial({map:dot,color:'#ff9a4a',blending:T.AdditiveBlending,transparent:true,depthWrite:false,opacity:.38}));scene.add(spill)}
-
-    /* drapeau de l'asso, piolets plantés, sac, corde lovée */
-    {const fm=new T.MeshStandardMaterial({color:'#c9d0e2',metalness:.6,roughness:.4}),fx=-2.7,fz=.7,fy=hFg(fx,fz);
-      const pole=new T.Mesh(new T.CylinderGeometry(.022,.026,3,8),fm);pole.position.set(fx,fy+1.5,fz);pole.castShadow=true;scene.add(pole);
-      flagGeo=new T.PlaneGeometry(1.1,.7,22,12);flagGeo.translate(.55,0,0);flagBase=flagGeo.attributes.position.array.slice();
-      const fl=new T.Mesh(flagGeo,new T.MeshStandardMaterial({map:flagTex(),side:T.DoubleSide,roughness:.85,emissive:'#3a0a10'}));fl.position.set(fx+.02,fy+2.62,fz);fl.rotation.y=.35;fl.castShadow=true;scene.add(fl)}
-    {const metal=new T.MeshStandardMaterial({color:'#9aa6bf',metalness:.8,roughness:.35}),shaft=new T.MeshStandardMaterial({color:'#26357A',roughness:.6});
-      const axe=(x,z,ry,tl)=>{const g=new T.Group(),s=new T.Mesh(new T.CylinderGeometry(.018,.022,.62,8),shaft);s.position.y=.31;g.add(s);
-        const hd=new T.Mesh(new T.BoxGeometry(.32,.035,.03),metal);hd.position.y=.63;g.add(hd);const pk=new T.Mesh(new T.ConeGeometry(.02,.12,6),metal);pk.rotation.z=-Math.PI/2;pk.position.set(.2,.63,0);g.add(pk);
-        g.position.set(x,hFg(x,z)-.12,z);g.rotation.set(tl,ry,tl*.5);g.traverse(o=>{if(o.isMesh)o.castShadow=true});scene.add(g)};
-      axe(2.25,1.5,.4,.12);axe(2.55,1.22,-.5,-.1);
-      const pack=new T.Group(),pm=new T.MeshStandardMaterial({color:'#26357A',roughness:.75}),body=new T.Mesh(new T.BoxGeometry(.44,.6,.28),pm);body.position.y=.3;pack.add(body);
-      const lid=new T.Mesh(new T.BoxGeometry(.46,.12,.3),new T.MeshStandardMaterial({color:'#C8323F',roughness:.7}));lid.position.y=.62;pack.add(lid);
-      pack.position.set(1.85,0,.45);pack.rotation.set(-.22,-.5,0);pack.traverse(o=>{if(o.isMesh)o.castShadow=true});scene.add(pack);
-      const rm=new T.MeshStandardMaterial({color:'#d9c28a',roughness:.9});[[0,.04,.24],[.05,.1,.21],[-.03,.15,.19]].forEach(([dx,y,r])=>{const t=new T.Mesh(new T.TorusGeometry(r,.032,8,36),rm);t.rotation.x=Math.PI/2;t.position.set(-1.45+dx,y,1.75);t.castShadow=true;scene.add(t)})}
-
-    /* traces de pas jusqu'à la porte */
-    {const n=34,im=new T.InstancedMesh(new T.PlaneGeometry(.12,.27).rotateX(-Math.PI/2),new T.MeshBasicMaterial({map:dot,color:'#0d1430',transparent:true,opacity:.6,depthWrite:false}),n),o=new T.Object3D();
-      const at=t=>[.3+Math.pow(1-t,1.3)*1.7*Math.sin((1-t)*1.6),lerp(13.5,1.75,t)];
-      for(let k=0;k<n;k++){const t=k/(n-1),[x,z]=at(t),[x2,z2]=at(Math.min(1,t+.01)),yaw=Math.atan2(x2-x,z2-z),sd=k%2?1:-1,ox=Math.cos(yaw)*.13*sd,oz=-Math.sin(yaw)*.13*sd;
-        o.position.set(x+ox,hFg(x+ox,z+oz)+.02,z+oz);o.rotation.set(0,yaw,0);o.updateMatrix();im.setMatrixAt(k,o.matrix)}
-      scene.add(im)}
-
-    /* neige qui tombe (animée sur la carte graphique) */
-    {const n=small?1700:3200,p=new Float32Array(n*3),r=new Float32Array(n*4);for(let i=0;i<n;i++){p[i*3]=Math.random()*60;p[i*3+1]=Math.random()*26;p[i*3+2]=Math.random()*60;for(let k=0;k<4;k++)r[i*4+k]=Math.random()}
-      const g=new T.BufferGeometry();g.setAttribute('position',new T.BufferAttribute(p,3));g.setAttribute('aR',new T.BufferAttribute(r,4));
-      snowU={uT:{value:0},uO:{value:new T.Vector3()},uPR:{value:1},uSp:{value:RM?.35:1}};
-      const s=new T.Points(g,new T.ShaderMaterial({uniforms:snowU,transparent:true,depthWrite:false,
-        vertexShader:`uniform float uT,uPR,uSp;uniform vec3 uO;attribute vec4 aR;varying float vA;
-          void main(){vec3 p=position;float t=uT*uSp;p.y-=t*(.55+aR.x*.9);p.x+=t*.35+sin(t*(.5+aR.w)+aR.y*6.28)*.6;p.z+=sin(t*.4+aR.y*3.)*.3;
-            p=mod(p-uO,vec3(60.,26.,60.))+uO;vec4 mv=modelViewMatrix*vec4(p,1.);gl_Position=projectionMatrix*mv;
-            gl_PointSize=min(48.,max(1.,1.5*(.5+aR.z)*uPR*(18./-mv.z)));vA=smoothstep(60.,6.,-mv.z)*smoothstep(.3,1.6,-mv.z);}`,
-        fragmentShader:'varying float vA;void main(){float d=length(gl_PointCoord-.5);gl_FragColor=vec4(.9,.94,1.,smoothstep(.5,.1,d)*vA*.85);}'}));
-      s.frustumCulled=false;scene.add(s)}
-
-    /* givre qui scintille au sol */
-    {const n=small?800:1500,p=new Float32Array(n*3),r=new Float32Array(n);for(let i=0;i<n;i++){const rr=3.5+Math.pow(Math.random(),.7)*40,a=Math.random()*6.283,x=Math.cos(a)*rr,z=Math.sin(a)*rr;p[i*3]=x;p[i*3+1]=hFg(x,z)+.04;p[i*3+2]=z;r[i]=Math.random()}
-      const g=new T.BufferGeometry();g.setAttribute('position',new T.BufferAttribute(p,3));g.setAttribute('aR',new T.BufferAttribute(r,1));
-      sparkU={uT:{value:0},uPR:{value:1}};
-      scene.add(new T.Points(g,new T.ShaderMaterial({uniforms:sparkU,transparent:true,depthWrite:false,blending:T.AdditiveBlending,
-        vertexShader:`uniform float uT,uPR;attribute float aR;varying float vA;void main(){vec4 mv=modelViewMatrix*vec4(position,1.);gl_Position=projectionMatrix*mv;
-          float tw=pow(max(0.,sin(uT*1.3+aR*91.+dot(cameraPosition,vec3(2.1,3.7,1.3))*1.6)),30.);vA=tw*smoothstep(45.,4.,-mv.z);gl_PointSize=(1.5+2.5*fract(aR*7.))*uPR;}`,
-        fragmentShader:'varying float vA;void main(){float d=length(gl_PointCoord-.5);gl_FragColor=vec4(vec3(.85,.92,1.)*vA*smoothstep(.5,0.,d)*2.,1.);}'})))}
-
-    /* une cordée de frontales qui monte sur l'arête du sommet */
-    {for(let i=0;i<=160;i++){const t=i/160,x=lerp(58,84,t),z=lerp(-555,-662,t);lampPath.push(new T.Vector3(x,hBg(x,z)+2.5,z))}
-      lampPos=new Float32Array(15);lampGeo=new T.BufferGeometry();lampGeo.setAttribute('position',new T.BufferAttribute(lampPos,3));lampU={uT:{value:0},uPR:{value:1}};
-      const l=new T.Points(lampGeo,new T.ShaderMaterial({uniforms:lampU,transparent:true,depthWrite:false,blending:T.AdditiveBlending,
-        vertexShader:'uniform float uT,uPR;varying float vB;void main(){gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);vB=.75+.25*sin(uT*2.3+position.x*.9+position.z*.4);gl_PointSize=5.*uPR;}',
-        fragmentShader:'varying float vB;void main(){float d=length(gl_PointCoord-.5);gl_FragColor=vec4(vec3(1.6,1.35,.9)*vB*smoothstep(.5,0.,d),1.);}'}));
-      l.frustumCulled=false;scene.add(l)}
-
-    /* brume au pied du massif */
-    {const ct=cloudTex();for(let i=0;i<10;i++){const s=new T.Sprite(new T.SpriteMaterial({map:ct,color:'#7f93cc',transparent:true,depthWrite:false,opacity:.2}));
-      s.position.set(-420+Math.random()*840,8+Math.random()*20,-125-Math.random()*140);s.scale.set(170+Math.random()*90,48+Math.random()*20,1);s.userData.v=(Math.random()*.6+.3)*(Math.random()<.5?-1:1);scene.add(s);mist.push(s)}}
-
-    onResize();built=true;glOK=true;return true}
-
-  function onResize(){if(!renderer){if(isOpen)placePop();return}
-    renderer.setPixelRatio(Math.min(devicePixelRatio||1,innerWidth<760?1.5:1.75));renderer.setSize(innerWidth,innerHeight,false);
-    camera.aspect=innerWidth/innerHeight;camera.fov=poses().fov;camera.updateProjectionMatrix();
-    const pr=renderer.getPixelRatio();snowU.uPR.value=sparkU.uPR.value=lampU.uPR.value=pr;if(isOpen)placePop()}
-
-  function frame(now){if(!run)return;raf=requestAnimationFrame(frame);
-    const dt=Math.min(.05,last?(now-last)/1000:0);last=now;if(document.hidden)return;time+=dt;
-    if(introStart<0)introStart=now;
-    const ip=RM?1:Math.min(1,(now-introStart)/5400),ie=ease(ip);
-    if(ip>.6)root.classList.add('jn-ready');
-    hoverK+=((isHover&&!isOpen?1:0)-hoverK)*Math.min(1,dt*7);
-    openK+=((isOpen?1:0)-openK)*Math.min(1,dt*2.4);
-    const P=poses(),oe=ease(Math.max(0,Math.min(1,openK))),free=1-oe*.7;
-    let p=L3(P.idle.p,P.open.p,oe),l=L3(P.idle.l,P.open.l,oe);
-    const px=(TOUCH?Math.sin(time*.13)*.7:ptr.nx*1.1)*free,py=(TOUCH?0:-ptr.ny*.4)*free;
-    p[0]+=px+Math.sin(time*.21)*.22*free;p[1]+=py+Math.sin(time*.33)*.07;l[0]+=px*.35;l[1]+=py*.2;
-    if(ie<1){p=L3(P.start.p,p,ie);l=L3(P.start.l,l,ie)}
-    p[1]=Math.max(p[1],hFg(p[0],p[2])+1.2);
-    camera.position.set(p[0],p[1],p[2]);camera.lookAt(l[0],l[1],l[2]);
-    if(camera.fov!==P.fov){camera.fov=P.fov;camera.updateProjectionMatrix()}
-
-    const fl=1+.06*Math.sin(time*7.3)+.04*Math.sin(time*13.7+1.3)+.03*Math.sin(time*23.1+.4);
-    tentMat.emissiveIntensity=(1.1+.35*hoverK+.5*oe)*fl;tentLight.intensity=(18+8*hoverK+16*oe)*fl;
-    glow.material.opacity=(.28+.12*hoverK+.2*oe)*fl;spill.material.opacity=(.38+.1*hoverK+.25*oe)*fl;
-    const a=flagGeo.attributes.position.array,ft=RM?time*.4:time;
-    for(let i=0;i<a.length;i+=3){const x=flagBase[i],y=flagBase[i+1],k=x/1.1;a[i+2]=(Math.sin(x*5.2-ft*4.4+y*1.6)*.1+Math.sin(x*11-ft*7.3)*.025)*k;a[i+1]=y-k*k*.06+Math.sin(x*4-ft*3.1)*.02*k}
-    flagGeo.attributes.position.needsUpdate=true;flagGeo.computeVertexNormals();
-    for(let i=0;i<5;i++){const q=lampPath[Math.floor(fr(.06+i*.011+time*.0032)*(lampPath.length-1))];lampPos[i*3]=q.x;lampPos[i*3+1]=q.y;lampPos[i*3+2]=q.z}
-    lampGeo.attributes.position.needsUpdate=true;
-    skyU.uT.value=sparkU.uT.value=lampU.uT.value=snowU.uT.value=time;snowU.uO.value.set(p[0]-30,p[1]-12,p[2]-45);
-    for(const s of mist){s.position.x+=s.userData.v*dt;if(s.position.x>440)s.position.x=-440;else if(s.position.x<-440)s.position.x=440}
-
-    isHover=false;
-    if(ptr.mouse&&ptr.x>=0&&!infoOpen&&ie>.9){ndc.set(ptr.x/innerWidth*2-1,-(ptr.y/innerHeight)*2+1);ray.setFromCamera(ndc,camera);isHover=ray.intersectObject(hit,false).length>0}
-    cv.style.cursor=isHover?'pointer':'';
-    const tag=$j('jn-tag'),tp=V.set(0,1.62,0).project(camera);
-    tag.style.transform=`translate3d(${((tp.x+1)/2*innerWidth).toFixed(1)}px,${((1-tp.y)/2*innerHeight).toFixed(1)}px,0) translate(-50%,calc(-100% - 22px))`;
-    tag.classList.toggle('on',ie>.97&&!isOpen&&!infoOpen&&openK<.2);tag.classList.toggle('hot',isHover);
-    if(isOpen)placePop();
-
-    renderer.render(scene,camera);
-    if(!firstFrame){firstFrame=true;$j('jn-fade').classList.add('off')}
+  // ---------------- fond WebGL ----------------
+  const VS='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+  const FS=`precision highp float;
+uniform vec2 uRes;uniform float uDpr,uScroll,uTime,uPlat,uLip,uRx,uCave,uCeil,uFloor,uMob,uSc;uniform vec3 uFire;
+float h21(vec2 p){vec3 q=fract(vec3(p.xyx)*.1031);q+=dot(q,q.yzx+33.33);return fract((q.x+q.y)*q.z);}
+vec2 h22(vec2 p){vec3 q=fract(vec3(p.xyx)*vec3(.1031,.103,.0973));q+=dot(q,q.yzx+33.33);return fract((q.xx+q.yz)*q.zy);}
+float sh(float n){return fract(sin(n)*43758.5453);}
+float n1(float x){float i=floor(x),f=fract(x);f=f*f*(3.-2.*f);return mix(h21(vec2(i,1.7)),h21(vec2(i+1.,1.7)),f);}
+float n2(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);return mix(mix(h21(i),h21(i+vec2(1.,0.)),u.x),mix(h21(i+vec2(0.,1.)),h21(i+vec2(1.,1.)),u.x),u.y);}
+const mat2 M=mat2(1.6,1.2,-1.2,1.6);
+float fbm(vec2 p){float s=0.,a=.5;for(int i=0;i<4;i++){s+=a*n2(p);p=M*p;a*=.5;}return s;}
+float fbm3(vec2 p){float s=0.,a=.5;for(int i=0;i<3;i++){s+=a*n2(p);p=M*p;a*=.5;}return s;}
+// creux arrondis (« coups de gouge ») typiques des parois de glace
+float scal(vec2 p){vec2 i=floor(p),f=fract(p);float acc=0.;for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){vec2 g=vec2(float(x),float(y));vec2 o=h22(i+g);o=.5+.38*sin(6.2831*o);vec2 r=g+o-f;acc+=exp(-9.*dot(r,r));}return -log(max(acc,1e-4))/9.;}
+float iceH(vec2 p){vec2 w=p+vec2(fbm3(p*.0035),fbm3(p*.0035+7.3))*90.;
+  return scal(w*vec2(.0088,.0062))*.75+scal(w*.022+11.)*.2+fbm3(w*.0019)*1.1;}
+vec3 iceN(vec2 p,float amp){float e=1.6;float h=iceH(p),hx=iceH(p+vec2(e,0.)),hy=iceH(p+vec2(0.,e));return normalize(vec3(-(hx-h)/e*amp,(hy-h)/e*amp,1.));}
+float xL(float y){float base=uRx-mix(16.,9.,uMob);float e=base-mix(20.,6.,uMob)*n1(y*.006+1.3)-mix(9.,3.,uMob)*n1(y*.03+7.1);
+  e=mix(uRx-2.,e,smoothstep(uPlat-4.,uPlat+46.,y));return mix(e,mix(uRes.x*.03,-30.,uMob),smoothstep(uCave,uCave+uRes.y*.55,y));}
+float lightAt(float wy){return max(.1,exp(-max(0.,wy-uLip+uRes.y*.1)/max(uRes.y,(uCave-uLip)/2.)));}
+const vec3 Vv=vec3(0.,0.,1.);
+vec3 fireLight(vec2 p,vec3 n,float wrap,float kd,float ks){vec2 d=uFire.xy-p;float R=260.*uSc,dist=length(d);float att=uFire.z/(1.+dist*dist/(R*R));
+  vec3 L=normalize(vec3(d.x,-d.y,140.*uSc));float df=clamp((dot(n,L)+wrap)/(1.+wrap),0.,1.);float sp=pow(max(dot(n,normalize(L+Vv)),0.),60.);
+  return vec3(1.,.55,.24)*att*df*kd+vec3(1.,.8,.55)*att*sp*ks;}
+float strata(vec2 p){float s=p.y+46.*fbm3(vec2(p.x*.0018,p.y*.0016))+p.x*.04;float v=smoothstep(.25,.7,n2(vec2(p.x*.004,floor(s*.027/6.2832)*3.1)));return (smoothstep(.955,1.,sin(s*.027))*.6+smoothstep(.988,1.,sin(s*.0091+1.7)))*v;}
+vec3 ice(vec2 p,float edge,float far,float lit,float fire){
+  vec2 q=p*mix(1.,1.45,far);vec3 n=iceN(q,mix(85.,55.,far));
+  vec3 L=normalize(vec3(.18,.95,.3));float dif=dot(n,L)*.5+.5;
+  float thin=fbm3(p*.0016+far*3.);
+  float t=mix(1.8,.45,pow(dif,1.3))+far*.3-.55*exp(-edge/16.)-(thin-.45)*1.1;
+  vec3 col=exp(-vec3(2.5,.92,.4)*max(t,.15)*1.35);
+  col+=vec3(.08,.42,.62)*smoothstep(.45,.75,thin)*.35;
+  vec3 Hh=normalize(L+Vv);float nh=max(dot(n,Hh),0.);float spec=pow(nh,90.)*1.1+pow(nh,16.)*.08;
+  vec3 r=reflect(-Vv,n);vec3 env=mix(vec3(.04,.1,.18),vec3(.75,.88,1.),smoothstep(-.1,.9,r.y));float fr=.03+.97*pow(1.-max(n.z,0.),5.);
+  col+=env*fr*.5+spec*(1.-far*.55);
+  float st=strata(p);col=mix(col,col*vec3(.55,.58,.62)+vec3(.02,.025,.03),st*(1.-far*.35));
+  col+=vec3(.5,.7,.85)*smoothstep(.0,.6,st)*.06*(1.-far);
+  // neige accrochée sur les replats, surtout près de la surface
+  float sn=smoothstep(.5,.8,n.y*.9+fbm3(p*.02)*.55)*smoothstep(.25,.6,lit)*(1.-far*.5);
+  col=mix(col,vec3(.9,.94,1.)*(.7+.3*dif),sn*.9);
+  col*=lit;
+  if(fire>0.){vec3 nf=n;col+=fireLight(p,nf,.3,.55,.7)*fire+fireLight(p,nf,.8,.1,0.)*vec3(.3,.8,1.2)*fire;}
+  return col;}
+vec3 snow(vec2 p,float lit){float g=fbm3(p*.03);vec3 c=mix(vec3(.82,.88,.96),vec3(.98,.98,1.),g);
+  c+=step(.997,h21(floor(p*.9)))*.7*(.5+.5*sin(uTime*2.5+h21(floor(p*.9))*40.));return c*lit;}
+void main(){
+  vec2 px=gl_FragCoord.xy/uDpr;float sy=uRes.y-px.y,x=px.x,wy=sy+uScroll;vec2 p=vec2(x,wy);
+  float hz=uPlat-uRes.y*mix(.1,.07,uMob);
+  vec3 col;
+  // ciel
+  float wS=sy+uScroll*.3;float tS=clamp(wS/(hz),0.,1.2);
+  vec3 sky=mix(vec3(.24,.42,.68),vec3(.93,.9,.88),smoothstep(.0,1.,pow(tS,1.5)));
+  float sg=exp(-dot(vec2((x-uRes.x*.84)/uRes.x,(wS-hz)/uRes.y)*vec2(1.,2.),vec2((x-uRes.x*.84)/uRes.x,(wS-hz)/uRes.y)*vec2(1.,2.))*9.);
+  sky+=vec3(1.,.7,.45)*.3*sg;
+  float cl=fbm(vec2(x*.0016+uTime*.003,wS*.009));sky=mix(sky,vec3(1.,.97,.95),smoothstep(.55,.9,cl)*(1.-tS)*.5);
+  col=sky;
+  // deux chaînes de sommets enneigés (parallaxe)
+  for(int k=0;k<2;k++){float fk=float(k);float par=mix(.3,.5,fk);
+    float fx=mix(.0022,.0038,fk),ox=fk*37.;
+    float pr=0.,a=.6,f=1.;for(int o=0;o<4;o++){pr+=a*(1.-abs(2.*n1(x*fx*f+ox)-1.));f*=2.;a*=.42;}
+    float ht=uRes.y*mix(.27,.15,fk)*mix(1.,.75,uMob);float top=hz-uScroll*par-ht*pr*pr+uRes.y*mix(-.01,.02,fk);
+    if(sy>top){float dd=sy-top;
+      float pl=0.,pr2=0.;a=.6;f=1.;for(int o=0;o<2;o++){pl+=a*(1.-abs(2.*n1((x-6.)*fx*f+ox)-1.));pr2+=a*(1.-abs(2.*n1((x+6.)*fx*f+ox)-1.));f*=2.;a*=.42;}
+      float sl=(pr2-pl);
+      vec2 q=vec2(x*fx*5.+ox,dd*fx*7.);float r0=fbm(q),rx=fbm(q+vec2(.05,0.)),ry=fbm(q+vec2(0.,.05));
+      float face=sl*14.+(rx-r0)*9.-(ry-r0)*2.;
+      float lit=smoothstep(-.15,.25,face);
+      vec3 m=mix(vec3(.52,.62,.8),vec3(1.,.95,.9),lit);
+      float rock=smoothstep(.58,.7,fbm(vec2(x*.018,dd*.035)+fk*5.))*smoothstep(.1,.5,abs(face))*.75;
+      m=mix(m,vec3(.26,.28,.34)*mix(.75,1.25,lit),rock);
+      m=mix(m,m*vec3(.85,.9,1.),smoothstep(0.,ht,dd));
+      m=mix(m,sky,mix(.45,.2,fk));col=m;}}
+  // champ de neige en perspective jusqu'au bord de la crevasse
+  float hzS=hz-uScroll;
+  if(sy>hzS){float d=max(sy-hzS,.5);float X=(x-uRes.x*.6)/d,Z=uRes.y/d;
+    vec2 P=vec2(X*4.,Z*1.6);float e=.02;
+    float s0=fbm(P)*.7+n2(P*3.1)*.12;float sx=fbm(P+vec2(e,0.))*.7+n2((P+vec2(e,0.))*3.1)*.12;float sz=fbm(P+vec2(0.,e))*.7+n2((P+vec2(0.,e))*3.1)*.12;
+    vec3 n=normalize(vec3(-(sx-s0)/e*.18,1.,-(sz-s0)/e*.18));vec3 Ls=normalize(vec3(.75,.32,-.5));float dif=clamp(dot(n,Ls),0.,1.);
+    vec3 sn=mix(vec3(.6,.71,.88),vec3(1.,.96,.92),smoothstep(.12,.6,dif));
+    sn+=step(.9975,h21(floor(px*.8)))*.6*smoothstep(10.,120.,d)*(.5+.5*sin(uTime*3.+h21(floor(px*.8))*30.));
+    sn=mix(sn,mix(sky,vec3(.92,.92,.95),.5),exp(-d/(uRes.y*.05))*.75);
+    col=sn;}
+  float xl=xL(wy);
+  // paroi du fond (droite) : bord de neige puis glace qui s'enfonce dans l'ombre
+  float lipY=uLip+10.*n1(x*.008+2.);
+  if(x>=xl&&wy>lipY){float dl=wy-lipY;float lit=lightAt(wy);
+    vec3 c;
+    if(dl<16.+6.*n1(x*.05)){c=snow(p,1.)*mix(1.,.72,dl/22.);}
+    else{c=ice(p,dl,1.,lit,0.);c+=vec3(.35,.7,.9)*exp(-dl/90.)*.35;
+      vec3 fog=mix(vec3(.3,.55,.75),vec3(.02,.06,.12),smoothstep(uLip,uCave,wy))*lit;c=mix(c,fog,.3);}
+    c*=.5+.5*smoothstep(0.,mix(150.,50.,uMob),x-xl);
+    col=c;}
+  // paroi proche (gauche) : couche de neige en surface puis glace, arête fine translucide
+  float tpN=uPlat-3.*n1(x*.02);
+  if(x<xl&&wy>tpN){float dn=wy-tpN,sT=20.+10.*n1(x*.03+4.);
+    if(dn<sT)col=snow(p,1.)*mix(1.,.8,dn/sT);
+    else{float lit=lightAt(wy);float ed=xl-x;col=ice(p,ed,0.,lit,.6);
+      col+=vec3(.55,.88,1.)*(exp(-ed/7.)*.6+exp(-ed/40.)*.12)*lit;
+      }}
+  // grotte : voûte, stalactites, fond éclairé par le feu, sol
+  if(wy>uCave-uRes.y*.5){
+    float cOff=26.*uSc*(.5+.3*sin(x*.011)+.2*sin(x*.027+2.));float ceil=uCeil+cOff;
+    bool hole=abs(x-uRx)<mix(70.,34.,uMob)+20.*sin(wy*.01);
+    float lit=lightAt(wy);
+    if(wy>xl*0.&&x>=xl&&wy>ceil){ // fond de grotte : paroi éclairée par le feu
+      col=ice(p,200.,1.,lit,1.);}
+    if(!hole&&wy<ceil&&wy>uCave-uRes.y*.45){float k=smoothstep(uCave-uRes.y*.45,uCave-uRes.y*.3,wy);
+      vec3 c=ice(p,300.,0.,lit,1.4);c+=vec3(1.,.62,.32)*exp(-(ceil-wy)/(16.*uSc))*fireLight(p,vec3(0.,-.6,.8),.5,1.,0.).r*.7;col=mix(col,c,k);}
+    float cw=34.*uSc,cell=floor(x/cw),uu=(fract(x/cw)-.5)*2.,len=(30.+170.*sh(cell*7.13))*uSc*(.45+.55*sh(cell*3.7+1.));
+    float cx=(cell+.5)*cw;bool holeC=abs(cx-uRx)<mix(80.,40.,uMob);
+    float cc=uCeil+26.*uSc*(.5+.3*sin(cx*.011)+.2*sin(cx*.027+2.));
+    float tt=(wy-cc)/max(1.,len);float wd=pow(max(0.,1.-tt),.9)*.85;
+    if(!holeC&&wy>=ceil-3.&&tt<1.&&abs(uu)<wd){float q=uu/wd;
+      vec3 n=normalize(vec3(q*1.2,-.2,sqrt(max(.05,1.-q*q))));
+      vec3 c=exp(-vec3(2.5,.92,.4)*(.5+.9*(1.-abs(q))*(.4+.6*(1.-tt))))*.9*lit*2.;
+      c+=fireLight(p,n,.6,.8,2.)*1.3;c+=vec3(.7,.9,1.)*pow(1.-abs(q),8.)*.25*(lit*3.+uFire.z*.4);
+      c+=vec3(1.,.75,.5)*smoothstep(.6,1.,abs(q))*fireLight(p,vec3(0.,0.,1.),.5,1.,0.).r*.5;
+      col=c;}
+    float fl=uFloor+10.*uSc*(.5+.5*sin(x*.009+1.));
+    if(wy>fl){float g=fbm(vec2(x*.008,wy*.03))*.7+fbm(vec2(x*.04,wy*.12))*.3;
+      vec3 c=vec3(.42,.5,.62)*(.55+.45*g)*lit*1.3;
+      vec2 df=vec2(x-uFire.x,(wy-uFire.y)*2.4);float att=uFire.z/(1.+dot(df,df)/pow(330.*uSc,2.));
+      c+=vec3(1.,.55,.25)*att*(.5+.5*g)*.9;
+      c+=step(.996,h21(floor(px*.9)))*att*.8;
+      col=c;}
   }
+  col=clamp(col,0.,1.);
+  vec2 vv=px/uRes-.5;col*=1.-.28*dot(vv,vv)*1.5;
+  col+=(h21(px+fract(uTime*7.)*91.)-.5)*.022;
+  gl_FragColor=vec4(col,1.);}
+`;
+  function initGL(){try{gl=glc.getContext('webgl',{antialias:false,premultipliedAlpha:false});if(!gl)return false;
+      const mk=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS)){console.warn(gl.getShaderInfoLog(o));return null}return o};
+      const v=mk(gl.VERTEX_SHADER,VS),f=mk(gl.FRAGMENT_SHADER,FS);if(!v||!f)return false;prog=gl.createProgram();gl.attachShader(prog,v);gl.attachShader(prog,f);gl.linkProgram(prog);
+      if(!gl.getProgramParameter(prog,gl.LINK_STATUS))return false;gl.useProgram(prog);
+      const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+      const loc=gl.getAttribLocation(prog,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+      ['uRes','uDpr','uScroll','uTime','uPlat','uLip','uRx','uCave','uCeil','uFloor','uMob','uSc','uFire'].forEach(k=>U[k]=gl.getUniformLocation(prog,k));return true}catch(e){console.warn(e);return false}}
+  function drawGL(fl){if(!glOK)return;gl.viewport(0,0,glc.width,glc.height);
+    gl.uniform2f(U.uRes,W,H);gl.uniform1f(U.uDpr,glc.width/W);gl.uniform1f(U.uScroll,cy);gl.uniform1f(U.uTime,T);gl.uniform1f(U.uPlat,G.platY);gl.uniform1f(U.uLip,G.lipY);gl.uniform1f(U.uRx,G.rx);
+    gl.uniform1f(U.uCave,G.caveTop);gl.uniform1f(U.uCeil,G.ceilY);gl.uniform1f(U.uFloor,G.floorY);gl.uniform1f(U.uMob,mob?1:0);gl.uniform1f(U.uSc,G.scale);
+    gl.uniform3f(U.uFire,G.fireX,G.fireY-30*G.scale,fl);gl.drawArrays(gl.TRIANGLES,0,3)}
 
-  function nogl(){glOK=false;root.classList.add('jn-nogl','jn-ready');$j('jn-fade').classList.add('off');$j('jn-tag').hidden=true}
-  function enter(){root=$j('join');cv=$j('jn-gl');run=true;firstFrame=false;
-    if(built)$j('jn-fade').classList.remove('off');
-    addEventListener('resize',onResize);addEventListener('keydown',onKey);
-    const go=()=>{if(!run)return;onResize();last=0;introStart=played?performance.now()-4700:-1;played=true;cancelAnimationFrame(raf);raf=requestAnimationFrame(frame)};
-    if(built)go();else (building||(building=build())).then(ok=>{if(!run)return;if(ok)go();else nogl()})}
-  function leave(){run=false;cancelAnimationFrame(raf);removeEventListener('resize',onResize);removeEventListener('keydown',onKey);
-    if(wired){close(false);if(infoOpen)setInfo(false)}}
-  return{enter,leave,onSync:f=>{syncFn=f}};
+  // ---------------- corde : déplacement latéral u de chaque point, propagé par la tension ----------------
+  let R=null;
+  function buildRope(){const seg=mob?16:20,n=Math.ceil((G.ropeEnd-G.anchorY)/seg)+1;R={seg,n,u:new Float32Array(n),v:new Float32Array(n)}}
+  function stepRope(){const {u,v,n}=R,Tn=.22,k=.0009,damp=.965;
+    const y0=cy-200,y1=cy+H+200,vs=Math.max(-60,Math.min(60,vScroll));
+    for(let i=1;i<n;i++){const y=G.anchorY+i*R.seg;
+      let a=Tn*(u[i-1]-2*u[i]+(i<n-1?u[i+1]:u[i]))-k*u[i]+.012*Math.sin(T*.7+i*.05)*Math.min(1,i/20);
+      if(y>y0&&y<y1){a+=vs*.0045*Math.sin(i*.09+T*1.4)*Math.min(1,i/12);
+        if(mouse.in){const sy=y-cy,dx=(G.rx+u[i])-mouse.x,dy=sy-mouse.y,d=Math.hypot(dx,dy);if(d<90){a+=(dx>=0?1:-1)*(90-d)*.006+mouse.vx*.02*(1-d/90)}}}
+      if(y>G.floorY-4)a*=.2;
+      v[i]=(v[i]+a)*damp}
+    for(let i=1;i<n;i++){u[i]+=v[i];u[i]=Math.max(-70,Math.min(70,u[i]))}}
+
+  // ---------------- géométrie de la page ----------------
+  function layout(){W=innerWidth;H=innerHeight;mob=W<=760;DPR=Math.min(mob?1.6:1.75,devicePixelRatio||1);GQ=mob?.6:Math.min(1.25,devicePixelRatio||1)*.85;
+    cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);ctx.setTransform(DPR,0,0,DPR,0,0);
+    glc.width=Math.round(W*GQ);glc.height=Math.round(H*GQ);
+    docH=root.scrollHeight;const top=root.getBoundingClientRect().top+scrollY;
+    const knots=[...root.querySelectorAll('[data-knot]')].map(c=>{const r=c.getBoundingClientRect();return{y:r.top+scrollY-top+(mob?28:34),el:c}});
+    const camp=root.querySelector('.jn-camp'),campTop=camp.getBoundingClientRect().top+scrollY-top;
+    const ht=root.querySelector('.jn-hero-txt').getBoundingClientRect(),htB=ht.bottom+scrollY-top;
+    const rx=mob?30:W*.30,platY=mob?H*.2:H*.5,lipY=Math.max(platY+H*.18,htB+(mob?24:40)),floorY=docH-H*.17,scale=Math.max(.65,Math.min(1.25,Math.min(W,H)/850));
+    G={rx,platY,lipY,anchorY:platY+6,knots,caveTop:campTop-H*.2,ceilY:campTop+H*.02,floorY,ropeEnd:floorY+60,fireX:mob?W*.62:W*.5,fireY:floorY-4,scale};
+    buildRope();seedDecor()}
+  let D=null;
+  function seedDecor(){
+    // gouttes : même position que les pointes des stalactites dessinées par le fond
+    const cw=34*G.scale,drips=[];for(let c=0;c*cw<W;c++){const cx=(c+.5)*cw;if(Math.abs(cx-G.rx)<(mob?40:80))continue;
+      const len=(30+170*h11(c*7.13))*G.scale*(.45+.55*h11(c*3.7+1)),ceil=G.ceilY+26*G.scale*(.5+.3*Math.sin(cx*.011)+.2*Math.sin(cx*.027+2));if(h11(c*1.9)<.45)drips.push({x:cx,y:ceil+len,ph:h11(c*5.1)*300,per:150+h11(c*2.3)*220})}
+    const flakes=[...Array(mob?70:140)].map(()=>({x:Math.random()*W,y:Math.random()*H,z:.3+Math.random()*.7,s:Math.random()}));
+    D={drips,flakes,flames:[],embers:[]}}
+
+  // ---------------- calque 2D ----------------
+  function draw(fl){ctx.clearRect(0,0,W,H);const S=y=>y-cy,y0=cy,y1=cy+H;
+    if(y1>G.floorY-H*.9)drawRiver(S,fl);
+    drawRope(S,y0,y1);
+    if(y1>G.floorY-H*.6)drawFire(S,fl);
+    drawDrips(S);drawParticles(y0)}
+  // corde beige tressée, réaliste : contour, âme, ombrage, torons en diagonale
+  function ropePath(S,pts){ctx.beginPath();ctx.moveTo(pts[0][0],S(pts[0][1]));for(let k=1;k<pts.length-1;k++){const mx=(pts[k][0]+pts[k+1][0])/2,my=(pts[k][1]+pts[k+1][1])/2;ctx.quadraticCurveTo(pts[k][0],S(pts[k][1]),mx,S(my))}const L=pts[pts.length-1];ctx.lineTo(L[0],S(L[1]))}
+  function strokeRope(S,pts,wd,lit){
+    ctx.lineCap='round';ctx.lineJoin='round';
+    ropePath(S,pts);ctx.strokeStyle='rgba(0,0,0,.32)';ctx.lineWidth=wd+4;ctx.save();ctx.translate(3,2);ctx.stroke();ctx.restore();
+    ropePath(S,pts);ctx.strokeStyle=shade([92,78,58],lit);ctx.lineWidth=wd+1.6;ctx.stroke();
+    ropePath(S,pts);ctx.strokeStyle=shade([205,186,150],lit);ctx.lineWidth=wd;ctx.stroke();
+    ctx.save();ctx.translate(wd*.22,0);ropePath(S,pts);ctx.strokeStyle=shade([160,140,106],lit,.55);ctx.lineWidth=wd*.35;ctx.stroke();ctx.restore();
+    ctx.save();ctx.translate(-wd*.2,0);ropePath(S,pts);ctx.strokeStyle=shade([238,226,200],lit,.75);ctx.lineWidth=wd*.26;ctx.stroke();ctx.restore();
+    // torons : traits obliques réguliers le long de la corde
+    let acc=0;const step=wd*.62;ctx.lineWidth=Math.max(.9,wd*.13);
+    for(let k=1;k<pts.length;k++){const ax=pts[k-1][0],ay=S(pts[k-1][1]),bx=pts[k][0],by=S(pts[k][1]),dx=bx-ax,dy=by-ay,l=Math.hypot(dx,dy);if(l<.01)continue;const tx=dx/l,ty=dy/l,nx=-ty,ny=tx;
+      for(let s=(step-acc)%step;s<l;s+=step){const x=ax+tx*s,y=ay+ty*s;if(y<-20||y>H+20)continue;const r=wd*.48;
+        ctx.strokeStyle=shade([120,102,74],lit,.85);ctx.beginPath();ctx.moveTo(x-nx*r-tx*r*.55,y-ny*r-ty*r*.55);ctx.lineTo(x+nx*r+tx*r*.55,y+ny*r+ty*r*.55);ctx.stroke()}
+      acc=(acc+l)%step}}
+  const shade=(c,l,a=1)=>`rgba(${Math.round(c[0]*l)},${Math.round(c[1]*l)},${Math.round(c[2]*l)},${a})`;
+  const litAt=y=>{const L=Math.max(.34,Math.exp(-Math.max(0,y-G.platY)/(H*2.6)));const d=Math.hypot(0,(G.fireY-y))/(300*G.scale);return Math.min(1.1,L+.9/(1+d*d))};
+  function drawRope(S,y0,y1){const {u,n,seg}=R,wd=mob?7:11;
+    const ax=G.rx-(mob?16:36),ay=G.platY-5;
+    // amarrage : broche scellée et mousqueton en acier
+    if(S(ay)>-40&&S(ay)<H+40){const g=ctx.createLinearGradient(ax-6,0,ax+6,0);g.addColorStop(0,'#5d6670');g.addColorStop(.5,'#dfe5ea');g.addColorStop(1,'#6b747e');
+      ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(ax,S(ay),mob?3.5:5.5,mob?2.4:3.5,0,0,7);ctx.fill();
+      ctx.strokeStyle=g;ctx.lineWidth=mob?2:3;ctx.beginPath();ctx.ellipse(ax+(mob?3:6),S(ay+5),mob?4:6.5,mob?6.5:10,.45,0,7);ctx.stroke()}
+    const pts=[];if(S(ay)<H+40)pts.push([ax+(mob?4:8),ay+8],[G.rx-3,G.platY+1]);
+    const i0=Math.max(0,Math.floor((y0-80-G.anchorY)/seg)),i1=Math.min(n-1,Math.ceil((y1+80-G.anchorY)/seg));
+    for(let i=i0;i<=i1;i++){let y=G.anchorY+i*seg,x=G.rx+u[i];if(y>G.floorY-6){const e=y-(G.floorY-6);x+=e*(mob?.8:1.6);y=G.floorY-6+Math.sin(e*.05)*3}pts.push([x,y])}
+    if(pts.length<2)return;
+    // éclairage : sur toute la portion visible, on éclaire selon la profondeur au centre de l'écran
+    const lit=litAt(cy+H*.5);strokeRope(S,pts,wd,lit);
+    // nœuds en huit
+    G.knots.forEach((kn,ki)=>{const i=Math.round((kn.y-G.anchorY)/seg);if(i<0||i>=n)return;const x=G.rx+u[i],sy=S(kn.y);if(sy<-60||sy>H+60)return;
+      const act=kn.el.classList.contains('in'),s=wd/9,l=litAt(kn.y);
+      ctx.save();ctx.translate(x,sy);ctx.rotate((u[Math.min(n-1,i+1)]-u[Math.max(0,i-1)])*.01);
+      if(act){const pulse=.5+.5*Math.sin(T*2.4+ki),gg=ctx.createRadialGradient(0,0,2,0,0,34*s);gg.addColorStop(0,`rgba(255,236,200,${.22+.12*pulse})`);gg.addColorStop(1,'rgba(255,236,200,0)');ctx.fillStyle=gg;ctx.beginPath();ctx.arc(0,0,34*s,0,7);ctx.fill()}
+      ctx.fillStyle='rgba(0,0,0,.3)';ctx.beginPath();ctx.ellipse(3,3,10*s,18*s,0,0,7);ctx.fill();
+      const loop=(cx,cy2,rx,ry,rot)=>{const p=[];for(let a=0;a<=Math.PI*2+.01;a+=Math.PI/10)p.push([cx+Math.cos(a)*rx*Math.cos(rot)-Math.sin(a)*ry*Math.sin(rot),cy2+Math.cos(a)*rx*Math.sin(rot)+Math.sin(a)*ry*Math.cos(rot)]);return p};
+      strokeRope(y=>y,loop(0,-7*s,7*s,8*s,.35),wd*.9,l);strokeRope(y=>y,loop(0,8*s,7.5*s,8.5*s,-.35),wd*.9,l);
+      ctx.restore()})}
+  function drawRiver(S,fl){const sc=G.scale;
+    const P=[[W*(mob?.16:.2),G.floorY-H*.42,8],[W*(mob?.3:.27),G.floorY-H*.3,22],[W*(mob?.1:.13),G.floorY-H*.15,44],[W*(mob?.26:.22),G.floorY+H*.02,74],[W*(mob?.08:.1),docH+60,120]];
+    const smp=[];for(let s=0;s<=60;s++){const t=s/60*(P.length-1),i=Math.min(P.length-2,Math.floor(t)),f=t-i,a=P[Math.max(0,i-1)],b=P[i],c=P[i+1],d=P[Math.min(P.length-1,i+2)];
+      const cr=(p0,p1,p2,p3)=>.5*((2*p1)+(-p0+p2)*f+(2*p0-5*p1+4*p2-p3)*f*f+(-p0+3*p1-3*p2+p3)*f*f*f);smp.push([cr(a[0],b[0],c[0],d[0]),cr(a[1],b[1],c[1],d[1]),cr(a[2],b[2],c[2],d[2])*sc])}
+    const side=(i,sg)=>{const p=smp[i],q=smp[Math.min(smp.length-1,i+1)],o=smp[Math.max(0,i-1)],nx=-(q[1]-o[1]),ny=q[0]-o[0],l=Math.hypot(nx,ny)||1;return[p[0]+sg*nx/l*p[2]/2,p[1]+sg*ny/l*p[2]/2]};
+    // sortie du tunnel (sombre) au fond de la grotte
+    const g0=ctx.createRadialGradient(P[0][0],S(P[0][1])-8*sc,2,P[0][0],S(P[0][1])-8*sc,52*sc);g0.addColorStop(0,'rgba(0,4,10,.95)');g0.addColorStop(1,'rgba(0,4,10,0)');ctx.fillStyle=g0;ctx.beginPath();ctx.ellipse(P[0][0],S(P[0][1])-8*sc,52*sc,38*sc,0,0,7);ctx.fill();
+    ctx.beginPath();for(let i=0;i<smp.length;i++){const q=side(i,1);i?ctx.lineTo(q[0],S(q[1])):ctx.moveTo(q[0],S(q[1]))}for(let i=smp.length-1;i>=0;i--){const q=side(i,-1);ctx.lineTo(q[0],S(q[1]))}ctx.closePath();
+    const rg=ctx.createLinearGradient(0,S(P[0][1]),0,S(docH));rg.addColorStop(0,'rgba(2,8,14,.97)');rg.addColorStop(1,'rgba(8,24,34,.97)');ctx.fillStyle=rg;ctx.fill();ctx.strokeStyle='rgba(190,215,235,.16)';ctx.lineWidth=1.2;ctx.stroke();
+    ctx.save();ctx.clip();ctx.lineCap='round';
+    for(let L=-2;L<=2;L++){ctx.beginPath();smp.forEach((p,i)=>{const q=smp[Math.min(smp.length-1,i+1)],o=smp[Math.max(0,i-1)],nx=-(q[1]-o[1]),ny=q[0]-o[0],l=Math.hypot(nx,ny)||1,off=L*p[2]*.18;i?ctx.lineTo(p[0]+nx/l*off,S(p[1]+ny/l*off)):ctx.moveTo(p[0]+nx/l*off,S(p[1]+ny/l*off))});
+      ctx.setLineDash([26*sc,18*sc+L*6]);ctx.lineDashOffset=-T*(40+L*6)*sc;ctx.strokeStyle=`rgba(170,205,225,${.07-.01*Math.abs(L)})`;ctx.lineWidth=(1.2-.15*Math.abs(L))*sc;ctx.stroke();
+      ctx.setLineDash([3*sc,40*sc]);ctx.lineDashOffset=-T*(36+L*9)*sc+L*20;ctx.strokeStyle=`rgba(255,175,95,${.32*fl})`;ctx.lineWidth=1.3*sc;ctx.stroke()}
+    ctx.setLineDash([]);ctx.restore()}
+  function drawFire(S,fl){const sc=G.scale,fx=G.fireX,fy=S(G.fireY);if(fy<-200||fy>H+120)return;
+    for(let i=0;i<9;i++){const a=Math.PI+i/8*Math.PI,x=fx+Math.cos(a)*48*sc,y=fy+16*sc-Math.sin(a)*8*sc;const g=ctx.createRadialGradient(x-3*sc,y-4*sc,1,x,y,12*sc);g.addColorStop(0,'#8a7a70');g.addColorStop(1,'#2c2b30');ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(x,y,12*sc,7.5*sc,0,0,7);ctx.fill()}
+    ctx.save();ctx.translate(fx,fy+4*sc);[[-.35,'#3a2618'],[.35,'#4a2f1c'],[.05,'#2e1d12']].forEach(([r,c])=>{ctx.save();ctx.rotate(r);const g=ctx.createLinearGradient(0,-6*sc,0,6*sc);g.addColorStop(0,'#5a3c26');g.addColorStop(1,c);ctx.fillStyle=g;ctx.beginPath();ctx.roundRect(-44*sc,-6*sc,88*sc,12*sc,6*sc);ctx.fill();ctx.fillStyle='rgba(255,120,40,.55)';ctx.fillRect(-20*sc,-2*sc,40*sc,3*sc);ctx.restore()});ctx.restore();
+    const F=D.flames;for(let k=0;k<(mob?3:5);k++)F.push({x:(Math.random()-.5)*48*sc,y:0,vx:(Math.random()-.5)*.3,vy:-(1.5+Math.random()*1.6)*sc,l:0,L:40+Math.random()*36,s:(20+Math.random()*22)*sc});
+    if(Math.random()<.2)D.embers.push({x:fx+(Math.random()-.5)*30*sc,y:G.fireY-10,vx:(Math.random()-.5)*.8,vy:-(1+Math.random()*1.6),l:0,L:90+Math.random()*80});
+    ctx.save();ctx.globalCompositeOperation='lighter';
+    const gl2=ctx.createRadialGradient(fx,fy-30*sc,4,fx,fy-30*sc,210*sc);gl2.addColorStop(0,`rgba(255,190,110,${.3*fl})`);gl2.addColorStop(1,'rgba(255,120,40,0)');ctx.fillStyle=gl2;ctx.fillRect(fx-220*sc,fy-240*sc,440*sc,440*sc);
+    for(let i=F.length-1;i>=0;i--){const p=F[i];p.l++;p.x+=p.vx+Math.sin((p.l+i)*.25)*.35;p.y+=p.vy;p.vx*=.98;if(p.l>p.L){F.splice(i,1);continue}
+      const t=p.l/p.L,r=p.s*(1-t*.75),c=t<.25?[255,226,150]:t<.6?[255,140,45]:[190,55,20],a=(1-t)*.42;
+      const fg=ctx.createRadialGradient(fx+p.x,fy+p.y,0,fx+p.x,fy+p.y,r);fg.addColorStop(0,`rgba(${c},${a})`);fg.addColorStop(1,`rgba(${c},0)`);ctx.fillStyle=fg;ctx.beginPath();ctx.arc(fx+p.x,fy+p.y,r,0,7);ctx.fill()}
+    const E=D.embers;for(let i=E.length-1;i>=0;i--){const p=E[i];p.l++;p.x+=p.vx+Math.sin(p.l*.08)*.4;p.y+=p.vy;p.vy*=.995;if(p.l>p.L){E.splice(i,1);continue}ctx.fillStyle=`rgba(255,${170+Math.random()*60|0},80,${1-p.l/p.L})`;ctx.fillRect(p.x,S(p.y),2,2)}
+    ctx.restore()}
+  function drawDrips(S){D.drips.forEach(d=>{const y=S(d.y);if(y<-20||y>H+20)return;const ph=(T*60+d.ph)%d.per;if(ph>70)return;const dy=ph<22?0:(ph-22)**2*.16;
+    ctx.fillStyle='rgba(220,240,255,.8)';ctx.beginPath();ctx.ellipse(d.x,y+2+dy,1.7,ph<22?1.7+ph*.04:2.8,0,0,7);ctx.fill()})}
+  function drawParticles(y0){const sky=1-sst(G.platY+H*.3,G.platY+H*1.6,y0+H*.5),deep=sst(G.platY+H,G.caveTop,y0+H*.5)*(1-sst(G.caveTop,G.caveTop+H*.6,y0+H*.5));
+    if(sky<=0&&deep<=0)return;
+    D.flakes.forEach(f=>{f.y+=(.5+f.z*1.3)*(sky>0?1:.25);f.x+=Math.sin(T*.6+f.s*9)*.3+(sky>0?.35:.05);f.y-=vScroll*f.z*.6;if(f.y>H+10)f.y-=H+20;if(f.y<-10)f.y+=H+20;if(f.x>W+10)f.x-=W+20;
+      const a=sky>0?(.3+.55*f.z)*sky:deep*.4*(.5+.5*Math.sin(T*3+f.s*20));if(a<.02)return;ctx.fillStyle=`rgba(255,255,255,${a})`;ctx.beginPath();ctx.arc(f.x,f.y,sky>0?(.7+1.6*f.z):(.5+.7*f.z),0,7);ctx.fill()})}
+
+  // ---------------- boucle ----------------
+  function frame(ts){if(!run)return;raf=requestAnimationFrame(frame);const dt=Math.min(.05,((ts-(last||ts))/1000));last=ts;T+=dt;
+    cy=scrollY;vScroll=vScroll*.8+(cy-prevCy)*.2;prevCy=cy;mouse.vx*=.85;
+    const fl=.85+.15*n2(T*9,3.3);
+    stepRope();drawGL(fl);draw(fl);
+    const dep=Math.max(0,(cy+H*.5-G.platY)/Math.max(1,docH-H*.5-G.platY))*38;document.getElementById('jn-depth').textContent=(dep<.5?'0':'−'+Math.round(dep))+' m'}
+  let io=null,built=false;
+  function build(){root=document.getElementById('join');cv=document.getElementById('jn-cv');ctx=cv.getContext('2d');glc=document.getElementById('jn-gl');
+    glOK=initGL();if(!glOK)root.classList.add('jn-nogl');
+    io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.25});root.querySelectorAll('.jn-card').forEach(c=>io.observe(c));
+    addEventListener('resize',()=>{if(run)layout()});
+    root.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;mouse.vx=e.clientX-(mouse.px<-900?e.clientX:mouse.px);mouse.px=e.clientX;mouse.x=e.clientX;mouse.y=e.clientY;mouse.in=true},{passive:true});
+    root.addEventListener('pointerleave',()=>{mouse.in=false;mouse.px=-999});
+    built=true}
+  function enter(){if(!built)build();run=true;requestAnimationFrame(()=>{layout();prevCy=cy=scrollY;last=0;cancelAnimationFrame(raf);raf=requestAnimationFrame(frame)});setTimeout(()=>{if(run)layout()},600)}
+  function leave(){run=false;cancelAnimationFrame(raf)}
+  return{enter,leave};
 })();
 
 (async function(){
@@ -3278,7 +3309,7 @@ function renderSite(){
 }
 $('#site-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-st]');if(!b)return;siteTab=b.dataset.st;renderSite()});
 $('#site-form').addEventListener('submit',async e=>{e.preventDefault();const d=formData(e.target);d.objectif=Math.max(0,+d.objectif||25000);
-  ['helloasso','dossier','formCandidature'].forEach(k=>{if(d[k]&&!safeUrl(d[k]))d[k]=''});
+  ['helloasso','dossier'].forEach(k=>{if(d[k]&&!safeUrl(d[k]))d[k]=''});
   try{await saveSite(d);toast('Publié sur le site')}catch(err){fail(err)}});
 $('#legal-form').addEventListener('submit',async e=>{e.preventDefault();try{await saveSite(formData(e.target));toast('Mentions publiées')}catch(err){fail(err)}});
 $('#act-form').addEventListener('submit',async e=>{e.preventDefault();
@@ -3333,13 +3364,24 @@ let rzT,lastNarrow=innerWidth<700;addEventListener('resize',()=>{clearTimeout(rz
 renderPublic();
 subscribeAll();
 route();
-// ---------- Nous rejoindre : les boutons « Nous rejoindre » ouvrent le Google Form de candidature ----------
-{const mail=()=>S.site.email||'alpinisemnormandie@gmail.com';
-  const form=()=>safeUrl(S.site.formCandidature)||safeUrl(JOIN_FORM_URL);
-  const sync=()=>{$('#jn-mail').textContent=mail();const u=form();
-    ['#jn-go','#jn-go2'].forEach(s=>{const a=$(s);if(u){a.href=u;a.removeAttribute('aria-disabled')}else{a.href='#';a.setAttribute('aria-disabled','true')}})};
-  Join.onSync(sync);sync();
-  ['#jn-go','#jn-go2'].forEach(s=>$(s).addEventListener('click',e=>{if(!form()){e.preventDefault();toast('Le formulaire ouvre très bientôt. En attendant, écris-nous à '+mail()+'.')}}))}
+// ---------- Nous rejoindre : candidature (arrive dans les messages du Bureau) ----------
+{const dlg=$('#jn-dlg'),f=$('#jn-form');
+  const mail=()=>S.site.email||'alpinisemnormandie@gmail.com';
+  const setMail=()=>{const a=$('#jn-mail');a.textContent=mail();a.href='mailto:'+mail()};setMail();
+  $('#jn-go').onclick=()=>{setMail();$('#jn-done').hidden=true;f.querySelector('[type=submit]').disabled=false;dlg.showModal();setTimeout(()=>$('#jn-name').focus(),50)};
+  $('#jn-x').onclick=()=>dlg.close();
+  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+  f.addEventListener('submit',async e=>{e.preventDefault();
+    const pole=$('#jn-pole').value,prog=$('#jn-prog').value.trim();
+    const msg={nom:$('#jn-name').value.trim(),email:$('#jn-mail-in').value.trim(),type:'Candidature · '+pole,
+      message:'Pôle souhaité : '+pole+'\nFormation : '+(prog||'non précisée')+'\n\n'+$('#jn-why').value.trim(),date:today(),lu:false};
+    if(!msg.nom||!msg.email.includes('@')||!$('#jn-why').value.trim()){toast('Indique ton nom, un e-mail valide et quelques lignes de motivation.');return}
+    const btn=f.querySelector('[type=submit]');btn.disabled=true;
+    try{if(B.mode==='claude'){if(!myId())throw new Error('anon');await B.set('messages',myId(),msg)}else await B.add('messages',msg);
+      f.reset();$('#jn-done').hidden=false}
+    catch(err){btn.disabled=false;if(B.mode==='claude'){toast('Envoi impossible ici : écris-nous à '+mail());return}
+      location.href='mailto:'+mail()+'?subject='+encodeURIComponent('[Candidature] '+pole+' · '+msg.nom)+'&body='+encodeURIComponent(msg.message+'\n\n'+msg.nom+' · '+msg.email);toast('Ta messagerie s\'ouvre pour envoyer la candidature.')}
+  })}
 
 })();
 
@@ -3365,5 +3407,5 @@ addEventListener('resize',fitHero);addEventListener('load',fitHero);if(document.
 
 
 </script>
-
-</body></html>
+</body>
+</html>
