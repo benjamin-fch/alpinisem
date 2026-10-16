@@ -3,14 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Alpinis'EM · Objectif Mont-Blanc</title>
-<meta name="description" content="Alpinis'EM, l'association étudiante de l'EM Normandie qui emmène une cordée d'étudiants au sommet du Mont-Blanc. Suivez l'aventure et soutenez l'expédition.">
+<meta name="description" content="Alpinis'EM, l'association étudiante de l'EM Normandie qui part gravir le Mont-Blanc à l'été 2027. Candidatures ouvertes.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Alpinis'EM · Objectif Mont-Blanc">
-<meta property="og:description" content="Une promo d'étudiants, un an d'entraînement, et le drapeau de l'EM Normandie planté à 4 808 m. Soutenez l'expédition.">
-<meta property="og:image" content="assets/og.jpg">
+<meta property="og:description" content="L'association étudiante de l'EM Normandie qui part gravir le Mont-Blanc à l'été 2027. Candidatures ouvertes.">
+<meta property="og:image" content="https://alpinisem.com/assets/og.jpg">
+<meta property="og:url" content="https://alpinisem.com/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/logo.jpg">
+<link rel="apple-touch-icon" href="assets/logo.jpg">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+</head>
+<body>
+<title>Alpinis'EM</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -505,6 +510,8 @@ dialog.modal .mb{padding:20px 22px 24px;display:grid;gap:12px;font-size:15px;max
 .hero h1.stamp-h{overflow-wrap:normal}
 /* Section Soutenir masquée pour le moment */
 .sup-hidden .sup-on{display:none!important}
+/* Espace membres masqué sur le site en ligne (pas de base partagée) */
+.mem-hidden [data-space],.mem-hidden .modebar{display:none!important}
 html:not(.sup-hidden) .sup-off{display:none!important}
 .hero h1.stamp-h{font-size:clamp(30px,10vw,150px)}
 .hero .wrap>div:first-child{min-width:0}
@@ -702,96 +709,247 @@ body:has(#ascent:not([hidden])) .modebar{display:none}
 @media (prefers-reduced-motion:reduce){.asc-cards .asc-card,.asc-cards .asc-card.on>*{transition:opacity .2s;animation:none;transform:none}}
 @media (min-width:861px){.asc-cards .asc-card{max-height:calc(100vh - max(110px,20vh) - 24px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(220,224,232,.25) transparent}}
 
-/* ===== Nous rejoindre : descente le long d'une corde jusqu'à une grotte de glace ===== */
-.jn{position:relative;min-height:100vh;overflow-x:clip;background:#0b1422;color:#EEF4FA;--rx:30vw;--ice-txt:#EEF4FA}
-#jn-gl,#jn-cv{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
-.jn-nogl #jn-gl{display:none}
-.jn.jn-nogl{background:linear-gradient(#cfe0f0 0,#7aa6cf 15%,#1f3d63 55%,#0a1220 100%)}
-.jn-top{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) var(--gutr) 14px var(--gut);pointer-events:none}
+/* ===== Nous rejoindre : le sommet de l'affiche, animé (WebGL) =====
+   Ambiance unique dans les deux thèmes : coucher de soleil sur le massif, drapeau EM Normandie au vent.
+   Le drapeau ouvre la carte de candidature ; « En savoir plus » ouvre le dossier recrutement (tableau des départs, organigramme). */
+.jn{position:fixed;inset:0;overflow:hidden;background:#0b1230;color:#F6F0E4;color-scheme:dark;
+  --jn-cream:#F6F0E4;--jn-dim:rgba(222,229,246,.8);--jn-faint:rgba(222,229,246,.58);--jn-line:rgba(214,226,252,.16);
+  --jn-sun:#FFC98A;--jn-red:#C8323F;--jn-red-hi:#E04452;--jn-night:#09102c;--jn-glass:rgba(9,15,42,.5);--jn-ok:#7FDDA9;
+  --jn-wide:"Archivo","Arial Narrow",system-ui,sans-serif;--jn-tile:#141a33;--jn-tile-ink:#FFE7C4;
+  --jn-gut:max(20px,env(safe-area-inset-left,0px));--jn-gutr:max(20px,env(safe-area-inset-right,0px))}
+#jn-gl{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:manipulation;outline:none}
+.jn.jn-hot #jn-gl{cursor:pointer}
+.jn-flaglink{position:absolute;inset:0;z-index:3;cursor:pointer;clip-path:polygon(0 0,0 0,0 0);-webkit-tap-highlight-color:transparent}
+.jn-cta,.jn-tag{text-decoration:none}
+.jn-veil{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(140% 110% at 50% 45%,rgba(4,8,24,0) 55%,rgba(4,8,24,.55) 100%),linear-gradient(rgba(6,10,30,.42) 0,rgba(6,10,30,0) 18%)}
+.jn-veil::after{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.jn-eb{font:600 11px/1.2 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--jn-sun)}
+
+/* ---- barre du haut ---- */
+.jn-top{position:absolute;top:0;left:0;right:0;z-index:9;display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:calc(16px + env(safe-area-inset-top,0px)) var(--jn-gutr) 0 var(--jn-gut);pointer-events:none}
 .jn-top>*{pointer-events:auto}
-.jn-back{display:inline-flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:9px 14px;border-radius:99px;background:rgba(10,20,36,.55);border:1px solid rgba(220,234,248,.2);backdrop-filter:blur(8px)}
-.jn-back svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.jn-depth{display:grid;justify-items:end;gap:3px;padding:8px 12px;border-radius:12px;background:rgba(10,20,36,.5);border:1px solid rgba(220,234,248,.18);backdrop-filter:blur(8px)}
-.jn-depth span{font:600 9.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#9fb6cf}
-.jn-depth b{font:600 18px/1 var(--mono);font-variant-numeric:tabular-nums;color:#fff}
-.jn-track{position:relative;z-index:2}
-.jn-eb{font:600 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#C8323F}
+.jn-pill{display:inline-flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:9px 14px;border-radius:99px;
+  background:rgba(8,12,32,.42);border:1px solid rgba(230,236,252,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .25s,border-color .25s}
+.jn-pill:hover{background:rgba(8,12,32,.7);border-color:rgba(230,236,252,.5)}
+.jn-pill svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
-/* écran d'accueil : titre à droite, falaise et corde à gauche (dessinées sur le canvas) */
-.jn-hero{min-height:100vh;min-height:100svh;display:grid;align-items:center;padding:110px var(--gutr) 60px calc(var(--rx) + 9vw)}
-.jn-hero-txt{max-width:560px;justify-self:start}
-.jn-hero h1{font:900 clamp(64px,10vw,150px)/.86 var(--stamp);text-transform:uppercase;color:#141C42;margin:14px 0 22px;letter-spacing:.005em}
-.jn-hero p{font-size:18px;line-height:1.55;color:#26335f;max-width:30em}
-.jn-hint{margin-top:30px;display:flex;align-items:center;gap:12px;font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#4a5a86}
-.jn-hint i{width:2px;height:30px;border-radius:2px;background:linear-gradient(#4a5a86,transparent);animation:jnhint 1.6s ease-in-out infinite}
-@keyframes jnhint{0%{transform:translateY(-6px);opacity:0}50%{opacity:1}100%{transform:translateY(8px);opacity:0}}
+/* ---- textes de l'affiche (lettres qui défilent comme un tableau d'aéroport) ---- */
+.flap{white-space:nowrap}
+.jn-in h2 .flap{white-space:normal}
+.fl{display:inline-block;text-align:center;white-space:pre;transform-origin:50% 52%;will-change:transform}
+.fl.fl-spin,.fl.fl-on{color:var(--jn-red-hi);text-shadow:0 0 18px rgba(224,68,82,.45),0 1px 2px rgba(6,10,30,.5)}
+.tile.fl-spin{color:var(--jn-red-hi)}
+.jn-col{position:absolute;z-index:5;top:calc(64px + env(safe-area-inset-top,0px) + 1vh);bottom:calc(6vh + env(safe-area-inset-bottom,0px));
+  right:max(3vw,24px,env(safe-area-inset-right,0px));width:min(47vw,860px);display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:24px;
+  pointer-events:none;transition:opacity .6s,filter .6s,transform .8s cubic-bezier(.2,.7,.2,1)}
+.jn-col>*{pointer-events:auto}
+.jn-head{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(8px,1.2vh,14px);text-shadow:0 2px 24px rgba(6,10,30,.6),0 1px 3px rgba(6,10,30,.35)}
+.jn-head::before{content:"";position:absolute;inset:-16% -18%;z-index:-1;background:radial-gradient(closest-side,rgba(8,14,40,.58),rgba(8,14,40,.2) 60%,rgba(8,14,40,0));pointer-events:none}
+.jn-kicker{display:flex;align-items:center;gap:clamp(10px,1.4vw,22px);font:500 clamp(10px,.86vw,13px)/1 var(--jn-wide);font-stretch:118%;letter-spacing:.3em;color:rgba(246,240,228,.9)}
+.jn-kicker i{width:clamp(28px,4vw,70px);height:1px;background:rgba(246,240,228,.55)}
+.jn-kicker img{width:clamp(46px,4.4vw,76px);height:auto;aspect-ratio:1;border-radius:50%;border:2px solid var(--jn-cream);box-shadow:0 8px 28px rgba(0,0,0,.4);max-width:100%;object-fit:cover}
+.jn-h1{margin:0;display:flex;flex-direction:column;align-items:center;gap:clamp(4px,1vh,12px);line-height:1}
+.jn-big{display:block;font:900 clamp(46px,5.3vw,116px)/.92 var(--jn-wide);font-stretch:118%;letter-spacing:.005em;color:var(--jn-cream)}
+.jn-sub{display:block;font:600 clamp(20px,2.5vw,52px)/1 var(--jn-wide);font-stretch:112%;letter-spacing:.42em;padding-left:.42em;color:var(--jn-cream)}
+.jn-rule{display:flex;align-items:center;gap:8px;width:min(100%,420px);color:rgba(246,240,228,.85)}
+.jn-rule::before,.jn-rule::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(246,240,228,0),rgba(246,240,228,.7))}
+.jn-rule::after{transform:scaleX(-1)}
+.jn-rule svg{width:46px;height:18px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linejoin:round}
+.jn-proj{margin:0;display:flex;flex-direction:column;align-items:center;gap:10px;text-shadow:0 0 18px rgba(6,10,30,.75),0 1px 2px rgba(6,10,30,.6)}
+.jn-proj .p1{font:600 clamp(14px,1.55vw,28px)/1 var(--jn-wide);font-stretch:115%;letter-spacing:.34em;padding-left:.34em}
+.jn-proj .p2{font:500 clamp(11px,1vw,17px)/1 var(--jn-wide);font-stretch:115%;letter-spacing:.42em;padding-left:.42em;color:rgba(246,240,228,.86)}
 
-/* nœuds : une fiche à côté de la corde */
-.jn-sec{min-height:92vh;display:flex;align-items:center;padding:8vh var(--gutr) 8vh calc(var(--rx) + 64px)}
-.jn-sec.step{min-height:62vh}
-.jn-card{position:relative;max-width:500px;padding:24px 26px 26px;border-radius:22px;background:rgba(9,20,36,.62);border:1px solid rgba(190,220,245,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:grid;gap:12px;
-  opacity:0;transform:translateX(-26px);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
-.jn-card.wide{max-width:640px}
-.jn-card.in{opacity:1;transform:none}
-.jn-card::before{content:"";position:absolute;left:-58px;top:34px;width:52px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(220,236,250,.55))}
-.jn-n{font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#E8A04A}
-.jn-card h2{font:900 clamp(30px,3.4vw,46px)/.95 var(--stamp);text-transform:uppercase;color:#fff;letter-spacing:.005em}
-.jn-card p{font-size:15.5px;line-height:1.6;color:rgba(238,244,250,.9)}
-.jn-card .jn-lead{font-size:18px;color:#fff;font-weight:600}
-.jn-card ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
-.jn-card li{position:relative;padding-left:20px;font-size:15px;line-height:1.5;color:rgba(238,244,250,.9)}
-.jn-card li::before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;border-radius:50%;background:#E8A04A}
-.jn-chips{display:flex;flex-wrap:wrap;gap:7px}
-.jn-chips span{font:600 12.5px/1 var(--body);padding:8px 11px;border-radius:99px;background:rgba(232,160,74,.14);color:#F6D3A8;border:1px solid rgba(232,160,74,.35)}
-.jn-poles{display:grid;gap:8px}
-.jn-poles div{display:grid;gap:3px;padding:11px 13px;border-radius:12px;background:rgba(200,225,250,.07);border:1px solid rgba(200,225,250,.12)}
-.jn-poles b{font:700 14.5px/1.25 var(--display);color:#fff}
-.jn-poles span{font-size:13.5px;line-height:1.45;color:rgba(220,234,248,.78)}
-.jn-bureau{font-size:14px!important;color:rgba(220,234,248,.8)!important;border-top:1px solid rgba(200,225,250,.14);padding-top:12px}
-.jn-bureau b{color:#fff}
+.jn-cta{display:grid;justify-items:center;gap:9px;padding:clamp(14px,2vh,20px) clamp(22px,3vw,44px);border:1px solid rgba(246,240,228,.72);border-radius:2px;
+  background:rgba(8,13,38,.38);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--jn-cream);text-align:center;
+  transition:background .3s,border-color .3s,transform .3s;text-shadow:0 1px 14px rgba(6,10,30,.5)}
+.jn-cta{max-width:100%}
+.jn-cta .c2{white-space:normal;text-wrap:balance;max-width:100%}
+.jn-cta:hover{background:rgba(200,50,63,.55);border-color:#fff;transform:translateY(-2px)}
+.jn-cta .c1{font:700 clamp(15px,1.75vw,30px)/1 var(--jn-wide);font-stretch:118%;letter-spacing:.2em;padding-left:.2em}
+.jn-cta .c2{font:500 clamp(10px,.82vw,13px)/1.3 var(--jn-wide);font-stretch:115%;letter-spacing:.3em;padding-left:.3em;text-transform:uppercase;color:rgba(246,240,228,.86)}
+.jn.jn-pre .jn-col{opacity:0;transform:translateY(8px)}
+.jn.jn-opened .jn-col,.jn.jn-reading .jn-col{opacity:0;filter:blur(3px);transform:translateY(-10px);pointer-events:none}
+.jn.jn-opened .jn-col>*,.jn.jn-reading .jn-col>*{pointer-events:none}
 
-/* au coin du feu */
-.jn-camp{min-height:150vh;display:grid;align-items:start;justify-items:center;padding:62vh var(--gutr) 0;text-align:center}
-.jn-camp-txt{display:grid;justify-items:center;gap:12px;max-width:520px}
-.jn-camp h2{font:900 clamp(40px,6vw,84px)/.9 var(--stamp);text-transform:uppercase;color:#FFE9CC;text-shadow:0 0 40px rgba(255,140,40,.35)}
-.jn-camp p{font-size:17px;color:rgba(255,236,214,.88)}
-.jn-go{font-size:18px;padding:16px 30px;border-radius:99px;margin-top:8px;box-shadow:0 0 0 0 rgba(255,120,40,.5);animation:jnpulse 2.4s ease-in-out infinite}
-@keyframes jnpulse{50%{box-shadow:0 0 0 14px rgba(255,120,40,0),0 0 40px rgba(255,120,40,.35)}}
-.jn-q{font-size:14px!important;color:rgba(255,236,214,.7)!important}
-.jn-q a{color:#FFD6A6}
+/* repère accroché au drapeau et curseur (placés par le script) */
+.jn-tag{position:absolute;left:0;top:0;z-index:6;display:inline-flex;align-items:center;gap:9px;padding:8px 14px 8px 11px;border-radius:99px;border:1px solid rgba(255,228,196,.4);
+  background:rgba(12,14,36,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#FFEBD2;font:600 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .5s,background .3s,color .3s;will-change:transform;cursor:pointer}
+.jn-tag::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:18px;background:linear-gradient(rgba(255,228,196,.7),rgba(255,228,196,0))}
+.jn-tag i{width:8px;height:8px;border-radius:50%;background:var(--jn-sun);animation:jnping 1.8s ease-out infinite}
+.jn-tag.on{opacity:1;pointer-events:auto}
+.jn-tag.hot{background:var(--jn-red);border-color:transparent;color:#fff}
+.jn-tag.hot i{background:#fff}
+@keyframes jnping{0%{box-shadow:0 0 0 0 rgba(255,201,138,.75)}80%,100%{box-shadow:0 0 0 10px rgba(255,201,138,0)}}
+.jn-ring{position:absolute;left:0;top:0;z-index:7;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:1px solid rgba(246,240,228,.7);pointer-events:none;
+  display:grid;place-items:center;opacity:0;transition:width .35s cubic-bezier(.2,.7,.2,1),height .35s cubic-bezier(.2,.7,.2,1),margin .35s cubic-bezier(.2,.7,.2,1),background .3s,opacity .3s,border-color .3s;will-change:transform}
+.jn-ring span{font:700 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity .2s}
+.jn-ring.on{opacity:1}
+.jn-ring.hot{width:96px;height:96px;margin:-48px 0 0 -48px;background:rgba(200,50,63,.82);border-color:transparent}
+.jn-ring.hot span{opacity:1;transition-delay:.12s}
 
-/* formulaire */
-.jn-dlg{width:min(640px,calc(100vw - 24px));max-height:calc(100dvh - 24px);border:0;border-radius:22px;padding:0;background:#0f1b2c;color:#EEF4FA;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.jn-dlg::backdrop{background:rgba(4,8,14,.6);backdrop-filter:blur(4px)}
-.jn-dlg form{display:grid;gap:14px;padding:24px}
-.jn-dh{display:flex;justify-content:space-between;align-items:start;gap:12px}
-.jn-dh h2{font:900 34px/.95 var(--stamp);text-transform:uppercase;margin-top:8px}
-.jn-x{width:36px;height:36px;border-radius:10px;border:1px solid rgba(200,225,250,.2);background:transparent;color:#fff;font-size:22px;cursor:pointer}
-.jn-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.jn-dlg label.f{color:#c7d6e6}
-.jn-dlg input,.jn-dlg select,.jn-dlg textarea{background:#16253a;color:#fff;border-color:#2b3f5c}
-.jn-dlg label.chk{color:#c7d6e6;font-size:13.5px}
-.jn-dlg .btn{justify-self:start}
-.jn-done{padding:12px 14px;border-radius:12px;background:rgba(232,160,74,.14);border:1px solid rgba(232,160,74,.4);color:#FFE3C2}
+/* carte qui s'ouvre au clic sur le drapeau */
+.jn-pop{position:absolute;z-index:8;left:0;top:0;width:min(400px,calc(100vw - 32px));display:grid;gap:13px;padding:26px 26px 22px;border-radius:18px;
+  background:rgba(10,14,38,.74);border:1px solid rgba(246,240,228,.2);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 80px rgba(255,170,110,.12);
+  opacity:0;visibility:hidden;transform:translateY(14px) scale(.98);transition:opacity .35s,transform .45s cubic-bezier(.2,.7,.2,1),visibility 0s .45s}
+.jn-pop.on{opacity:1;visibility:visible;transform:none;transition:opacity .5s .15s,transform .7s .15s cubic-bezier(.2,.7,.2,1)}
+.jn-pop h2{font:900 clamp(30px,3vw,40px)/.95 var(--jn-wide);font-stretch:112%;text-transform:uppercase;color:var(--jn-cream);padding-right:38px;margin:0}
+.jn-pop p{font-size:15px;line-height:1.55;color:var(--jn-dim)}
+.jn-seats{display:flex;align-items:center;gap:12px;padding:12px 0;border-block:1px solid var(--jn-line)}
+.jn-seats b{font:600 30px/1 var(--mono);color:var(--jn-sun);font-variant-numeric:tabular-nums}
+.jn-seats span{font-size:14px;line-height:1.35;color:var(--jn-dim)}
+.jn-pop-acts{display:grid;gap:10px;margin-top:2px}
+.jn-pop-acts .btn{width:100%;white-space:normal;text-align:center}
+.jn-go{font-size:16px;padding:14px 24px;animation:jnpulse 2.6s ease-in-out infinite}
+@keyframes jnpulse{50%{box-shadow:0 0 0 10px rgba(200,50,63,0),0 0 36px rgba(224,68,82,.45)}}
+.jn-ghost{color:#fff;border-color:rgba(230,236,252,.42);background:rgba(8,12,32,.35)}
+.jn-ghost:hover{border-color:#fff;background:rgba(8,12,32,.6)}
+.jn-q{font-size:13px!important;color:var(--jn-faint)!important}
+.jn-q span,.jn-mail2{color:#FFE0B8;user-select:all;-webkit-user-select:all;overflow-wrap:anywhere}
+.jn-x{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:10px;border:1px solid rgba(246,240,228,.24);background:rgba(8,12,32,.3);color:#fff;font-size:22px;line-height:1;cursor:pointer;transition:background .2s}
+.jn-x:hover{background:rgba(246,240,228,.14)}
 
-@media (max-width:760px){
-  .jn{--rx:30px}
-  .jn-hero{padding:96px var(--gutr) 50px 56px;align-items:end}
-  .jn-hero h1{font-size:clamp(44px,14.5vw,84px)}
-  .jn-hero-txt{min-width:0;max-width:100%}
-  .jn-hero p{font-size:16px}
-  .jn-sec{padding:6vh var(--gutr) 6vh 54px}
-  .jn-card{padding:18px 16px 20px;border-radius:18px;backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(9,20,36,.82)}
-  .jn-card::before{left:-22px;width:18px;top:28px}
-  .jn-back span{display:none}.jn-back{padding:9px 11px}
-  .jn-row{grid-template-columns:1fr}
-  .jn-camp{padding-top:58vh}
+/* ---- chargement : l'altitude monte jusqu'au sommet ---- */
+.jn-load{position:absolute;inset:0;z-index:30;background:#060a1e;display:grid;place-content:center;justify-items:center;gap:16px;pointer-events:none;transition:opacity 1.1s ease,visibility 0s 1.2s}
+.jn-load.off{opacity:0;visibility:hidden}
+.jn-alt{display:flex;align-items:flex-end;gap:6px}
+.jn-alt .tile{font-size:clamp(38px,6vw,64px)}
+.jn-alt small{font:600 clamp(16px,2vw,22px)/1 var(--mono);color:var(--jn-faint);margin:0 0 .4em 6px}
+.jn-load-l{font:600 11px/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:#8492c2}
+
+/* tuiles du tableau des départs */
+.tile{display:inline-grid;place-items:center;position:relative;min-width:.78em;height:1.22em;padding:0 .08em;margin:0 .04em;border-radius:.1em;
+  background:linear-gradient(#1b2242 0 50%,#141a35 50% 100%);color:var(--jn-tile-ink);font:600 1em/1 var(--mono);font-variant-numeric:tabular-nums;box-shadow:inset 0 -1px 0 rgba(0,0,0,.4),0 1px 0 rgba(255,255,255,.04);overflow:hidden}
+.tile::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.55)}
+
+/* ---- dossier recrutement ---- */
+.jn-info{position:absolute;inset:0;z-index:12;overflow-y:auto;overscroll-behavior:contain;background:rgba(7,11,32,.84);backdrop-filter:blur(18px) saturate(1.1);-webkit-backdrop-filter:blur(18px) saturate(1.1);
+  clip-path:circle(0% at var(--cx,30%) var(--cy,40%));visibility:hidden;transition:clip-path .9s cubic-bezier(.7,0,.2,1),visibility 0s .9s;scrollbar-width:thin;scrollbar-color:rgba(220,224,232,.25) transparent}
+.jn-info.on{clip-path:circle(150% at var(--cx,30%) var(--cy,40%));visibility:visible;transition:clip-path 1s cubic-bezier(.7,0,.2,1)}
+.jn-info-bar{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:calc(14px + env(safe-area-inset-top,0px)) var(--jn-gutr) 14px var(--jn-gut);background:linear-gradient(rgba(7,11,32,.95),rgba(7,11,32,.75) 70%,rgba(7,11,32,0))}
+.jn-info-bar .jn-x{position:static}
+.jn-in{max-width:1080px;margin:0 auto;padding:8px var(--jn-gutr) calc(64px + env(safe-area-inset-bottom,0px)) var(--jn-gut);display:grid;gap:clamp(64px,10vh,110px)}
+.jn-in h2{font:900 clamp(38px,6vw,84px)/.92 var(--jn-wide);font-stretch:115%;text-transform:uppercase;color:var(--jn-cream);margin:0;letter-spacing:.005em}
+.jn-in h3{font:800 clamp(26px,3.2vw,40px)/1 var(--jn-wide);font-stretch:112%;text-transform:uppercase;color:#fff;margin:0}
+.jn-in p{font-size:16px;line-height:1.62;color:var(--jn-dim);max-width:62ch}
+.jn-in b{color:#fff}
+.jn-sec{display:grid;gap:22px;min-width:0}
+.jn-sec-h{display:grid;gap:12px}
+.jn-hero{display:grid;gap:22px;padding-top:4vh}
+.jn-lead{font-size:clamp(19px,2vw,24px)!important;line-height:1.4!important;color:#fff!important;font-weight:600}
+
+.jn-total{display:flex;flex-wrap:wrap;align-items:center;gap:18px 24px;padding:20px 22px;border:1px solid var(--jn-line);border-radius:14px;background:rgba(255,255,255,.03)}
+.jn-total .tiles{font-size:clamp(40px,6vw,64px)}
+.jn-total p{max-width:34ch;font-size:15px}
+.fb{border:1px solid var(--jn-line);border-radius:14px;background:#0a0f26;overflow:hidden}
+.fb-row{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(150px,auto);gap:10px 22px;align-items:center;padding:14px 20px;border-top:1px solid rgba(214,226,252,.08)}
+.fb-row:first-child{border-top:0}
+.fb-hd{padding-block:12px;background:rgba(255,255,255,.03);font:600 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#8e9ac6}
+.fb-name{display:grid;gap:7px;min-width:0}
+.fb-name .tiles{font-size:clamp(13px,1.45vw,18px);overflow:hidden}
+.fb-name small{font-size:13px;color:var(--jn-faint);overflow-wrap:anywhere}
+.fb-n .tiles{font-size:clamp(18px,2vw,24px)}
+.fb-st{font:600 12px/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;color:var(--jn-ok)}
+.fb-st::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 12px currentColor;animation:jnblink 1.6s steps(2) infinite}
+.fb-st.last{color:var(--jn-sun)}
+.fb-st.full{color:#8e9ac6}.fb-st.full::before{animation:none;box-shadow:none}
+@keyframes jnblink{50%{opacity:.3}}
+
+.org{display:grid;justify-items:center;gap:0;--org-l:rgba(255,201,138,.5)}
+.org-b{display:grid;gap:12px;justify-items:center;padding:18px 20px;border:1px solid rgba(255,201,138,.38);border-radius:14px;background:rgba(255,201,138,.06);max-width:100%}
+.org-lab{font:600 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--jn-sun)}
+.org-b ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.org-b li{display:grid;gap:3px;padding:10px 14px;border-radius:10px;background:rgba(9,14,40,.7);border:1px solid var(--jn-line);text-align:center;min-width:128px}
+.org-b li b{font:700 15px/1.2 var(--display)}
+.org-b li span{font-size:12.5px;color:var(--jn-faint)}
+.org-trunk{width:1px;height:38px;background:var(--org-l);transform-origin:top}
+.org-poles{list-style:none;margin:0;padding:22px 0 0;display:grid;grid-template-columns:repeat(var(--n,5),minmax(0,1fr));gap:12px;width:100%;position:relative}
+.org-poles::before{content:"";position:absolute;top:0;height:1px;left:calc(50% / var(--n,5));right:calc(50% / var(--n,5));background:var(--org-l);transform-origin:center}
+.org-p{position:relative;display:grid;gap:8px;align-content:start;padding:14px;border-radius:12px;border:1px solid var(--jn-line);background:rgba(255,255,255,.03);min-width:0}
+.org-p::before{content:"";position:absolute;left:50%;top:-23px;width:1px;height:22px;background:var(--org-l);transform-origin:top}
+.org-p b{font:800 15px/1.2 var(--display);font-stretch:95%}
+.org-p>span{font-size:12.5px;line-height:1.4;color:var(--jn-faint)}
+.seats{display:flex;gap:6px;margin-top:4px}
+.seat{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:600 10.5px/1 var(--mono);flex:none}
+.seat.on{background:var(--jn-cream);color:#0b1230}
+.seat.off{border:1.5px dashed rgba(255,201,138,.75);color:var(--jn-sun);animation:jnseat 2.4s ease-in-out infinite}
+@keyframes jnseat{50%{box-shadow:0 0 0 5px rgba(255,201,138,.14)}}
+.org-legend{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;font-size:13px;color:var(--jn-faint);margin-top:18px}
+.org-legend span{display:inline-flex;align-items:center;gap:8px}
+.org-legend .seat{width:16px;height:16px;animation:none}
+
+.jn-chips{display:flex;flex-wrap:wrap;gap:8px}
+.jn-chips span{font:600 13px/1 var(--body);padding:9px 12px;border-radius:99px;background:rgba(255,201,138,.1);color:#F8D9B2;border:1px solid rgba(255,201,138,.3)}
+.jn-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:start}
+.jn-steps{list-style:none;margin:0;padding:0;display:grid;counter-reset:st}
+.jn-steps li{counter-increment:st;position:relative;display:grid;grid-template-columns:34px minmax(0,1fr);gap:3px 14px;padding:10px 0}
+.jn-steps li::before{content:counter(st);grid-row:span 2;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,201,138,.55);color:var(--jn-sun);display:grid;place-items:center;font:600 12.5px/1 var(--mono);background:var(--jn-night)}
+.jn-steps li:not(:last-child)::after{content:"";position:absolute;left:16px;top:44px;bottom:-6px;width:1px;background:rgba(255,201,138,.28)}
+.jn-steps b{font:700 17px/1.3 var(--display)}
+.jn-steps span{font-size:14.5px;line-height:1.5;color:var(--jn-dim)}
+.jn-expect{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.jn-expect li{display:grid;gap:6px;padding:16px;border-radius:12px;border:1px solid var(--jn-line);background:rgba(255,255,255,.03)}
+.jn-expect b{font:800 16px/1.2 var(--display)}
+.jn-expect span{font-size:14px;line-height:1.5;color:var(--jn-dim)}
+.jn-final{display:grid;justify-items:center;text-align:center;gap:20px;padding:clamp(36px,6vh,64px) 20px;border-radius:18px;border:1px solid rgba(255,201,138,.3);
+  background:radial-gradient(80% 120% at 50% 0%,rgba(255,170,110,.16),rgba(255,170,110,0) 70%),rgba(255,255,255,.02)}
+.jn-final p{margin:0 auto}
+.jn-go2{font-size:17px;padding:16px 32px}
+
+/* apparitions au défilement (état visible par défaut, masqué seulement quand le script anime) */
+.jn-info.anim .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.jn-info.anim .rv.in{opacity:1;transform:none}
+.jn-info.anim .org .org-trunk{transform:scaleY(0);transition:transform .5s ease .1s}
+.jn-info.anim .org .org-poles::before{transform:scaleX(0);transition:transform .7s ease .5s}
+.jn-info.anim .org .org-p{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .7s cubic-bezier(.2,.7,.2,1)}
+.jn-info.anim .org .org-p::before{transform:scaleY(0);transition:transform .35s ease}
+.jn-info.anim .org .seat{transform:scale(0);transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.jn-info.anim .org.in .org-trunk,.jn-info.anim .org.in .org-poles::before{transform:none}
+.jn-info.anim .org.in .org-p{opacity:1;transform:none;transition-delay:calc(.9s + var(--i)*.12s)}
+.jn-info.anim .org.in .org-p::before{transform:none;transition-delay:calc(.8s + var(--i)*.12s)}
+.jn-info.anim .org.in .seat{transform:none;transition-delay:calc(1.2s + var(--i)*.12s + var(--j)*.08s)}
+
+/* ---- portrait (téléphone) : image verticale de l'affiche, textes en haut, encadré en bas ---- */
+@media (max-aspect-ratio:17/20){
+  .jn-col{left:var(--jn-gut);right:var(--jn-gutr);width:auto;top:calc(64px + env(safe-area-inset-top,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px))}
+  .jn-head{gap:9px}
+  .jn-head::before{inset:-8% -4%}
+  .jn-kicker{font-size:clamp(9px,2.3vw,13px);gap:10px;letter-spacing:.24em}
+  .jn-kicker i{width:clamp(16px,6vw,60px)}
+  .jn-kicker img{display:none}
+  .jn-big{font-size:clamp(38px,11.6vw,104px)}
+  .jn-sub{font-size:clamp(16px,4.6vw,42px)}
+  .jn-proj{gap:8px}
+  .jn-proj .p1{font-size:clamp(12px,3.4vw,26px)}
+  .jn-proj .p2{font-size:clamp(10px,2.6vw,17px)}
+  .jn-rule{width:min(70%,360px)}
+  .jn-cta{width:100%;max-width:620px}
+  .jn-cta .c1{font-size:clamp(14px,4.2vw,28px)}
+  .jn-cta .c2{font-size:clamp(9px,2.3vw,13px);letter-spacing:.22em}
 }
-@media (prefers-reduced-motion:reduce){.jn-card{transition:opacity .3s;transform:none}.jn-hint i,.jn-go{animation:none}}
+@media (max-width:760px){
+  .jn-pill span{display:none}.jn-pill{padding:9px 11px}
+  .jn-pop{left:max(12px,env(safe-area-inset-left,0px))!important;right:max(12px,env(safe-area-inset-right,0px));top:auto!important;bottom:calc(12px + env(safe-area-inset-bottom,0px));width:auto;padding:22px 20px 18px}
+  .fb-row{grid-template-columns:minmax(0,1fr) auto;padding:12px 14px}
+  .fb-hd span:last-child{display:none}
+  .fb-st{grid-column:1/-1}
+  .org-poles{grid-template-columns:1fr;padding:0 0 0 22px;gap:10px;margin-top:0}
+  .org-poles::before{left:0;right:auto;top:0;bottom:30px;width:1px;height:auto;transform-origin:top}
+  .org-p::before{left:-22px;top:28px;width:22px;height:1px;transform-origin:left}
+  .org-trunk{align-self:start;margin-left:0;justify-self:start;height:22px}
+  .org{justify-items:stretch}
+  .jn-info.anim .org .org-poles::before{transform:scaleY(0)}
+  .jn-info.anim .org .org-p::before{transform:scaleX(0)}
+  .jn-two,.jn-expect{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.jn-pop,.jn-info,.jn-col{transition-duration:.01s!important}.jn-tag i,.jn-go,.seat.off,.fb-st::before{animation:none}.jn-info.anim .rv,.jn-info.anim .org *{transition-duration:.01s!important;transition-delay:0s!important}}
+.jn.jn-nogl{background:linear-gradient(#1d2c5e 0,#3d5a8f 45%,#e7b58a 62%,#eef2f8 63%,#c9d5e6 100%)}
+.jn.jn-nogl #jn-gl{display:none}
 
 </style>
-</head>
-<body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="mk" viewBox="0 0 30 22"><path d="M1 21 L11 5 L15 11 L19 6 L29 21 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M11 5 L11 1 L15 2.2 L11 3.4" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/></symbol>
   <symbol id="trash" viewBox="0 0 24 24"><path d="M5 7h14M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></symbol>
@@ -1092,6 +1250,7 @@ body:has(#ascent:not([hidden])) .modebar{display:none}
           <label class="f">Encadrement et sécurité<textarea name="securite" maxlength="400"></textarea></label>
           <label class="f">Texte « Soutenir »<textarea name="soutien" maxlength="400"></textarea></label>
           <div class="row"><label class="f">Lien de la cagnotte HelloAsso<input name="helloasso" type="url" maxlength="300" placeholder="https://www.helloasso.com/associations/…"></label><label class="f">Lien du dossier partenaire (PDF)<input name="dossier" type="url" maxlength="300"></label></div>
+          <label class="f">Lien du formulaire de candidature (Google Forms)<input name="formCandidature" type="url" maxlength="400" placeholder="https://forms.gle/…"></label>
           <div class="row"><label class="f">E-mail de contact<input name="email" type="email" maxlength="120"></label><label class="f">Instagram (sans @)<input name="instagram" maxlength="40"></label><label class="f">Campus<input name="campus" maxlength="80"></label></div>
           <label class="chk"><input type="checkbox" name="afficherCollecte"><span>Afficher le montant de la collecte sur l'accueil</span></label>
           <label class="chk"><input type="checkbox" name="recuFiscal"><span>L'association délivre des reçus fiscaux (à cocher seulement après confirmation par l'administration fiscale)</span></label>
@@ -1212,132 +1371,108 @@ body:has(#ascent:not([hidden])) .modebar{display:none}
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="modebar" id="modebar" hidden></div>
 
-<!-- ======================= NOUS REJOINDRE (descente en crevasse) ======================= -->
+<!-- ======================= NOUS REJOINDRE (le sommet de l'affiche, animé) ======================= -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,700&display=swap">
 <div id="join" class="jn" hidden>
   <canvas id="jn-gl" aria-hidden="true"></canvas>
-  <canvas id="jn-cv" aria-hidden="true"></canvas>
+  <div class="jn-veil" aria-hidden="true"></div>
+  <a class="jn-flaglink" id="jn-flaglink" href="#" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"></a>
   <header class="jn-top">
-    <a class="jn-back" href="#accueil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l-6 6 6 6M4 12h16"/></svg><span>Retour au site</span></a>
-    <div class="jn-depth" aria-hidden="true"><span>Profondeur</span><b id="jn-depth">0 m</b></div>
+    <a class="jn-pill" href="#accueil"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6l-6 6 6 6M4 12h16"/></svg><span>Retour au site</span></a>
+    <a class="jn-pill" id="jn-ig" href="https://www.instagram.com/alpinisem/" target="_blank" rel="noopener" aria-label="Instagram d'Alpinis'EM, @alpinisem"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg><span>@alpinisem</span></a>
   </header>
 
-  <main class="jn-track">
-    <section class="jn-hero">
-      <div class="jn-hero-txt">
-        <div class="jn-eb">Recrutement · saison 2026-2027</div>
-        <h1>Nous<br>rejoindre</h1>
-        <p>Une corde, un sommet, une équipe. Tout ce qu'il faut savoir pour entrer dans la cordée Alpinis'EM est accroché à ses nœuds&nbsp;: descends le long de la corde.</p>
-        <div class="jn-hint"><i></i>Fais défiler pour descendre</div>
-      </div>
+  <div class="jn-col">
+    <section class="jn-head">
+      <div class="jn-kicker"><span class="flap" data-flap="0">EM NORMANDIE</span><i></i><img src="assets/logo.jpg" alt="" width="96" height="96"><i></i><span class="flap" data-flap="1">MONT-BLANC 2027</span></div>
+      <h1 class="jn-h1" aria-label="Alpinis'EM revient"><span class="flap jn-big" data-flap="2" aria-hidden="true">ALPINIS'EM</span><span class="flap jn-sub" data-flap="3" aria-hidden="true">REVIENT</span></h1>
+      <div class="jn-rule" aria-hidden="true"><svg viewBox="0 0 46 18"><path d="M1 17 L15 6 L20 10 L27 2 L45 17"/><path d="M24 5.5 L27 2 L30 5.2"/></svg></div>
+      <p class="jn-proj" aria-label="Projet Mont-Blanc, été 2027"><span class="flap p1" data-flap="4" aria-hidden="true">PROJET MONT-BLANC</span><span class="flap p2" data-flap="5" aria-hidden="true">ÉTÉ 2027</span></p>
     </section>
+    <a class="jn-cta" id="jn-cta" href="#" target="_blank" rel="noopener"><span class="flap c1" data-flap="6">CANDIDATURES OUVERTES</span><span class="c2" id="jn-cta-hint">Clique sur le drapeau pour candidater</span></a>
+  </div>
 
-    <section class="jn-sec"><article class="jn-card" data-knot>
-      <div class="jn-n">Nœud 1</div>
-      <h2>Pourquoi nous rejoindre</h2>
-      <p class="jn-lead">Parce qu'on ne monte pas au Mont‑Blanc tout seul.</p>
-      <p>Alpinis'EM prépare pendant un an l'ascension du toit des Alpes, 4&nbsp;808&nbsp;m, à l'été 2027, encadrée par des guides de haute montagne. Ce n'est pas une association comme les autres&nbsp;: au bout, il y a un vrai sommet.</p>
-      <ul>
-        <li>Un projet concret, avec un objectif que tout le monde comprend.</li>
-        <li>Une équipe soudée, qui avance ensemble toute l'année.</li>
-        <li>Une aventure qui se raconte, en entretien comme autour d'une table.</li>
-      </ul>
-    </article></section>
+  <a class="jn-tag" id="jn-tag" href="#" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><i></i><span>Clique sur le drapeau</span></a>
+  <div class="jn-ring" id="jn-ring" aria-hidden="true"><span>Rejoindre</span></div>
 
-    <section class="jn-sec"><article class="jn-card" data-knot>
-      <div class="jn-n">Nœud 2</div>
-      <h2>Ce que tu vas vivre</h2>
-      <p>Tu ne seras pas spectateur. Chacun porte une partie réelle de l'expédition, et apprend en le faisant.</p>
-      <div class="jn-chips"><span>Gérer un vrai projet</span><span>Négocier avec des entreprises</span><span>Créer des contenus</span><span>Organiser des événements</span><span>Préparer une expédition</span><span>Porter une cause</span></div>
-      <p>Et entre deux réunions&nbsp;: des sorties en montagne, des entraînements et des soirées avec toute l'équipe.</p>
-    </article></section>
+  <div class="jn-pop" id="jn-pop" role="dialog" aria-labelledby="jn-pop-h">
+    <button class="jn-x" id="jn-x" type="button" aria-label="Fermer">×</button>
+    <div class="jn-eb" id="jn-pop-eb">Recrutement 2026-2027 · ouvert</div>
+    <h2 id="jn-pop-h">Rejoins la cordée</h2>
+    <p>Cinq minutes de formulaire&nbsp;: le pôle qui t'attire et quelques lignes sur toi. Pas besoin d'être alpiniste.</p>
+    <div class="jn-seats"><b id="jn-left">15</b><span id="jn-left-l">places restantes dans 5 pôles</span></div>
+    <div class="jn-pop-acts">
+      <a class="btn red jn-go" id="jn-go" href="#" target="_blank" rel="noopener">Nous rejoindre</a>
+      <button class="btn jn-ghost" id="jn-more" type="button" aria-controls="jn-info" aria-expanded="false">En savoir plus sur les recrutements</button>
+    </div>
+    <p class="jn-q">Une question avant&nbsp;? Écris-nous à <span id="jn-mail">alpinisemnormandie@gmail.com</span></p>
+  </div>
 
-    <section class="jn-sec"><article class="jn-card wide" data-knot>
-      <div class="jn-n">Nœud 3</div>
-      <h2>Les pôles qui recrutent</h2>
-      <p>Chaque pôle compte <b>un responsable et deux membres</b>. Choisis celui qui te ressemble.</p>
-      <div class="jn-poles">
-        <div><b>Expédition, Logistique &amp; Sécurité</b><span>Guides, refuges, transport, assurances et plan d'urgence.</span></div>
-        <div><b>Partenariats, Sponsoring &amp; Subventions</b><span>Trouver les entreprises et les financements qui nous font monter.</span></div>
-        <div><b>Communication &amp; Contenus</b><span>Réseaux, site, photos, vidéos et le film de l'expédition.</span></div>
-        <div><b>Événements &amp; Vie de campus</b><span>Événements sportifs, soirées et collectes avec tous les étudiants.</span></div>
-        <div><b>Glaciers &amp; Impact</b><span>Sensibiliser à la fonte des glaciers et réduire notre empreinte.</span></div>
-      </div>
-      <p class="jn-bureau">Le Bureau qui t'accueille&nbsp;: <b>Baptiste F.</b> (président), <b>Benjamin F.</b> et <b>Gautier</b> (vice‑présidents), <b>Tom N.</b> (trésorier et équipement). Il pilote aussi la préparation physique et le matériel.</p>
-    </article></section>
+  <section class="jn-info" id="jn-info" role="dialog" aria-label="Le recrutement Alpinis'EM">
+    <div class="jn-info-bar"><div class="jn-eb" id="jn-info-eb">Recrutement 2026-2027</div><button class="jn-x" id="jn-info-x" type="button" aria-label="Fermer et revenir au sommet">×</button></div>
+    <div class="jn-in">
+      <header class="jn-hero rv">
+        <h2 aria-label="Entrer dans la cordée"><span class="flap" id="jn-info-h" aria-hidden="true">ENTRER DANS LA CORDÉE</span></h2>
+        <p class="jn-lead">Parce qu'on ne monte pas au Mont-Blanc tout seul.</p>
+        <p>Alpinis'EM prépare pendant un an l'ascension du toit des Alpes, 4&nbsp;808&nbsp;m, à l'été 2027, encadrée par des guides de haute montagne. Chacun porte une partie réelle de l'expédition, et apprend en le faisant. Au bout, il y a un vrai sommet.</p>
+      </header>
 
-    <section class="jn-sec step"><article class="jn-card" data-knot>
-      <div class="jn-n">Étape 1 sur 5</div>
-      <h2>Tu candidates</h2>
-      <p>Un court formulaire en bas de cette page&nbsp;: le pôle qui t'attire et quelques lignes sur toi. Pas besoin d'être alpiniste.</p>
-    </article></section>
-    <section class="jn-sec step"><article class="jn-card" data-knot>
-      <div class="jn-n">Étape 2 sur 5</div>
-      <h2>On se parle</h2>
-      <p>Un échange de 15 minutes avec un membre du Bureau, pour faire connaissance et répondre à tes questions.</p>
-    </article></section>
-    <section class="jn-sec step"><article class="jn-card" data-knot>
-      <div class="jn-n">Étape 3 sur 5</div>
-      <h2>Tu rencontres ton pôle</h2>
-      <p>Une rencontre avec le responsable du pôle choisi, pour voir concrètement ce que tu y ferais.</p>
-    </article></section>
-    <section class="jn-sec step"><article class="jn-card" data-knot>
-      <div class="jn-n">Étape 4 sur 5</div>
-      <h2>On te répond</h2>
-      <p>Une réponse sous une semaine, quelle qu'elle soit.</p>
-    </article></section>
-    <section class="jn-sec step"><article class="jn-card" data-knot>
-      <div class="jn-n">Étape 5 sur 5</div>
-      <h2>Tu t'encordes</h2>
-      <p>Une soirée ou une sortie d'intégration avec toute l'équipe&nbsp;: bienvenue dans la cordée.</p>
-    </article></section>
+      <section class="jn-sec" aria-labelledby="jn-s-places">
+        <div class="jn-sec-h rv"><div class="jn-eb">Tableau des départs</div><h3 id="jn-s-places">Places restantes</h3></div>
+        <div class="jn-total rv"><span class="tiles" id="jn-total-n" aria-label="Places restantes">15</span><p id="jn-total-p">places encore libres dans la cordée, réparties entre les pôles ci-dessous. Chaque pôle compte un responsable et deux membres.</p></div>
+        <div class="fb rv" id="jn-board" role="table" aria-label="Places restantes par pôle"></div>
+      </section>
 
-    <section class="jn-sec"><article class="jn-card" data-knot>
-      <div class="jn-n">Dernier nœud</div>
-      <h2>Ce qu'on attend de toi</h2>
-      <ul>
-        <li><b>De la fiabilité</b>&nbsp;: tenir ce qu'on promet à l'équipe.</li>
-        <li><b>Du temps</b>&nbsp;: quelques heures par semaine, sur toute l'année.</li>
-        <li><b>De l'envie</b>&nbsp;: la montagne s'apprend, l'enthousiasme non.</li>
-        <li><b>De l'entraide</b>&nbsp;: dans une cordée, on avance au rythme de tous.</li>
-      </ul>
-    </article></section>
+      <section class="jn-sec" aria-labelledby="jn-s-org">
+        <div class="jn-sec-h rv"><div class="jn-eb">Qui fait quoi</div><h3 id="jn-s-org">L'organigramme</h3><p>Le Bureau pilote l'association, la préparation physique et le matériel. Les pôles portent chacun une partie de l'expédition.</p></div>
+        <div class="org rv" id="jn-org"></div>
+      </section>
 
-    <section class="jn-camp">
-      <div class="jn-camp-txt">
-        <div class="jn-eb">Au coin du feu</div>
-        <h2>La cordée t'attend.</h2>
-        <p>Tu es descendu jusqu'ici&nbsp;: c'est plutôt bon signe.</p>
-        <button class="btn red jn-go" id="jn-go" type="button">Nous rejoindre</button>
-        <p class="jn-q">Une question avant&nbsp;? <a id="jn-mail"></a></p>
-      </div>
-    </section>
-  </main>
+      <section class="jn-sec jn-two">
+        <div class="jn-sec rv">
+          <div class="jn-sec-h"><div class="jn-eb">L'année qui t'attend</div><h3>Ce que tu vas vivre</h3></div>
+          <p>Tu ne seras pas spectateur. Entre deux réunions, il y a des sorties en montagne, des entraînements et des soirées avec toute l'équipe.</p>
+          <div class="jn-chips"><span>Gérer un vrai projet</span><span>Négocier avec des entreprises</span><span>Créer des contenus</span><span>Organiser des événements</span><span>Préparer une expédition</span><span>Porter une cause</span></div>
+        </div>
+        <div class="jn-sec rv">
+          <div class="jn-sec-h"><div class="jn-eb">De la candidature à la cordée</div><h3>Comment ça se passe</h3></div>
+          <ol class="jn-steps">
+            <li><b>Tu candidates</b><span>Le formulaire en ligne&nbsp;: le pôle qui t'attire et quelques lignes sur toi.</span></li>
+            <li><b>On se parle</b><span>Quinze minutes avec un membre du Bureau, pour faire connaissance et répondre à tes questions.</span></li>
+            <li><b>Tu rencontres ton pôle</b><span>Le responsable du pôle choisi te montre ce que tu y ferais.</span></li>
+            <li><b>On te répond</b><span>Une réponse sous une semaine, quelle qu'elle soit.</span></li>
+            <li><b>Tu t'encordes</b><span>Une soirée ou une sortie d'intégration avec toute l'équipe.</span></li>
+          </ol>
+        </div>
+      </section>
 
-  <dialog class="jn-dlg" id="jn-dlg">
-    <form id="jn-form" method="dialog">
-      <div class="jn-dh"><div><div class="jn-eb">Candidature</div><h2>Rejoindre la cordée</h2></div><button class="jn-x" type="button" id="jn-x" aria-label="Fermer">×</button></div>
-      <div class="jn-row"><label class="f">Prénom et nom<input id="jn-name" required maxlength="80" autocomplete="name"></label><label class="f">E-mail<input id="jn-mail-in" type="email" required maxlength="120" autocomplete="email"></label></div>
-      <div class="jn-row"><label class="f">Formation et année<input id="jn-prog" maxlength="80" placeholder="Ex. : Programme Grande École, 2e année"></label>
-        <label class="f">Pôle souhaité<select id="jn-pole">
-          <option>Expédition, Logistique &amp; Sécurité</option><option>Partenariats, Sponsoring &amp; Subventions</option><option>Communication &amp; Contenus</option><option>Événements &amp; Vie de campus</option><option>Glaciers &amp; Impact</option><option>Je ne sais pas encore</option></select></label></div>
-      <label class="f">Quelques lignes sur toi et ta motivation<textarea id="jn-why" required maxlength="2000" rows="5"></textarea></label>
-      <label class="chk"><input type="checkbox" id="jn-ok" required><span>J'accepte que l'association conserve ces informations pour étudier ma candidature.</span></label>
-      <button class="btn red" type="submit">Envoyer ma candidature</button>
-      <div class="jn-done" id="jn-done" hidden><b>Candidature envoyée.</b> Le Bureau te recontacte très vite. À bientôt sur la corde&nbsp;!</div>
-    </form>
-  </dialog>
+      <section class="jn-sec" aria-labelledby="jn-s-exp">
+        <div class="jn-sec-h rv"><div class="jn-eb">Dans une cordée</div><h3 id="jn-s-exp">Ce qu'on attend de toi</h3></div>
+        <ul class="jn-expect rv">
+          <li><b>De la fiabilité</b><span>Tenir ce qu'on promet à l'équipe.</span></li>
+          <li><b>Du temps</b><span>Quelques heures par semaine, sur toute l'année.</span></li>
+          <li><b>De l'envie</b><span>La montagne s'apprend, l'enthousiasme non.</span></li>
+          <li><b>De l'entraide</b><span>Dans une cordée, on avance au rythme de tous.</span></li>
+        </ul>
+      </section>
+
+      <section class="jn-final rv" aria-labelledby="jn-s-go">
+        <div class="jn-eb">Candidatures ouvertes</div>
+        <h3 id="jn-s-go">Prêt à t'encorder&nbsp;?</h3>
+        <p>Cinq minutes de formulaire, une réponse sous une semaine.</p>
+        <a class="btn red jn-go2" id="jn-go2" href="#" target="_blank" rel="noopener">Nous rejoindre</a>
+        <p class="jn-q">Une question&nbsp;? Écris-nous à <span class="jn-mail2">alpinisemnormandie@gmail.com</span></p>
+      </section>
+    </div>
+  </section>
+
+  <div class="jn-load" id="jn-fade" aria-hidden="true">
+    <div class="jn-alt"><span class="tiles" id="jn-alt">0000</span><small>m</small></div>
+    <span class="jn-load-l">Montée vers le sommet</span>
+  </div>
 </div>
 
-<script>
-/* ====== CONFIGURATION (à remplir au déploiement, voir README.md) ======
-   Laisser vide = mode démo (fichier ouvert seul) ou mode artifact claude.ai. */
-window.ALPINISEM_CONFIG = {
-  supabaseUrl: "",      // ex. "https://abcdefgh.supabase.co"
-  supabaseAnonKey: "",  // clé « anon public » (Project Settings → API)
-  publicUrl: "",        // ex. "https://alpinisem.fr"
-  adminUrl: ""          // ex. "https://admin.alpinisem.fr" (vide = même site, /#espace)
-};
-</script>
+<script>window.ALPINISEM_CONFIG={};</script>
 <script>
 /* ================= Données : contenus par défaut, démo, et 3 moteurs (Supabase / Claude / démo locale) ================= */
 const PUBLIC_COLS=['site','actus','partenaires','equipe'];
@@ -1351,7 +1486,7 @@ const DEF_SITE={
   glacier:"Les glaciers des Alpes reculent chaque année, la Mer de Glace en tête. On raconte toute l'année ce que leur fonte change pour la montagne et ceux qui y vivent.",
   securite:"L'ascension se fait encordés, avec des guides de haute montagne diplômés, après neuf mois de préparation physique et une acclimatation en altitude.",
   soutien:"Guides, refuges, matériel de sécurité et transport : l'expédition coûte environ 2 700 € par grimpeur. Choisissez votre palier.",
-  helloasso:'',dossier:'',email:'alpinisemnormandie@gmail.com',instagram:'alpinisem',campus:'EM Normandie, Paris-Clichy',
+  helloasso:'',dossier:'',formCandidature:'',email:'alpinisemnormandie@gmail.com',instagram:'alpinisem',campus:'EM Normandie, Paris-Clichy',
   afficherCollecte:false,recuFiscal:false,raised:null,
   mentions:"Éditeur du site\nAlpinis'EM, association loi 1901 · RNA : [W000000000]\nSiège : [adresse du siège]\nContact : alpinisemnormandie@gmail.com\nDirecteur·rice de la publication : [prénom nom, président·e]\n\nHébergement\n[Nom de l'hébergeur, adresse, site web]\n\nPropriété intellectuelle\nLes textes, photos et logos de ce site appartiennent à Alpinis'EM ou à leurs auteurs. Toute reproduction demande une autorisation.",
   confid:"Données collectées\n• Formulaire de contact : nom, e-mail et message, pour vous répondre.\n• Comptes membres : nom, e-mail, pôle et, pour les grimpeurs, une fiche d'urgence remplie volontairement.\n\nQui y a accès\nLe Bureau de l'association uniquement. Une fiche d'urgence n'est visible que par la personne qui l'a remplie et par le Bureau.\n\nDurée de conservation\nMessages : 1 an. Comptes : jusqu'à la fin de la saison suivante. Fiches d'urgence : supprimées après l'expédition.\n\nVos droits\nVous pouvez demander l'accès, la rectification ou la suppression de vos données en écrivant à [e-mail]. Vous pouvez aussi saisir la CNIL (cnil.fr).\n\nCookies\nAucun cookie publicitaire. La connexion à l'espace membres utilise un stockage local nécessaire à la session."
@@ -2451,290 +2586,301 @@ const Ascent=(()=>{
   return{enter,leave};
 })();
 
-/* ================= Nous rejoindre : descente réaliste dans une crevasse jusqu'à une grotte de glace =================
-   Deux couches :
-   - un fond calculé par la carte graphique (WebGL) : ciel et sommets, champ de neige, paroi de glace proche et paroi du fond,
-     glace translucide (absorption : bleue là où elle est épaisse, presque blanche sur les arêtes fines), reflets, strates,
-     neige collée, obscurité qui gagne avec la profondeur, voûte et stalactites de la grotte, lumière du feu sur la glace ;
-   - un calque 2D par-dessus : corde beige tressée (simulée : elle bouge au défilement et à la souris), nœuds, rivière, feu, gouttes, neige. */
+/* ================= Nous rejoindre : le sommet de l'affiche, animé (WebGL) =================
+   Décor : les deux visuels de l'affiche (paysage pour les écrans larges, portrait pour les téléphones), sans le drapeau.
+   Le drapeau est détouré (assets/jn/flag-*.webp) et posé sur un maillage qui ondule au vent ; le logo EM Normandie y est imprimé.
+   Autour : parallaxe en profondeur (assets/jn/aux-*.png : R profondeur, V mer de nuages, B ciel), nuages qui brassent,
+   soleil qui respire, éclats sur la neige, neige soufflée, et une entrée depuis le brouillard.
+   Clic sur le drapeau (ou sur « Candidatures ouvertes ») : carte « Nous rejoindre » (formulaire) + « En savoir plus ».
+   Lien du formulaire : JOIN_FORM_URL ci-dessous, ou Espace membres > Site > Textes et liens (prioritaire).
+   Places restantes et organigramme : RECRUT ci-dessous (pourvues = places déjà prises dans le pôle). */
+/* Espace membres : ouvert seulement dans la version Claude (sa base partagée). Sur le site en ligne, il est masqué et ses liens ramènent à l'accueil. */
+const MEMBERS_ON=!!(window.claude&&typeof window.claude.use==='function');
+const JOIN_FORM_URL='https://docs.google.com/forms/d/e/1FAIpQLScXzXfEATX01t3Svcve72UkTeqX6YdP6g5GpaNs5a9_zkOS7g/viewform';
+const RECRUT={saison:'2026-2027',
+  bureau:[['Baptiste F.','Président'],['Benjamin F.','Vice-président'],['Gautier','Vice-président'],['Tom N.','Trésorier, équipement']],
+  poles:[
+    {code:'EXPÉDITION',nom:'Expédition, Logistique & Sécurité',desc:"Guides, refuges, transport, assurances et plan d'urgence.",places:3,pourvues:0},
+    {code:'PARTENARIATS',nom:'Partenariats, Sponsoring & Subventions',desc:'Trouver les entreprises et les financements qui nous font monter.',places:3,pourvues:0},
+    {code:'COMMUNICATION',nom:'Communication & Contenus',desc:"Réseaux, site, photos, vidéos et le film de l'expédition.",places:3,pourvues:0},
+    {code:'ÉVÉNEMENTS',nom:'Événements & Vie de campus',desc:'Événements sportifs, soirées et collectes avec tous les étudiants.',places:3,pourvues:0},
+    {code:'GLACIERS',nom:'Glaciers & Impact',desc:'Sensibiliser à la fonte des glaciers et réduire notre empreinte.',places:3,pourvues:0}]};
 const Join=(()=>{
-  let root,glc,gl,prog,U={},cv,ctx,run=false,raf=0,W=0,H=0,DPR=1,GQ=1,docH=0,mob=false,G=null,last=0,cy=0,prevCy=0,vScroll=0,T=0,glOK=true;
-  const mouse={x:-999,y:-999,px:-999,vx:0,in:false};
-  const fr=x=>x-Math.floor(x),h11=n=>fr(Math.sin(n)*43758.5453);/* même tirage que les stalactites du fond */
-  const h21=(x,y)=>{let a=fr(x*123.34),b=fr(y*456.21);const d=a*(a+45.32)+b*(b+45.32);a+=d;b+=d;return fr(a*b)};
-  const n2=(x,y)=>{const ix=Math.floor(x),iy=Math.floor(y),fx=x-ix,fy=y-iy,ux=fx*fx*(3-2*fx),uy=fy*fy*(3-2*fy);
-    const a=h21(ix,iy),b=h21(ix+1,iy),c=h21(ix,iy+1),d=h21(ix+1,iy+1);return a+(b-a)*ux+(c-a)*uy+(a-b-c+d)*ux*uy};
-  const sst=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
+  const A='assets/jn/';
+  const SC={
+    wide:{img:A+'scene-wide.jpg',flag:A+'flag-wide.webp',aux:A+'aux-wide.png',W:1920,H:1080,fo:[397,135],fs:[453,471],
+      q:[[424,159],[799,337],[822,580],[430,451]],sun:[1675,480],fx:.45,fy:.5},
+    tall:{img:A+'scene-tall.jpg',flag:A+'flag-tall.webp',aux:A+'aux-tall.png',W:1024,H:1536,fo:[126,451],fs:[320,331],
+      q:[[152,475],[404,594],[420,756],[159,670]],sun:[990,690],fx:.42,fy:.5}};
+  const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const FINE=matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const $j=id=>document.getElementById(id);
+  const clamp=(x,a,b)=>Math.max(a,Math.min(b,x)),lerp=(a,b,t)=>a+(b-a)*t;
+  const eOut=t=>1-Math.pow(1-clamp(t,0,1),3);
 
-  // ---------------- fond WebGL ----------------
-  const VS='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
-  const FS=`precision highp float;
-uniform vec2 uRes;uniform float uDpr,uScroll,uTime,uPlat,uLip,uRx,uCave,uCeil,uFloor,uMob,uSc;uniform vec3 uFire;
-float h21(vec2 p){vec3 q=fract(vec3(p.xyx)*.1031);q+=dot(q,q.yzx+33.33);return fract((q.x+q.y)*q.z);}
-vec2 h22(vec2 p){vec3 q=fract(vec3(p.xyx)*vec3(.1031,.103,.0973));q+=dot(q,q.yzx+33.33);return fract((q.xx+q.yz)*q.zy);}
-float sh(float n){return fract(sin(n)*43758.5453);}
-float n1(float x){float i=floor(x),f=fract(x);f=f*f*(3.-2.*f);return mix(h21(vec2(i,1.7)),h21(vec2(i+1.,1.7)),f);}
-float n2(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);return mix(mix(h21(i),h21(i+vec2(1.,0.)),u.x),mix(h21(i+vec2(0.,1.)),h21(i+vec2(1.,1.)),u.x),u.y);}
-const mat2 M=mat2(1.6,1.2,-1.2,1.6);
-float fbm(vec2 p){float s=0.,a=.5;for(int i=0;i<4;i++){s+=a*n2(p);p=M*p;a*=.5;}return s;}
-float fbm3(vec2 p){float s=0.,a=.5;for(int i=0;i<3;i++){s+=a*n2(p);p=M*p;a*=.5;}return s;}
-// creux arrondis (« coups de gouge ») typiques des parois de glace
-float scal(vec2 p){vec2 i=floor(p),f=fract(p);float acc=0.;for(int y=-1;y<=1;y++)for(int x=-1;x<=1;x++){vec2 g=vec2(float(x),float(y));vec2 o=h22(i+g);o=.5+.38*sin(6.2831*o);vec2 r=g+o-f;acc+=exp(-9.*dot(r,r));}return -log(max(acc,1e-4))/9.;}
-float iceH(vec2 p){vec2 w=p+vec2(fbm3(p*.0035),fbm3(p*.0035+7.3))*90.;
-  return scal(w*vec2(.0088,.0062))*.75+scal(w*.022+11.)*.2+fbm3(w*.0019)*1.1;}
-vec3 iceN(vec2 p,float amp){float e=1.6;float h=iceH(p),hx=iceH(p+vec2(e,0.)),hy=iceH(p+vec2(0.,e));return normalize(vec3(-(hx-h)/e*amp,(hy-h)/e*amp,1.));}
-float xL(float y){float base=uRx-mix(16.,9.,uMob);float e=base-mix(20.,6.,uMob)*n1(y*.006+1.3)-mix(9.,3.,uMob)*n1(y*.03+7.1);
-  e=mix(uRx-2.,e,smoothstep(uPlat-4.,uPlat+46.,y));return mix(e,mix(uRes.x*.03,-30.,uMob),smoothstep(uCave,uCave+uRes.y*.55,y));}
-float lightAt(float wy){return max(.1,exp(-max(0.,wy-uLip+uRes.y*.1)/max(uRes.y,(uCave-uLip)/2.)));}
-const vec3 Vv=vec3(0.,0.,1.);
-vec3 fireLight(vec2 p,vec3 n,float wrap,float kd,float ks){vec2 d=uFire.xy-p;float R=260.*uSc,dist=length(d);float att=uFire.z/(1.+dist*dist/(R*R));
-  vec3 L=normalize(vec3(d.x,-d.y,140.*uSc));float df=clamp((dot(n,L)+wrap)/(1.+wrap),0.,1.);float sp=pow(max(dot(n,normalize(L+Vv)),0.),60.);
-  return vec3(1.,.55,.24)*att*df*kd+vec3(1.,.8,.55)*att*sp*ks;}
-float strata(vec2 p){float s=p.y+46.*fbm3(vec2(p.x*.0018,p.y*.0016))+p.x*.04;float v=smoothstep(.25,.7,n2(vec2(p.x*.004,floor(s*.027/6.2832)*3.1)));return (smoothstep(.955,1.,sin(s*.027))*.6+smoothstep(.988,1.,sin(s*.0091+1.7)))*v;}
-vec3 ice(vec2 p,float edge,float far,float lit,float fire){
-  vec2 q=p*mix(1.,1.45,far);vec3 n=iceN(q,mix(85.,55.,far));
-  vec3 L=normalize(vec3(.18,.95,.3));float dif=dot(n,L)*.5+.5;
-  float thin=fbm3(p*.0016+far*3.);
-  float t=mix(1.8,.45,pow(dif,1.3))+far*.3-.55*exp(-edge/16.)-(thin-.45)*1.1;
-  vec3 col=exp(-vec3(2.5,.92,.4)*max(t,.15)*1.35);
-  col+=vec3(.08,.42,.62)*smoothstep(.45,.75,thin)*.35;
-  vec3 Hh=normalize(L+Vv);float nh=max(dot(n,Hh),0.);float spec=pow(nh,90.)*1.1+pow(nh,16.)*.08;
-  vec3 r=reflect(-Vv,n);vec3 env=mix(vec3(.04,.1,.18),vec3(.75,.88,1.),smoothstep(-.1,.9,r.y));float fr=.03+.97*pow(1.-max(n.z,0.),5.);
-  col+=env*fr*.5+spec*(1.-far*.55);
-  float st=strata(p);col=mix(col,col*vec3(.55,.58,.62)+vec3(.02,.025,.03),st*(1.-far*.35));
-  col+=vec3(.5,.7,.85)*smoothstep(.0,.6,st)*.06*(1.-far);
-  // neige accrochée sur les replats, surtout près de la surface
-  float sn=smoothstep(.5,.8,n.y*.9+fbm3(p*.02)*.55)*smoothstep(.25,.6,lit)*(1.-far*.5);
-  col=mix(col,vec3(.9,.94,1.)*(.7+.3*dif),sn*.9);
-  col*=lit;
-  if(fire>0.){vec3 nf=n;col+=fireLight(p,nf,.3,.55,.7)*fire+fireLight(p,nf,.8,.1,0.)*vec3(.3,.8,1.2)*fire;}
-  return col;}
-vec3 snow(vec2 p,float lit){float g=fbm3(p*.03);vec3 c=mix(vec3(.82,.88,.96),vec3(.98,.98,1.),g);
-  c+=step(.997,h21(floor(p*.9)))*.7*(.5+.5*sin(uTime*2.5+h21(floor(p*.9))*40.));return c*lit;}
-void main(){
-  vec2 px=gl_FragCoord.xy/uDpr;float sy=uRes.y-px.y,x=px.x,wy=sy+uScroll;vec2 p=vec2(x,wy);
-  float hz=uPlat-uRes.y*mix(.1,.07,uMob);
-  vec3 col;
-  // ciel
-  float wS=sy+uScroll*.3;float tS=clamp(wS/(hz),0.,1.2);
-  vec3 sky=mix(vec3(.24,.42,.68),vec3(.93,.9,.88),smoothstep(.0,1.,pow(tS,1.5)));
-  float sg=exp(-dot(vec2((x-uRes.x*.84)/uRes.x,(wS-hz)/uRes.y)*vec2(1.,2.),vec2((x-uRes.x*.84)/uRes.x,(wS-hz)/uRes.y)*vec2(1.,2.))*9.);
-  sky+=vec3(1.,.7,.45)*.3*sg;
-  float cl=fbm(vec2(x*.0016+uTime*.003,wS*.009));sky=mix(sky,vec3(1.,.97,.95),smoothstep(.55,.9,cl)*(1.-tS)*.5);
-  col=sky;
-  // deux chaînes de sommets enneigés (parallaxe)
-  for(int k=0;k<2;k++){float fk=float(k);float par=mix(.3,.5,fk);
-    float fx=mix(.0022,.0038,fk),ox=fk*37.;
-    float pr=0.,a=.6,f=1.;for(int o=0;o<4;o++){pr+=a*(1.-abs(2.*n1(x*fx*f+ox)-1.));f*=2.;a*=.42;}
-    float ht=uRes.y*mix(.27,.15,fk)*mix(1.,.75,uMob);float top=hz-uScroll*par-ht*pr*pr+uRes.y*mix(-.01,.02,fk);
-    if(sy>top){float dd=sy-top;
-      float pl=0.,pr2=0.;a=.6;f=1.;for(int o=0;o<2;o++){pl+=a*(1.-abs(2.*n1((x-6.)*fx*f+ox)-1.));pr2+=a*(1.-abs(2.*n1((x+6.)*fx*f+ox)-1.));f*=2.;a*=.42;}
-      float sl=(pr2-pl);
-      vec2 q=vec2(x*fx*5.+ox,dd*fx*7.);float r0=fbm(q),rx=fbm(q+vec2(.05,0.)),ry=fbm(q+vec2(0.,.05));
-      float face=sl*14.+(rx-r0)*9.-(ry-r0)*2.;
-      float lit=smoothstep(-.15,.25,face);
-      vec3 m=mix(vec3(.52,.62,.8),vec3(1.,.95,.9),lit);
-      float rock=smoothstep(.58,.7,fbm(vec2(x*.018,dd*.035)+fk*5.))*smoothstep(.1,.5,abs(face))*.75;
-      m=mix(m,vec3(.26,.28,.34)*mix(.75,1.25,lit),rock);
-      m=mix(m,m*vec3(.85,.9,1.),smoothstep(0.,ht,dd));
-      m=mix(m,sky,mix(.45,.2,fk));col=m;}}
-  // champ de neige en perspective jusqu'au bord de la crevasse
-  float hzS=hz-uScroll;
-  if(sy>hzS){float d=max(sy-hzS,.5);float X=(x-uRes.x*.6)/d,Z=uRes.y/d;
-    vec2 P=vec2(X*4.,Z*1.6);float e=.02;
-    float s0=fbm(P)*.7+n2(P*3.1)*.12;float sx=fbm(P+vec2(e,0.))*.7+n2((P+vec2(e,0.))*3.1)*.12;float sz=fbm(P+vec2(0.,e))*.7+n2((P+vec2(0.,e))*3.1)*.12;
-    vec3 n=normalize(vec3(-(sx-s0)/e*.18,1.,-(sz-s0)/e*.18));vec3 Ls=normalize(vec3(.75,.32,-.5));float dif=clamp(dot(n,Ls),0.,1.);
-    vec3 sn=mix(vec3(.6,.71,.88),vec3(1.,.96,.92),smoothstep(.12,.6,dif));
-    sn+=step(.9975,h21(floor(px*.8)))*.6*smoothstep(10.,120.,d)*(.5+.5*sin(uTime*3.+h21(floor(px*.8))*30.));
-    sn=mix(sn,mix(sky,vec3(.92,.92,.95),.5),exp(-d/(uRes.y*.05))*.75);
-    col=sn;}
-  float xl=xL(wy);
-  // paroi du fond (droite) : bord de neige puis glace qui s'enfonce dans l'ombre
-  float lipY=uLip+10.*n1(x*.008+2.);
-  if(x>=xl&&wy>lipY){float dl=wy-lipY;float lit=lightAt(wy);
-    vec3 c;
-    if(dl<16.+6.*n1(x*.05)){c=snow(p,1.)*mix(1.,.72,dl/22.);}
-    else{c=ice(p,dl,1.,lit,0.);c+=vec3(.35,.7,.9)*exp(-dl/90.)*.35;
-      vec3 fog=mix(vec3(.3,.55,.75),vec3(.02,.06,.12),smoothstep(uLip,uCave,wy))*lit;c=mix(c,fog,.3);}
-    c*=.5+.5*smoothstep(0.,mix(150.,50.,uMob),x-xl);
-    col=c;}
-  // paroi proche (gauche) : couche de neige en surface puis glace, arête fine translucide
-  float tpN=uPlat-3.*n1(x*.02);
-  if(x<xl&&wy>tpN){float dn=wy-tpN,sT=20.+10.*n1(x*.03+4.);
-    if(dn<sT)col=snow(p,1.)*mix(1.,.8,dn/sT);
-    else{float lit=lightAt(wy);float ed=xl-x;col=ice(p,ed,0.,lit,.6);
-      col+=vec3(.55,.88,1.)*(exp(-ed/7.)*.6+exp(-ed/40.)*.12)*lit;
-      }}
-  // grotte : voûte, stalactites, fond éclairé par le feu, sol
-  if(wy>uCave-uRes.y*.5){
-    float cOff=26.*uSc*(.5+.3*sin(x*.011)+.2*sin(x*.027+2.));float ceil=uCeil+cOff;
-    bool hole=abs(x-uRx)<mix(70.,34.,uMob)+20.*sin(wy*.01);
-    float lit=lightAt(wy);
-    if(wy>xl*0.&&x>=xl&&wy>ceil){ // fond de grotte : paroi éclairée par le feu
-      col=ice(p,200.,1.,lit,1.);}
-    if(!hole&&wy<ceil&&wy>uCave-uRes.y*.45){float k=smoothstep(uCave-uRes.y*.45,uCave-uRes.y*.3,wy);
-      vec3 c=ice(p,300.,0.,lit,1.4);c+=vec3(1.,.62,.32)*exp(-(ceil-wy)/(16.*uSc))*fireLight(p,vec3(0.,-.6,.8),.5,1.,0.).r*.7;col=mix(col,c,k);}
-    float cw=34.*uSc,cell=floor(x/cw),uu=(fract(x/cw)-.5)*2.,len=(30.+170.*sh(cell*7.13))*uSc*(.45+.55*sh(cell*3.7+1.));
-    float cx=(cell+.5)*cw;bool holeC=abs(cx-uRx)<mix(80.,40.,uMob);
-    float cc=uCeil+26.*uSc*(.5+.3*sin(cx*.011)+.2*sin(cx*.027+2.));
-    float tt=(wy-cc)/max(1.,len);float wd=pow(max(0.,1.-tt),.9)*.85;
-    if(!holeC&&wy>=ceil-3.&&tt<1.&&abs(uu)<wd){float q=uu/wd;
-      vec3 n=normalize(vec3(q*1.2,-.2,sqrt(max(.05,1.-q*q))));
-      vec3 c=exp(-vec3(2.5,.92,.4)*(.5+.9*(1.-abs(q))*(.4+.6*(1.-tt))))*.9*lit*2.;
-      c+=fireLight(p,n,.6,.8,2.)*1.3;c+=vec3(.7,.9,1.)*pow(1.-abs(q),8.)*.25*(lit*3.+uFire.z*.4);
-      c+=vec3(1.,.75,.5)*smoothstep(.6,1.,abs(q))*fireLight(p,vec3(0.,0.,1.),.5,1.,0.).r*.5;
-      col=c;}
-    float fl=uFloor+10.*uSc*(.5+.5*sin(x*.009+1.));
-    if(wy>fl){float g=fbm(vec2(x*.008,wy*.03))*.7+fbm(vec2(x*.04,wy*.12))*.3;
-      vec3 c=vec3(.42,.5,.62)*(.55+.45*g)*lit*1.3;
-      vec2 df=vec2(x-uFire.x,(wy-uFire.y)*2.4);float att=uFire.z/(1.+dot(df,df)/pow(330.*uSc,2.));
-      c+=vec3(1.,.55,.25)*att*(.5+.5*g)*.9;
-      c+=step(.996,h21(floor(px*.9)))*att*.8;
-      col=c;}
-  }
-  col=clamp(col,0.,1.);
-  vec2 vv=px/uRes-.5;col*=1.-.28*dot(vv,vv)*1.5;
-  col+=(h21(px+fract(uTime*7.)*91.)-.5)*.022;
-  gl_FragColor=vec4(col,1.);}
+  let root,cv,gl=null,ctx2=null,mode='',built=false,building=null,run=false,raf=0,wired=false,syncFn=null,played=false;
+  let key='',sc=SC.wide,G={tex:{}},sets={},textCanvas=null,loadingSet={};
+  let vw=1,vh=1,dpr=1,S=1,OX=0,OY=0,zoom=1,shX=0,shY=0,dirty2d=true;
+  let last=0,time=0,phase=0,gust=1,kick=0,hoverK=0,isHover=false,isOpen=false,infoOpen=false;
+  let introStart=-1,fogFrom=1,zoomFrom=1.24,fog=0,tagFrom=1e9,loadP=0,loadT0=0,loaderRaf=0,io=null;
+  let sentAt=-1e9;
+  const ptr={x:-1,y:-1,sx:0,sy:0,rx:-200,ry:-200,inside:false,onCv:false,down:null};
+
+  /* ---------- shaders ---------- */
+  const VS_FULL='attribute vec2 aP;void main(){gl_Position=vec4(aP,0.,1.);}';
+  const NOISE=`float hs(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}
+float vn(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hs(i),hs(i+vec2(1.,0.)),f.x),mix(hs(i+vec2(0.,1.)),hs(i+vec2(1.,1.)),f.x),f.y);}
+float fbm(vec2 p){float s=0.,a=.5;for(int i=0;i<4;i++){s+=a*vn(p);p=p*2.03+vec2(17.1,9.7);a*=.5;}return s;}
 `;
-  function initGL(){try{gl=glc.getContext('webgl',{antialias:false,premultipliedAlpha:false});if(!gl)return false;
-      const mk=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS)){console.warn(gl.getShaderInfoLog(o));return null}return o};
-      const v=mk(gl.VERTEX_SHADER,VS),f=mk(gl.FRAGMENT_SHADER,FS);if(!v||!f)return false;prog=gl.createProgram();gl.attachShader(prog,v);gl.attachShader(prog,f);gl.linkProgram(prog);
-      if(!gl.getProgramParameter(prog,gl.LINK_STATUS))return false;gl.useProgram(prog);
-      const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
-      const loc=gl.getAttribLocation(prog,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
-      ['uRes','uDpr','uScroll','uTime','uPlat','uLip','uRx','uCave','uCeil','uFloor','uMob','uSc','uFire'].forEach(k=>U[k]=gl.getUniformLocation(prog,k));return true}catch(e){console.warn(e);return false}}
-  function drawGL(fl){if(!glOK)return;gl.viewport(0,0,glc.width,glc.height);
-    gl.uniform2f(U.uRes,W,H);gl.uniform1f(U.uDpr,glc.width/W);gl.uniform1f(U.uScroll,cy);gl.uniform1f(U.uTime,T);gl.uniform1f(U.uPlat,G.platY);gl.uniform1f(U.uLip,G.lipY);gl.uniform1f(U.uRx,G.rx);
-    gl.uniform1f(U.uCave,G.caveTop);gl.uniform1f(U.uCeil,G.ceilY);gl.uniform1f(U.uFloor,G.floorY);gl.uniform1f(U.uMob,mob?1:0);gl.uniform1f(U.uSc,G.scale);
-    gl.uniform3f(U.uFire,G.fireX,G.fireY-30*G.scale,fl);gl.drawArrays(gl.TRIANGLES,0,3)}
+  const FS_BG=`uniform sampler2D uImg,uAux;uniform vec2 uRes,uOff,uIS,uShift,uSun;uniform float uDpr,uS,uT,uGlow;
+void main(){vec2 css=vec2(gl_FragCoord.x,uRes.y-gl_FragCoord.y)/uDpr;vec2 ip=(css-uOff)/uS;vec2 uv=ip/uIS;
+ vec3 ax=texture2D(uAux,uv).rgb;vec2 uvp=uv-ax.r*uShift/(uS*uIS);float cl=ax.g;
+ if(cl>.01){vec2 q=uv*vec2(7.,12.);uvp+=cl*vec2(vn(q+vec2(uT*.07,0.))-.5,(vn(q*1.4+vec2(5.,uT*.05))-.5)*.5)*.007;}
+ vec3 c=texture2D(uImg,uvp).rgb;
+ if(cl>.01){float f=fbm(uv*vec2(5.,9.)+vec2(uT*.018,uT*.004));c=mix(c,vec3(1.,.91,.79),cl*smoothstep(.4,.8,f)*.3);}
+ vec2 ds=(ip-uSun)/uIS.y;float d=length(ds);
+ c+=vec3(1.,.76,.48)*(exp(-d*d*70.)*(.2+.06*sin(uT*1.1))+exp(-d*7.)*.06)*uGlow;
+ if(ax.b>.02){float an=atan(ds.y,ds.x+1e-4);float r=fbm(vec2(an*6.,uT*.06));c+=vec3(1.,.83,.62)*ax.b*smoothstep(.5,.85,r)*exp(-d*2.4)*.08*uGlow;}
+ float br=dot(c,vec3(.333));
+ if(ax.r>.45&&br>.78){vec2 cell=floor(uvp*uIS*.5);float hh=hs(cell);if(hh>.985){float tw=pow(max(0.,sin(uT*(1.3+hh*2.5)+hh*80.)),30.);c+=tw*(br-.78)*6.;}}
+ gl_FragColor=vec4(c,1.);}`;
+  const FS_FOG=`uniform vec2 uRes;uniform float uFog,uT;
+void main(){vec2 uv=gl_FragCoord.xy/uRes;vec2 q=uv*vec2(uRes.x/uRes.y,1.)*2.2;
+ float f=fbm(q+vec2(uT*.07,uT*.02))*.65+fbm(q*2.3-vec2(uT*.11,0.))*.35;
+ float thr=1.-uFog*1.45;float a=smoothstep(thr-.2,thr+.2,f+(uFog-.5)*.35)*smoothstep(0.,.12,uFog);
+ vec3 col=mix(vec3(.86,.9,.97),vec3(1.,.92,.83),uv.x*.8);gl_FragColor=vec4(col*a,a);}`;
+  const VS_FLAG=`attribute vec2 aUV;uniform vec2 uTL,uTR,uBR,uBL,uFo,uFs,uOff,uVP,uShift;uniform float uS,uPh,uAmp,uDepth;
+varying vec2 vTex,vLoc;varying float vSh;
+void main(){float u=aUV.x,v=aUV.y;vec2 rest=mix(mix(uTL,uTR,u),mix(uBL,uBR,u),v);
+ float uu=max(u,0.);float env=pow(uu,1.2)*uAmp;
+ float ph=uu*6.8-uPh+v*1.7;float ph2=uu*11.-uPh*1.6+v*2.6+1.3;
+ float w=sin(ph)+.32*sin(ph2);
+ vec2 fly=uTR-uTL;float L=length(fly);vec2 fn=fly/L;vec2 hn=normalize(uBL-uTL);
+ vec2 ip=rest+hn*(w*env*L*.045)-fn*((1.-cos(ph))*env*L*.018);
+ vTex=(rest-uFo)/uFs;vLoc=vec2(u,v);vSh=(cos(ph)*6.8+3.52*cos(ph2))/10.*env;
+ vec2 css=uOff+ip*uS+uShift*uDepth;gl_Position=vec4(css.x/uVP.x*2.-1.,1.-css.y/uVP.y*2.,0.,1.);}`;
+  const FS_FLAG=`uniform sampler2D uFlag,uText;uniform float uHover,uTextOn;varying vec2 vTex,vLoc;varying float vSh;
+void main(){vec4 c=texture2D(uFlag,vTex);if(vTex.x<0.||vTex.y<0.||vTex.x>1.||vTex.y>1.)c=vec4(0.);
+ float a=c.a;if(a<.003)discard;vec3 rgb=c.rgb/a;
+ if(uTextOn>.5&&vLoc.x>=0.&&vLoc.x<=1.&&vLoc.y>=0.&&vLoc.y<=1.){float t=texture2D(uText,vLoc).a;float lum=dot(rgb,vec3(.3,.59,.11));
+  vec3 ink=vec3(.98,.96,.93)*min(1.,.6+.45*clamp(lum/.23,0.,1.4));rgb=mix(rgb,ink,t*.9);}
+ rgb*=(1.+clamp(vSh,-1.2,1.2)*.2)*(1.+uHover*.1);gl_FragColor=vec4(rgb*a,a);}`;
+  const VS_SNOW=`attribute vec4 aS;uniform float uT,uWind,uDpr,uK;uniform vec2 uVP,uShift;varying float vA,vSoft;
+void main(){float z=aS.z;float x=fract(aS.x+uT*mix(.018,.11,z)*uWind*(.75+.5*aS.w));float y=fract(aS.y+uT*mix(.006,.035,z)*(.7+.6*aS.w));
+ vec2 p=vec2(x*1.16-.08,y*1.16-.08)*uVP;p.y+=sin(x*9.+aS.w*31.+uT*.6)*mix(5.,22.,z);p+=uShift*mix(.15,1.35,z);
+ gl_Position=vec4(p.x/uVP.x*2.-1.,1.-p.y/uVP.y*2.,0.,1.);gl_PointSize=mix(1.3,6.5,z*z*z)*uK*uDpr;
+ vSoft=smoothstep(.75,1.,z);vA=mix(.22,.8,z)*(.65+.35*sin(uT*1.7+aS.w*40.))*(1.-vSoft*.55);}`;
+  const FS_SNOW=`varying float vA,vSoft;void main(){float d=length(gl_PointCoord-.5)*2.;float a=(1.-smoothstep(mix(.35,0.,vSoft),1.,d))*vA;gl_FragColor=vec4(vec3(1.,.985,.96)*a,a);}`;
 
-  // ---------------- corde : déplacement latéral u de chaque point, propagé par la tension ----------------
-  let R=null;
-  function buildRope(){const seg=mob?16:20,n=Math.ceil((G.ropeEnd-G.anchorY)/seg)+1;R={seg,n,u:new Float32Array(n),v:new Float32Array(n)}}
-  function stepRope(){const {u,v,n}=R,Tn=.22,k=.0009,damp=.965;
-    const y0=cy-200,y1=cy+H+200,vs=Math.max(-60,Math.min(60,vScroll));
-    for(let i=1;i<n;i++){const y=G.anchorY+i*R.seg;
-      let a=Tn*(u[i-1]-2*u[i]+(i<n-1?u[i+1]:u[i]))-k*u[i]+.012*Math.sin(T*.7+i*.05)*Math.min(1,i/20);
-      if(y>y0&&y<y1){a+=vs*.0045*Math.sin(i*.09+T*1.4)*Math.min(1,i/12);
-        if(mouse.in){const sy=y-cy,dx=(G.rx+u[i])-mouse.x,dy=sy-mouse.y,d=Math.hypot(dx,dy);if(d<90){a+=(dx>=0?1:-1)*(90-d)*.006+mouse.vx*.02*(1-d/90)}}}
-      if(y>G.floorY-4)a*=.2;
-      v[i]=(v[i]+a)*damp}
-    for(let i=1;i<n;i++){u[i]+=v[i];u[i]=Math.max(-70,Math.min(70,u[i]))}}
+  function sh(type,src){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(s));return s}
+  function prog(vs,fs,attr){const p=gl.createProgram();gl.attachShader(p,sh(gl.VERTEX_SHADER,vs));gl.attachShader(p,sh(gl.FRAGMENT_SHADER,fs));gl.bindAttribLocation(p,0,attr);gl.linkProgram(p);
+    if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(p));const U={};return{p,u:n=>n in U?U[n]:(U[n]=gl.getUniformLocation(p,n))}}
+  function texFrom(src,premul){const t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,!!premul);
+    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,src);
+    [[gl.TEXTURE_MIN_FILTER,gl.LINEAR],[gl.TEXTURE_MAG_FILTER,gl.LINEAR],[gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE],[gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE]].forEach(([k,v])=>gl.texParameteri(gl.TEXTURE_2D,k,v));
+    gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,false);return t}
+  function buf(data,target){const b=gl.createBuffer();gl.bindBuffer(target||gl.ARRAY_BUFFER,b);gl.bufferData(target||gl.ARRAY_BUFFER,data,gl.STATIC_DRAW);return b}
 
-  // ---------------- géométrie de la page ----------------
-  function layout(){W=innerWidth;H=innerHeight;mob=W<=760;DPR=Math.min(mob?1.6:1.75,devicePixelRatio||1);GQ=mob?.6:Math.min(1.25,devicePixelRatio||1)*.85;
-    cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);ctx.setTransform(DPR,0,0,DPR,0,0);
-    glc.width=Math.round(W*GQ);glc.height=Math.round(H*GQ);
-    docH=root.scrollHeight;const top=root.getBoundingClientRect().top+scrollY;
-    const knots=[...root.querySelectorAll('[data-knot]')].map(c=>{const r=c.getBoundingClientRect();return{y:r.top+scrollY-top+(mob?28:34),el:c}});
-    const camp=root.querySelector('.jn-camp'),campTop=camp.getBoundingClientRect().top+scrollY-top;
-    const ht=root.querySelector('.jn-hero-txt').getBoundingClientRect(),htB=ht.bottom+scrollY-top;
-    const rx=mob?30:W*.30,platY=mob?H*.2:H*.5,lipY=Math.max(platY+H*.18,htB+(mob?24:40)),floorY=docH-H*.17,scale=Math.max(.65,Math.min(1.25,Math.min(W,H)/850));
-    G={rx,platY,lipY,anchorY:platY+6,knots,caveTop:campTop-H*.2,ceilY:campTop+H*.02,floorY,ropeEnd:floorY+60,fireX:mob?W*.62:W*.5,fireY:floorY-4,scale};
-    buildRope();seedDecor()}
-  let D=null;
-  function seedDecor(){
-    // gouttes : même position que les pointes des stalactites dessinées par le fond
-    const cw=34*G.scale,drips=[];for(let c=0;c*cw<W;c++){const cx=(c+.5)*cw;if(Math.abs(cx-G.rx)<(mob?40:80))continue;
-      const len=(30+170*h11(c*7.13))*G.scale*(.45+.55*h11(c*3.7+1)),ceil=G.ceilY+26*G.scale*(.5+.3*Math.sin(cx*.011)+.2*Math.sin(cx*.027+2));if(h11(c*1.9)<.45)drips.push({x:cx,y:ceil+len,ph:h11(c*5.1)*300,per:150+h11(c*2.3)*220})}
-    const flakes=[...Array(mob?70:140)].map(()=>({x:Math.random()*W,y:Math.random()*H,z:.3+Math.random()*.7,s:Math.random()}));
-    D={drips,flakes,flames:[],embers:[]}}
+  function initGL(){
+    try{gl=cv.getContext('webgl',{antialias:true,alpha:false,premultipliedAlpha:true,powerPreference:'high-performance'})||cv.getContext('experimental-webgl')}catch(e){gl=null}
+    if(!gl)return false;
+    try{const hp=gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER,gl.HIGH_FLOAT).precision>0,P=(hp?'precision highp float;':'precision mediump float;')+'\n';
+      G.bg=prog(VS_FULL,P+NOISE+FS_BG,'aP');G.fog=prog(VS_FULL,P+NOISE+FS_FOG,'aP');G.flag=prog(VS_FLAG,P+FS_FLAG,'aUV');G.snow=prog(VS_SNOW,P+FS_SNOW,'aS');
+      G.tri=buf(new Float32Array([-1,-1,3,-1,-1,3]));
+      const NU=56,NV=28,U0=-.03,U1=1.04,V0=-.08,V1=1.05,v=[],ix=[];
+      for(let j=0;j<=NV;j++)for(let i=0;i<=NU;i++)v.push(U0+(U1-U0)*i/NU,V0+(V1-V0)*j/NV);
+      for(let j=0;j<NV;j++)for(let i=0;i<NU;i++){const a=j*(NU+1)+i,b=a+1,c=a+NU+1,d=c+1;ix.push(a,c,b,b,c,d)}
+      G.mesh=buf(new Float32Array(v));G.idx=buf(new Uint16Array(ix),gl.ELEMENT_ARRAY_BUFFER);G.nIdx=ix.length;
+      const N=RM?140:(FINE?720:340),sd=new Float32Array(N*4);for(let i=0;i<N;i++){sd[i*4]=Math.random();sd[i*4+1]=Math.random();sd[i*4+2]=Math.pow(Math.random(),1.7);sd[i*4+3]=Math.random()}
+      G.snowB=buf(sd);G.nSnow=N;
+      G.text=texFrom(textCanvas,false);
+      gl.enableVertexAttribArray(0);
+      cv.addEventListener('webglcontextlost',e=>{e.preventDefault();mode='lost'},false);
+      return true}catch(e){console.warn('jn gl',e);gl=null;return false}}
+  function upload(k){const s=sets[k];if(!gl||!s||G.tex[k])return;G.tex[k]={img:texFrom(s.img,false),aux:texFrom(s.aux,false),flag:texFrom(s.flag,true)}}
 
-  // ---------------- calque 2D ----------------
-  function draw(fl){ctx.clearRect(0,0,W,H);const S=y=>y-cy,y0=cy,y1=cy+H;
-    if(y1>G.floorY-H*.9)drawRiver(S,fl);
-    drawRope(S,y0,y1);
-    if(y1>G.floorY-H*.6)drawFire(S,fl);
-    drawDrips(S);drawParticles(y0)}
-  // corde beige tressée, réaliste : contour, âme, ombrage, torons en diagonale
-  function ropePath(S,pts){ctx.beginPath();ctx.moveTo(pts[0][0],S(pts[0][1]));for(let k=1;k<pts.length-1;k++){const mx=(pts[k][0]+pts[k+1][0])/2,my=(pts[k][1]+pts[k+1][1])/2;ctx.quadraticCurveTo(pts[k][0],S(pts[k][1]),mx,S(my))}const L=pts[pts.length-1];ctx.lineTo(L[0],S(L[1]))}
-  function strokeRope(S,pts,wd,lit){
-    ctx.lineCap='round';ctx.lineJoin='round';
-    ropePath(S,pts);ctx.strokeStyle='rgba(0,0,0,.32)';ctx.lineWidth=wd+4;ctx.save();ctx.translate(3,2);ctx.stroke();ctx.restore();
-    ropePath(S,pts);ctx.strokeStyle=shade([92,78,58],lit);ctx.lineWidth=wd+1.6;ctx.stroke();
-    ropePath(S,pts);ctx.strokeStyle=shade([205,186,150],lit);ctx.lineWidth=wd;ctx.stroke();
-    ctx.save();ctx.translate(wd*.22,0);ropePath(S,pts);ctx.strokeStyle=shade([160,140,106],lit,.55);ctx.lineWidth=wd*.35;ctx.stroke();ctx.restore();
-    ctx.save();ctx.translate(-wd*.2,0);ropePath(S,pts);ctx.strokeStyle=shade([238,226,200],lit,.75);ctx.lineWidth=wd*.26;ctx.stroke();ctx.restore();
-    // torons : traits obliques réguliers le long de la corde
-    let acc=0;const step=wd*.62;ctx.lineWidth=Math.max(.9,wd*.13);
-    for(let k=1;k<pts.length;k++){const ax=pts[k-1][0],ay=S(pts[k-1][1]),bx=pts[k][0],by=S(pts[k][1]),dx=bx-ax,dy=by-ay,l=Math.hypot(dx,dy);if(l<.01)continue;const tx=dx/l,ty=dy/l,nx=-ty,ny=tx;
-      for(let s=(step-acc)%step;s<l;s+=step){const x=ax+tx*s,y=ay+ty*s;if(y<-20||y>H+20)continue;const r=wd*.48;
-        ctx.strokeStyle=shade([120,102,74],lit,.85);ctx.beginPath();ctx.moveTo(x-nx*r-tx*r*.55,y-ny*r-ty*r*.55);ctx.lineTo(x+nx*r+tx*r*.55,y+ny*r+ty*r*.55);ctx.stroke()}
-      acc=(acc+l)%step}}
-  const shade=(c,l,a=1)=>`rgba(${Math.round(c[0]*l)},${Math.round(c[1]*l)},${Math.round(c[2]*l)},${a})`;
-  const litAt=y=>{const L=Math.max(.34,Math.exp(-Math.max(0,y-G.platY)/(H*2.6)));const d=Math.hypot(0,(G.fireY-y))/(300*G.scale);return Math.min(1.1,L+.9/(1+d*d))};
-  function drawRope(S,y0,y1){const {u,n,seg}=R,wd=mob?7:11;
-    const ax=G.rx-(mob?16:36),ay=G.platY-5;
-    // amarrage : broche scellée et mousqueton en acier
-    if(S(ay)>-40&&S(ay)<H+40){const g=ctx.createLinearGradient(ax-6,0,ax+6,0);g.addColorStop(0,'#5d6670');g.addColorStop(.5,'#dfe5ea');g.addColorStop(1,'#6b747e');
-      ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(ax,S(ay),mob?3.5:5.5,mob?2.4:3.5,0,0,7);ctx.fill();
-      ctx.strokeStyle=g;ctx.lineWidth=mob?2:3;ctx.beginPath();ctx.ellipse(ax+(mob?3:6),S(ay+5),mob?4:6.5,mob?6.5:10,.45,0,7);ctx.stroke()}
-    const pts=[];if(S(ay)<H+40)pts.push([ax+(mob?4:8),ay+8],[G.rx-3,G.platY+1]);
-    const i0=Math.max(0,Math.floor((y0-80-G.anchorY)/seg)),i1=Math.min(n-1,Math.ceil((y1+80-G.anchorY)/seg));
-    for(let i=i0;i<=i1;i++){let y=G.anchorY+i*seg,x=G.rx+u[i];if(y>G.floorY-6){const e=y-(G.floorY-6);x+=e*(mob?.8:1.6);y=G.floorY-6+Math.sin(e*.05)*3}pts.push([x,y])}
-    if(pts.length<2)return;
-    // éclairage : sur toute la portion visible, on éclaire selon la profondeur au centre de l'écran
-    const lit=litAt(cy+H*.5);strokeRope(S,pts,wd,lit);
-    // nœuds en huit
-    G.knots.forEach((kn,ki)=>{const i=Math.round((kn.y-G.anchorY)/seg);if(i<0||i>=n)return;const x=G.rx+u[i],sy=S(kn.y);if(sy<-60||sy>H+60)return;
-      const act=kn.el.classList.contains('in'),s=wd/9,l=litAt(kn.y);
-      ctx.save();ctx.translate(x,sy);ctx.rotate((u[Math.min(n-1,i+1)]-u[Math.max(0,i-1)])*.01);
-      if(act){const pulse=.5+.5*Math.sin(T*2.4+ki),gg=ctx.createRadialGradient(0,0,2,0,0,34*s);gg.addColorStop(0,`rgba(255,236,200,${.22+.12*pulse})`);gg.addColorStop(1,'rgba(255,236,200,0)');ctx.fillStyle=gg;ctx.beginPath();ctx.arc(0,0,34*s,0,7);ctx.fill()}
-      ctx.fillStyle='rgba(0,0,0,.3)';ctx.beginPath();ctx.ellipse(3,3,10*s,18*s,0,0,7);ctx.fill();
-      const loop=(cx,cy2,rx,ry,rot)=>{const p=[];for(let a=0;a<=Math.PI*2+.01;a+=Math.PI/10)p.push([cx+Math.cos(a)*rx*Math.cos(rot)-Math.sin(a)*ry*Math.sin(rot),cy2+Math.cos(a)*rx*Math.sin(rot)+Math.sin(a)*ry*Math.cos(rot)]);return p};
-      strokeRope(y=>y,loop(0,-7*s,7*s,8*s,.35),wd*.9,l);strokeRope(y=>y,loop(0,8*s,7.5*s,8.5*s,-.35),wd*.9,l);
-      ctx.restore()})}
-  function drawRiver(S,fl){const sc=G.scale;
-    const P=[[W*(mob?.16:.2),G.floorY-H*.42,8],[W*(mob?.3:.27),G.floorY-H*.3,22],[W*(mob?.1:.13),G.floorY-H*.15,44],[W*(mob?.26:.22),G.floorY+H*.02,74],[W*(mob?.08:.1),docH+60,120]];
-    const smp=[];for(let s=0;s<=60;s++){const t=s/60*(P.length-1),i=Math.min(P.length-2,Math.floor(t)),f=t-i,a=P[Math.max(0,i-1)],b=P[i],c=P[i+1],d=P[Math.min(P.length-1,i+2)];
-      const cr=(p0,p1,p2,p3)=>.5*((2*p1)+(-p0+p2)*f+(2*p0-5*p1+4*p2-p3)*f*f+(-p0+3*p1-3*p2+p3)*f*f*f);smp.push([cr(a[0],b[0],c[0],d[0]),cr(a[1],b[1],c[1],d[1]),cr(a[2],b[2],c[2],d[2])*sc])}
-    const side=(i,sg)=>{const p=smp[i],q=smp[Math.min(smp.length-1,i+1)],o=smp[Math.max(0,i-1)],nx=-(q[1]-o[1]),ny=q[0]-o[0],l=Math.hypot(nx,ny)||1;return[p[0]+sg*nx/l*p[2]/2,p[1]+sg*ny/l*p[2]/2]};
-    // sortie du tunnel (sombre) au fond de la grotte
-    const g0=ctx.createRadialGradient(P[0][0],S(P[0][1])-8*sc,2,P[0][0],S(P[0][1])-8*sc,52*sc);g0.addColorStop(0,'rgba(0,4,10,.95)');g0.addColorStop(1,'rgba(0,4,10,0)');ctx.fillStyle=g0;ctx.beginPath();ctx.ellipse(P[0][0],S(P[0][1])-8*sc,52*sc,38*sc,0,0,7);ctx.fill();
-    ctx.beginPath();for(let i=0;i<smp.length;i++){const q=side(i,1);i?ctx.lineTo(q[0],S(q[1])):ctx.moveTo(q[0],S(q[1]))}for(let i=smp.length-1;i>=0;i--){const q=side(i,-1);ctx.lineTo(q[0],S(q[1]))}ctx.closePath();
-    const rg=ctx.createLinearGradient(0,S(P[0][1]),0,S(docH));rg.addColorStop(0,'rgba(2,8,14,.97)');rg.addColorStop(1,'rgba(8,24,34,.97)');ctx.fillStyle=rg;ctx.fill();ctx.strokeStyle='rgba(190,215,235,.16)';ctx.lineWidth=1.2;ctx.stroke();
-    ctx.save();ctx.clip();ctx.lineCap='round';
-    for(let L=-2;L<=2;L++){ctx.beginPath();smp.forEach((p,i)=>{const q=smp[Math.min(smp.length-1,i+1)],o=smp[Math.max(0,i-1)],nx=-(q[1]-o[1]),ny=q[0]-o[0],l=Math.hypot(nx,ny)||1,off=L*p[2]*.18;i?ctx.lineTo(p[0]+nx/l*off,S(p[1]+ny/l*off)):ctx.moveTo(p[0]+nx/l*off,S(p[1]+ny/l*off))});
-      ctx.setLineDash([26*sc,18*sc+L*6]);ctx.lineDashOffset=-T*(40+L*6)*sc;ctx.strokeStyle=`rgba(170,205,225,${.07-.01*Math.abs(L)})`;ctx.lineWidth=(1.2-.15*Math.abs(L))*sc;ctx.stroke();
-      ctx.setLineDash([3*sc,40*sc]);ctx.lineDashOffset=-T*(36+L*9)*sc+L*20;ctx.strokeStyle=`rgba(255,175,95,${.32*fl})`;ctx.lineWidth=1.3*sc;ctx.stroke()}
-    ctx.setLineDash([]);ctx.restore()}
-  function drawFire(S,fl){const sc=G.scale,fx=G.fireX,fy=S(G.fireY);if(fy<-200||fy>H+120)return;
-    for(let i=0;i<9;i++){const a=Math.PI+i/8*Math.PI,x=fx+Math.cos(a)*48*sc,y=fy+16*sc-Math.sin(a)*8*sc;const g=ctx.createRadialGradient(x-3*sc,y-4*sc,1,x,y,12*sc);g.addColorStop(0,'#8a7a70');g.addColorStop(1,'#2c2b30');ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(x,y,12*sc,7.5*sc,0,0,7);ctx.fill()}
-    ctx.save();ctx.translate(fx,fy+4*sc);[[-.35,'#3a2618'],[.35,'#4a2f1c'],[.05,'#2e1d12']].forEach(([r,c])=>{ctx.save();ctx.rotate(r);const g=ctx.createLinearGradient(0,-6*sc,0,6*sc);g.addColorStop(0,'#5a3c26');g.addColorStop(1,c);ctx.fillStyle=g;ctx.beginPath();ctx.roundRect(-44*sc,-6*sc,88*sc,12*sc,6*sc);ctx.fill();ctx.fillStyle='rgba(255,120,40,.55)';ctx.fillRect(-20*sc,-2*sc,40*sc,3*sc);ctx.restore()});ctx.restore();
-    const F=D.flames;for(let k=0;k<(mob?3:5);k++)F.push({x:(Math.random()-.5)*48*sc,y:0,vx:(Math.random()-.5)*.3,vy:-(1.5+Math.random()*1.6)*sc,l:0,L:40+Math.random()*36,s:(20+Math.random()*22)*sc});
-    if(Math.random()<.2)D.embers.push({x:fx+(Math.random()-.5)*30*sc,y:G.fireY-10,vx:(Math.random()-.5)*.8,vy:-(1+Math.random()*1.6),l:0,L:90+Math.random()*80});
-    ctx.save();ctx.globalCompositeOperation='lighter';
-    const gl2=ctx.createRadialGradient(fx,fy-30*sc,4,fx,fy-30*sc,210*sc);gl2.addColorStop(0,`rgba(255,190,110,${.3*fl})`);gl2.addColorStop(1,'rgba(255,120,40,0)');ctx.fillStyle=gl2;ctx.fillRect(fx-220*sc,fy-240*sc,440*sc,440*sc);
-    for(let i=F.length-1;i>=0;i--){const p=F[i];p.l++;p.x+=p.vx+Math.sin((p.l+i)*.25)*.35;p.y+=p.vy;p.vx*=.98;if(p.l>p.L){F.splice(i,1);continue}
-      const t=p.l/p.L,r=p.s*(1-t*.75),c=t<.25?[255,226,150]:t<.6?[255,140,45]:[190,55,20],a=(1-t)*.42;
-      const fg=ctx.createRadialGradient(fx+p.x,fy+p.y,0,fx+p.x,fy+p.y,r);fg.addColorStop(0,`rgba(${c},${a})`);fg.addColorStop(1,`rgba(${c},0)`);ctx.fillStyle=fg;ctx.beginPath();ctx.arc(fx+p.x,fy+p.y,r,0,7);ctx.fill()}
-    const E=D.embers;for(let i=E.length-1;i>=0;i--){const p=E[i];p.l++;p.x+=p.vx+Math.sin(p.l*.08)*.4;p.y+=p.vy;p.vy*=.995;if(p.l>p.L){E.splice(i,1);continue}ctx.fillStyle=`rgba(255,${170+Math.random()*60|0},80,${1-p.l/p.L})`;ctx.fillRect(p.x,S(p.y),2,2)}
-    ctx.restore()}
-  function drawDrips(S){D.drips.forEach(d=>{const y=S(d.y);if(y<-20||y>H+20)return;const ph=(T*60+d.ph)%d.per;if(ph>70)return;const dy=ph<22?0:(ph-22)**2*.16;
-    ctx.fillStyle='rgba(220,240,255,.8)';ctx.beginPath();ctx.ellipse(d.x,y+2+dy,1.7,ph<22?1.7+ph*.04:2.8,0,0,7);ctx.fill()})}
-  function drawParticles(y0){const sky=1-sst(G.platY+H*.3,G.platY+H*1.6,y0+H*.5),deep=sst(G.platY+H,G.caveTop,y0+H*.5)*(1-sst(G.caveTop,G.caveTop+H*.6,y0+H*.5));
-    if(sky<=0&&deep<=0)return;
-    D.flakes.forEach(f=>{f.y+=(.5+f.z*1.3)*(sky>0?1:.25);f.x+=Math.sin(T*.6+f.s*9)*.3+(sky>0?.35:.05);f.y-=vScroll*f.z*.6;if(f.y>H+10)f.y-=H+20;if(f.y<-10)f.y+=H+20;if(f.x>W+10)f.x-=W+20;
-      const a=sky>0?(.3+.55*f.z)*sky:deep*.4*(.5+.5*Math.sin(T*3+f.s*20));if(a<.02)return;ctx.fillStyle=`rgba(255,255,255,${a})`;ctx.beginPath();ctx.arc(f.x,f.y,sky>0?(.7+1.6*f.z):(.5+.7*f.z),0,7);ctx.fill()})}
+  /* ---------- chargement ---------- */
+  function loadImg(src){return new Promise((res,rej)=>{const i=new Image();i.decoding='async';i.onload=()=>res(i);i.onerror=()=>rej(new Error('img '+src));i.src=src})}
+  function loadSet(k,onOne){if(sets[k])return Promise.resolve(sets[k]);if(loadingSet[k])return loadingSet[k];
+    const c=SC[k],step=x=>{onOne&&onOne();return x};
+    return loadingSet[k]=Promise.all([loadImg(c.img).then(step),loadImg(c.flag).then(step),loadImg(c.aux).then(step)]).then(([img,flag,aux])=>(sets[k]={img,flag,aux}))}
+  function makeText(){const c=document.createElement('canvas');c.width=1024;c.height=716;const g=c.getContext('2d');g.fillStyle='#fff';g.textBaseline='alphabetic';
+    const F='"Bodoni Moda","Bodoni 72",Didot,Georgia,serif';g.font='700 330px '+F;
+    const wE=g.measureText('E').width,wM=g.measureText('M').width,ov=wE*.15,x0=470-(wE+wM-ov)/2;g.fillText('E',x0,440);g.fillText('M',x0+wE-ov,440);
+    g.font='600 70px '+F;const sp=15;let ws=-sp;for(const ch of 'NORMANDIE')ws+=g.measureText(ch).width+sp;let x=470-ws/2;
+    for(const ch of 'NORMANDIE'){g.fillText(ch,x,560);x+=g.measureText(ch).width+sp}return c}
+  function fontsReady(){if(!document.fonts||!document.fonts.load)return Promise.resolve();
+    const p=Promise.all(['700 330px "Bodoni Moda"','900 80px Archivo','500 20px Archivo'].map(f=>document.fonts.load(f).catch(()=>{})));
+    return Promise.race([p,new Promise(r=>setTimeout(r,1800))])}
 
-  // ---------------- boucle ----------------
-  function frame(ts){if(!run)return;raf=requestAnimationFrame(frame);const dt=Math.min(.05,((ts-(last||ts))/1000));last=ts;T+=dt;
-    cy=scrollY;vScroll=vScroll*.8+(cy-prevCy)*.2;prevCy=cy;mouse.vx*=.85;
-    const fl=.85+.15*n2(T*9,3.3);
-    stepRope();drawGL(fl);draw(fl);
-    const dep=Math.max(0,(cy+H*.5-G.platY)/Math.max(1,docH-H*.5-G.platY))*38;document.getElementById('jn-depth').textContent=(dep<.5?'0':'−'+Math.round(dep))+' m'}
-  let io=null,built=false;
-  function build(){root=document.getElementById('join');cv=document.getElementById('jn-cv');ctx=cv.getContext('2d');glc=document.getElementById('jn-gl');
-    glOK=initGL();if(!glOK)root.classList.add('jn-nogl');
-    io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.25});root.querySelectorAll('.jn-card').forEach(c=>io.observe(c));
-    addEventListener('resize',()=>{if(run)layout()});
-    root.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;mouse.vx=e.clientX-(mouse.px<-900?e.clientX:mouse.px);mouse.px=e.clientX;mouse.x=e.clientX;mouse.y=e.clientY;mouse.in=true},{passive:true});
-    root.addEventListener('pointerleave',()=>{mouse.in=false;mouse.px=-999});
-    built=true}
-  function enter(){if(!built)build();run=true;requestAnimationFrame(()=>{layout();prevCy=cy=scrollY;last=0;cancelAnimationFrame(raf);raf=requestAnimationFrame(frame)});setTimeout(()=>{if(run)layout()},600)}
-  function leave(){run=false;cancelAnimationFrame(raf)}
-  return{enter,leave};
+  /* ---------- cadrage ---------- */
+  function pickKey(){return innerWidth/innerHeight<.85?'tall':'wide'}
+  function layout(){const base=Math.max(vw/sc.W,vh/sc.H)*1.06;S=base*zoom;
+    OX=clamp(vw/2-sc.fx*sc.W*S,vw-sc.W*S,0);OY=clamp(vh/2-sc.fy*sc.H*S,vh-sc.H*S,0)}
+  function onResize(){vw=Math.max(1,innerWidth);vh=Math.max(1,innerHeight);
+    dpr=Math.min(window.devicePixelRatio||1,vw*vh>1.5e6?1.5:2);cv.width=Math.round(vw*dpr);cv.height=Math.round(vh*dpr);
+    const k=pickKey();if(k!==key){if(sets[k]||!built){key=k;sc=SC[k];upload(k)}else loadSet(k).then(()=>{if(pickKey()===k){key=k;sc=SC[k];upload(k);dirty2d=true}})}
+    layout();dirty2d=true;if(isOpen)placePop();fitSoon()}
+  function L2S(u,v){const q=sc.q,x=lerp(lerp(q[0][0],q[1][0],u),lerp(q[3][0],q[2][0],u),v),y=lerp(lerp(q[0][1],q[1][1],u),lerp(q[3][1],q[2][1],u),v);
+    return[OX+x*S+shX*.95,OY+y*S+shY*.95]}
+  function inPoly(x,y,P){let c=false;for(let i=0,j=P.length-1;i<P.length;j=i++){const[xi,yi]=P[i],[xj,yj]=P[j];if(((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi)+xi))c=!c}return c}
+  function hitFlag(x,y){return built&&mode!==''&&inPoly(x,y,[L2S(-.04,-.1),L2S(1.08,-.1),L2S(1.08,1.12),L2S(-.04,1.12)])}
+
+  /* ---------- rendu ---------- */
+  function draw(){const T=G.tex[key];if(!T)return;
+    gl.viewport(0,0,cv.width,cv.height);gl.disable(gl.BLEND);
+    let P=G.bg;gl.useProgram(P.p);gl.bindBuffer(gl.ARRAY_BUFFER,G.tri);gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
+    gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,T.img);gl.uniform1i(P.u('uImg'),0);
+    gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,T.aux);gl.uniform1i(P.u('uAux'),1);
+    gl.uniform2f(P.u('uRes'),cv.width,cv.height);gl.uniform1f(P.u('uDpr'),cv.width/vw);gl.uniform2f(P.u('uOff'),OX,OY);gl.uniform1f(P.u('uS'),S);
+    gl.uniform2f(P.u('uIS'),sc.W,sc.H);gl.uniform2f(P.u('uShift'),shX,shY);gl.uniform2f(P.u('uSun'),sc.sun[0],sc.sun[1]);gl.uniform1f(P.u('uT'),time);gl.uniform1f(P.u('uGlow'),RM?.6:1);
+    gl.drawArrays(gl.TRIANGLES,0,3);
+    gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE_MINUS_SRC_ALPHA);
+    P=G.flag;gl.useProgram(P.p);gl.bindBuffer(gl.ARRAY_BUFFER,G.mesh);gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,G.idx);
+    const q=sc.q;gl.uniform2f(P.u('uTL'),q[0][0],q[0][1]);gl.uniform2f(P.u('uTR'),q[1][0],q[1][1]);gl.uniform2f(P.u('uBR'),q[2][0],q[2][1]);gl.uniform2f(P.u('uBL'),q[3][0],q[3][1]);
+    gl.uniform2f(P.u('uFo'),sc.fo[0],sc.fo[1]);gl.uniform2f(P.u('uFs'),sc.fs[0],sc.fs[1]);gl.uniform2f(P.u('uOff'),OX,OY);gl.uniform2f(P.u('uVP'),vw,vh);gl.uniform2f(P.u('uShift'),shX,shY);
+    gl.uniform1f(P.u('uS'),S);gl.uniform1f(P.u('uPh'),phase);gl.uniform1f(P.u('uAmp'),RM?.35:.8+.4*(gust-1));gl.uniform1f(P.u('uDepth'),.95);gl.uniform1f(P.u('uHover'),hoverK);gl.uniform1f(P.u('uTextOn'),1);
+    gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,T.flag);gl.uniform1i(P.u('uFlag'),0);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,G.text);gl.uniform1i(P.u('uText'),1);
+    gl.drawElements(gl.TRIANGLES,G.nIdx,gl.UNSIGNED_SHORT,0);
+    P=G.snow;gl.useProgram(P.p);gl.bindBuffer(gl.ARRAY_BUFFER,G.snowB);gl.vertexAttribPointer(0,4,gl.FLOAT,false,0,0);
+    gl.uniform1f(P.u('uT'),time*(RM?.4:1));gl.uniform1f(P.u('uWind'),gust);gl.uniform1f(P.u('uDpr'),cv.width/vw);gl.uniform1f(P.u('uK'),clamp(Math.min(vw,vh)/800,.7,1.4));
+    gl.uniform2f(P.u('uVP'),vw,vh);gl.uniform2f(P.u('uShift'),shX,shY);gl.drawArrays(gl.POINTS,0,G.nSnow);
+    if(fog>.002){P=G.fog;gl.useProgram(P.p);gl.bindBuffer(gl.ARRAY_BUFFER,G.tri);gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
+      gl.uniform2f(P.u('uRes'),cv.width,cv.height);gl.uniform1f(P.u('uFog'),fog);gl.uniform1f(P.u('uT'),time);gl.drawArrays(gl.TRIANGLES,0,3)}}
+  function draw2d(){const s=sets[key];if(!ctx2||!s||!dirty2d)return;dirty2d=false;ctx2.setTransform(cv.width/vw,0,0,cv.height/vh,0,0);
+    ctx2.drawImage(s.img,OX,OY,sc.W*S,sc.H*S);ctx2.drawImage(s.flag,OX+sc.fo[0]*S,OY+sc.fo[1]*S,sc.fs[0]*S,sc.fs[1]*S)}
+
+  function frame(now){if(!run)return;raf=requestAnimationFrame(frame);if(document.hidden){last=0;return}
+    const dt=last?Math.min(.05,(now-last)/1000):.016;last=now;time+=dt;
+    const it=introStart<0?99:(now-introStart)/1000;
+    fog=RM?0:fogFrom*(1-eOut((it-.1)/2.7));zoom=RM?1:lerp(zoomFrom,1,eOut(it/3.8));layout();
+    const tx=ptr.inside&&FINE?ptr.x/vw*2-1:0,ty=ptr.inside&&FINE?ptr.y/vh*2-1:0;
+    ptr.sx+=(tx-ptr.sx)*Math.min(1,dt*2.4);ptr.sy+=(ty-ptr.sy)*Math.min(1,dt*2.4);
+    const k=Math.min(vw,vh)/900;shX=RM?0:(-ptr.sx*18+Math.sin(time*.13)*6)*k;shY=RM?0:(-ptr.sy*10+Math.cos(time*.1)*4)*k;
+    isHover=ptr.onCv&&!infoOpen&&hitFlag(ptr.x,ptr.y);root.classList.toggle('jn-hot',isHover);
+    kick*=Math.exp(-dt*1.3);hoverK+=((isHover?1:0)-hoverK)*Math.min(1,dt*6);
+    gust=1+.28*Math.sin(time*.41)*Math.sin(time*.17+1.3)+kick+hoverK*.22;
+    phase+=dt*(RM?1.4:3.9*(.75+.35*gust));
+    if(mode==='gl')draw();else if(mode==='2d')draw2d();
+    const tag=$j('jn-tag'),tp=L2S(.55,-.08);
+    tag.style.transform=`translate3d(${tp[0].toFixed(1)}px,${tp[1].toFixed(1)}px,0) translate(-50%,calc(-100% - 18px))`;
+    const sent=now-sentAt<4500;tag.classList.toggle('on',(now>tagFrom&&!isOpen&&!infoOpen&&!isHover)||sent);
+    if(!sent&&tag.dataset.sent){delete tag.dataset.sent;tag.querySelector('span').textContent=FINE?'Clique sur le drapeau':'Touche le drapeau'}
+    {const fp=[L2S(-.04,-.1),L2S(1.08,-.1),L2S(1.08,1.12),L2S(-.04,1.12)];$j('jn-flaglink').style.clipPath='polygon('+fp.map(p=>p[0].toFixed(0)+'px '+p[1].toFixed(0)+'px').join(',')+')'}tag.classList.toggle('hot',isHover);
+    if(FINE){const r=$j('jn-ring');ptr.rx+=(ptr.x-ptr.rx)*Math.min(1,dt*14);ptr.ry+=(ptr.y-ptr.ry)*Math.min(1,dt*14);
+      r.style.transform=`translate3d(${ptr.rx.toFixed(1)}px,${ptr.ry.toFixed(1)}px,0)`;r.classList.toggle('on',ptr.onCv&&!isOpen&&!infoOpen&&now>tagFrom-2000);r.classList.toggle('hot',isHover)}
+    if(isOpen)placePop()}
+
+  /* ---------- lettres qui défilent (tableau des départs) ---------- */
+  const LET='ABCDEFGHIJKLMNOPQRSTUVWXYZ',DIG='0123456789';
+  const pool=c=>{const set=/\d/.test(c)?DIG:LET;return set[Math.floor(Math.random()*set.length)]};
+  function flapPrep(el){if(el._fl)return el._fl;const txt=el.dataset.text||el.textContent,tile=el.classList.contains('tiles');el.dataset.text=txt;el.textContent='';
+    const box=document.createElement('span');box.setAttribute('aria-hidden','true');
+    const spans=[];let word=null;
+    [...txt].forEach(ch=>{if(!tile&&ch===' '){box.appendChild(document.createTextNode(' '));word=null;return}
+      if(!word){word=tile?box:document.createElement('span');if(!tile){word.style.whiteSpace='nowrap';box.appendChild(word)}}
+      const s=document.createElement('span');s.className=tile?'tile':'fl';s.dataset.c=ch;s.textContent=ch===' '?'\u00a0':ch;word.appendChild(s);spans.push(s)});
+    el.appendChild(box);if(!el.hasAttribute('aria-hidden')&&!el.hasAttribute('aria-label')){const sr=document.createElement('span');sr.className='jn-sr';sr.textContent=txt;sr.style.cssText='position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap';el.appendChild(sr)}
+    return el._fl={spans,txt,tile,run:0}}
+  function flapRun(el,o){const f=flapPrep(el),id=++f.run;o=Object.assign({delay:0,step:46,spread:1.3,min:5,jitter:6},o||{});
+    const fin=s=>{s.textContent=s.dataset.c===' '?'\u00a0':s.dataset.c;s.style.transform='';s.classList.remove('fl-spin')};
+    if(RM){f.spans.forEach(fin);return Promise.resolve()}
+    if(!f.tile){f.spans.forEach(s=>s.style.width='');const ws=f.spans.map(s=>s.getBoundingClientRect().width);f.spans.forEach((s,i)=>s.style.width=ws[i]+'px')}
+    const n=f.spans.map((s,i)=>s.dataset.c===' '?0:Math.round(o.min+i*o.spread+Math.random()*o.jitter)),done=f.spans.map(()=>false);
+    return new Promise(res=>{let t0=null,lk=-1;const tick=now=>{if(id!==f.run){res();return}if(t0===null)t0=now+o.delay;const e=now-t0;if(e<0){requestAnimationFrame(tick);return}
+      const k=Math.floor(e/o.step),fr=(e%o.step)/o.step;let alive=false;
+      f.spans.forEach((s,i)=>{if(k<n[i]){alive=true;if(k!==lk){s.textContent=pool(s.dataset.c);s.classList.add('fl-spin')}s.style.transform=`scaleY(${(.45+.55*Math.min(1,fr*2.4)).toFixed(3)})`}
+        else if(!done[i]){done[i]=true;fin(s);if(n[i]&&!f.tile){s.classList.add('fl-on');setTimeout(()=>s.classList.remove('fl-on'),260)}}});
+      lk=k;if(alive)requestAnimationFrame(tick);else{if(!f.tile)f.spans.forEach(s=>s.style.width='');res()}};requestAnimationFrame(tick)})}
+  /* les titres et l'encadré se réduisent pour tenir dans leur colonne, quel que soit le format d'écran */
+  function fitText(){if(!root||root.hidden)return;const col=root.querySelector('.jn-col'),cta=$j('jn-cta');if(!col||!col.clientWidth)return;
+    const cs=getComputedStyle(cta),cw=col.clientWidth,ctaMax=/px$/.test(cs.maxWidth)?Math.min(cw,parseFloat(cs.maxWidth)):cw,ctaAvail=ctaMax-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight)-4;
+    [['.jn-big',cw],['.jn-sub',cw],['.jn-proj .p1',cw],['.jn-cta .c1',ctaAvail]].forEach(([sel,avail])=>{const el=root.querySelector(sel);if(!el)return;
+      el.style.fontSize='';const box=el.querySelector('[aria-hidden]')||el,w=()=>box.getBoundingClientRect().width;let fs=parseFloat(getComputedStyle(el).fontSize),n=0;
+      while(w()>avail&&fs>9&&n++<60){fs*=.96;el.style.fontSize=fs.toFixed(2)+'px'}})}
+  let fitRaf=0;const fitSoon=()=>{cancelAnimationFrame(fitRaf);fitRaf=requestAnimationFrame(fitText)};
+  function runFlaps(){root.classList.remove('jn-pre');fitText();[...root.querySelectorAll('.jn-col [data-flap]')].sort((a,b)=>a.dataset.flap-b.dataset.flap).forEach((el,i)=>{
+    const big=el.classList.contains('jn-big');flapRun(el,{delay:[0,120,320,900,1250,1500,1900][i]||i*200,step:big?52:44,spread:big?2.2:1.1,min:big?7:5})})}
+
+  /* ---------- recrutement : places, tableau, organigramme ---------- */
+  const leftOf=p=>Math.max(0,(p.places||0)-(p.pourvues||0));
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function buildRecrut(){const poles=RECRUT.poles,total=poles.reduce((s,p)=>s+leftOf(p),0),open=poles.filter(p=>leftOf(p)>0).length,all=poles.reduce((s,p)=>s+(p.places||0),0);
+    const season='Recrutement '+RECRUT.saison;$j('jn-info-eb').textContent=season;
+    $j('jn-pop-eb').textContent=season+(total?' · ouvert':' · complet');
+    $j('jn-left').textContent=total;$j('jn-left-l').textContent=total?(total>1?'places restantes':'place restante')+' dans '+open+' pôle'+(open>1?'s':''):'Toutes les places sont prises cette saison';
+    const tn=$j('jn-total-n');tn.dataset.text=String(total).padStart(2,'0');tn.setAttribute('aria-label',total+' places restantes');flapPrep(tn);
+    $j('jn-total-p').textContent=(total>1?'places encore libres':total?'place encore libre':'place libre')+' sur '+all+' dans la cordée, réparties entre les pôles ci-dessous. Chaque pôle compte un responsable et deux membres.';
+    const pad=Math.max(...poles.map(p=>[...p.code].length));
+    $j('jn-board').innerHTML='<div class="fb-row fb-hd" role="row"><span role="columnheader">Pôle</span><span role="columnheader">Places</span><span role="columnheader">Statut</span></div>'+
+      poles.map(p=>{const l=leftOf(p),st=l===0?['full','Complet']:l===1?['last','Dernière place']:['','Embarquement'];
+        return `<div class="fb-row" role="row"><span class="fb-name" role="cell"><span class="tiles" data-text="${esc(p.code.padEnd(pad,' '))}" aria-hidden="true">${esc(p.code)}</span><small>${esc(p.nom)}</small></span><span class="fb-n" role="cell"><span class="tiles" data-text="${String(l).padStart(2,'0')}" aria-label="${l} place${l>1?'s':''} sur ${p.places}">${String(l).padStart(2,'0')}</span></span><span class="fb-st ${st[0]}" role="cell">${st[1]}</span></div>`}).join('');
+    $j('jn-board').querySelectorAll('.tiles').forEach(flapPrep);
+    $j('jn-org').innerHTML=`<div class="org-b"><div class="org-lab">Bureau</div><ul>${RECRUT.bureau.map(b=>`<li><b>${esc(b[0])}</b><span>${esc(b[1])}</span></li>`).join('')}</ul></div><div class="org-trunk"></div>
+      <ul class="org-poles" style="--n:${poles.length}">${poles.map((p,i)=>{const seats=Array.from({length:p.places},(_,j)=>{const on=j<(p.pourvues||0),r=j===0;
+        return `<i class="seat ${on?'on':'off'}" style="--j:${j}" title="${r?'Responsable':'Membre'} · ${on?'pourvu':'à pourvoir'}">${r?'R':'M'}</i>`}).join('');
+        return `<li class="org-p" style="--i:${i}"><b>${esc(p.nom)}</b><span>${esc(p.desc)}</span><div class="seats" aria-label="${leftOf(p)} place${leftOf(p)>1?'s':''} à pourvoir sur ${p.places}">${seats}</div></li>`}).join('')}</ul>
+      <p class="org-legend"><span><i class="seat on"></i>Pourvu</span><span><i class="seat off"></i>À pourvoir</span><span>R&nbsp;: responsable · M&nbsp;: membre</span></p>`}
+
+  /* ---------- carte et dossier ---------- */
+  function linkSync(){syncFn&&syncFn();const g=$j('jn-go'),u=g&&g.getAttribute('aria-disabled')!=='true'?g.href:'';['jn-cta','jn-tag','jn-flaglink'].forEach(id=>{$j(id).href=u||'#'})}
+  function mailSync(){syncFn&&syncFn();const m=$j('jn-mail').textContent;root.querySelectorAll('.jn-mail2').forEach(e=>e.textContent=m)}
+  function open(fromKey){if(infoOpen)setInfo(false);isOpen=true;kick=Math.max(kick,1.1);const p=$j('jn-pop');p.inert=false;mailSync();placePop();p.classList.add('on');root.classList.add('jn-opened');
+    if(fromKey)setTimeout(()=>{if(isOpen)$j('jn-go').focus({preventScroll:true})},500)}
+  function close(fromKey){if(!isOpen)return;isOpen=false;const p=$j('jn-pop'),had=p.contains(document.activeElement);p.classList.remove('on');p.inert=true;root.classList.remove('jn-opened');
+    if(fromKey||had)$j('jn-cta').focus({preventScroll:true})}
+  function placePop(){const p=$j('jn-pop');if(innerWidth<=760){p.style.left=p.style.top='';return}
+    const w=p.offsetWidth,h=p.offsetHeight,a=L2S(1.04,.45),b=L2S(-.06,.45);let x=a[0]+40,y=a[1]-h*.5;
+    if(x+w>vw-20)x=b[0]-40-w;if(x<20)x=(vw-w)/2;y=clamp(y,76,vh-h-20);p.style.left=x.toFixed(1)+'px';p.style.top=y.toFixed(1)+'px'}
+  function setInfo(on){const d=$j('jn-info');if(on===infoOpen)return;infoOpen=on;
+    if(on){const c=L2S(.5,.45);d.style.setProperty('--cx',c[0].toFixed(0)+'px');d.style.setProperty('--cy',c[1].toFixed(0)+'px');close(false);mailSync();d.classList.add('anim');d.scrollTop=0;
+      d.querySelectorAll('.rv.in').forEach(e=>e.classList.remove('in'));watch()}
+    d.inert=!on;d.classList.toggle('on',on);root.classList.toggle('jn-reading',on);$j('jn-more').setAttribute('aria-expanded',on);
+    if(on){setTimeout(()=>{if(infoOpen)$j('jn-info-x').focus({preventScroll:true})},120);setTimeout(()=>{if(infoOpen)flapRun($j('jn-info-h'),{step:44,spread:1,min:6})},450)}
+    else $j('jn-cta').focus({preventScroll:true})}
+  function watch(){const d=$j('jn-info');if(io)io.disconnect();if(!('IntersectionObserver' in window)){d.classList.remove('anim');return}
+    io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add('in');io.unobserve(t);
+      if(t.classList.contains('jn-total'))flapRun($j('jn-total-n'),{delay:200,step:60,min:10,spread:2});
+      if(t.id==='jn-board')t.querySelectorAll('.fb-row:not(.fb-hd) .tiles').forEach((el,i)=>flapRun(el,{delay:150+Math.floor(i/2)*170,step:42,spread:.9,min:4}))}),{root:d,threshold:.12});
+    d.querySelectorAll('.rv').forEach(e=>io.observe(e))}
+  function onKey(e){if(e.key!=='Escape')return;if(infoOpen)setInfo(false);else if(isOpen)close(true)}
+
+  function wire(){if(wired)return;wired=true;root=$j('join');cv=$j('jn-gl');
+    const touch=!FINE;$j('jn-tag').querySelector('span').textContent=touch?'Touche le drapeau':'Clique sur le drapeau';
+    $j('jn-cta-hint').textContent=(touch?'Touche':'Clique sur')+' le drapeau pour candidater';
+    buildRecrut();root.querySelectorAll('.jn-col [data-flap]').forEach(flapPrep);flapPrep($j('jn-info-h'));flapPrep($j('jn-alt'));
+    ['jn-cta','jn-tag','jn-flaglink'].forEach(id=>{const a=$j(id);a.addEventListener('pointerdown',linkSync);a.addEventListener('focus',linkSync);a.addEventListener('click',()=>{linkSync();kick=1.4;sentAt=performance.now();const t=$j('jn-tag');t.dataset.sent='1';t.querySelector('span').textContent='Formulaire ouvert dans un nouvel onglet'})});$j('jn-x').onclick=()=>close(true);
+    $j('jn-more').onclick=()=>setInfo(true);$j('jn-info-x').onclick=()=>setInfo(false);
+    $j('jn-info').inert=true;$j('jn-pop').inert=true;if(!FINE)$j('jn-ring').hidden=true;
+    root.addEventListener('pointermove',e=>{ptr.x=e.clientX;ptr.y=e.clientY;ptr.inside=true;ptr.onCv=e.target===cv||e.target.id==='jn-flaglink'});
+    root.addEventListener('pointerleave',()=>{ptr.inside=false;ptr.onCv=false});
+    cv.addEventListener('pointerdown',e=>{ptr.down={x:e.clientX,y:e.clientY};ptr.x=e.clientX;ptr.y=e.clientY});
+    cv.addEventListener('pointerup',e=>{const d=ptr.down;ptr.down=null;if(!d||Math.hypot(e.clientX-d.x,e.clientY-d.y)>12)return;
+      if(hitFlag(e.clientX,e.clientY))open(false);else if(isOpen)close(false);else kick=Math.max(kick,.5)})}
+
+  function setAlt(p){const f=$j('jn-alt')._fl;if(!f)return;const s=String(Math.round(4808*clamp(p,0,1))).padStart(4,'0');[...s].forEach((c,i)=>{if(f.spans[i])f.spans[i].textContent=c})}
+  function loaderLoop(now){const p=Math.min(loadP,(now-loadT0)/1300);setAlt(eOut(p));loaderRaf=requestAnimationFrame(loaderLoop)}
+  async function build(){wire();onResize();key=pickKey();sc=SC[key];
+    loadP=0;let n=0;const set=await loadSet(key,()=>{n++;loadP=n/4}).catch(e=>{console.warn('jn',e);return null});
+    await fontsReady();loadP=1;if(!set)return false;
+    textCanvas=makeText();
+    if(initGL()){mode='gl';upload(key)}else{ctx2=cv.getContext('2d');mode=ctx2?'2d':''}
+    built=true;onResize();return !!mode}
+  function enter(){root=$j('join');cv=$j('jn-gl');run=true;wire();linkSync();fitSoon();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSoon);
+    addEventListener('resize',onResize);addEventListener('keydown',onKey);
+    const fade=$j('jn-fade');const fresh=!built;
+    if(fresh&&!RM)root.classList.add('jn-pre');
+    if(fresh){fade.classList.remove('off');loadT0=performance.now();cancelAnimationFrame(loaderRaf);loaderRaf=requestAnimationFrame(loaderLoop)}
+    (building||(building=build())).then(ok=>{if(!run)return;onResize();
+      const wait=fresh?Math.max(0,1350-(performance.now()-loadT0)):0;
+      setTimeout(()=>{if(!run)return;cancelAnimationFrame(loaderRaf);setAlt(1);
+        if(!ok){root.classList.add('jn-nogl');fade.classList.add('off');runFlaps();return}
+        setTimeout(()=>{fade.classList.add('off');introStart=performance.now();fogFrom=played?.55:1;zoomFrom=played?1.08:1.24;tagFrom=introStart+(played?1800:4200);
+          setTimeout(()=>{if(run)runFlaps()},played?300:1000);played=true},fresh?260:0);
+        last=0;cancelAnimationFrame(raf);raf=requestAnimationFrame(frame)},wait)})}
+  function leave(){run=false;cancelAnimationFrame(raf);cancelAnimationFrame(loaderRaf);removeEventListener('resize',onResize);removeEventListener('keydown',onKey);
+    if(wired){close(false);if(infoOpen)setInfo(false)}}
+  return{enter,leave,onSync:f=>{syncFn=f}};
 })();
 
 (async function(){
@@ -2840,7 +2986,8 @@ if(CFG.adminUrl&&!isAdminHost)$$('[data-space]').forEach(a=>a.href=CFG.adminUrl.
 function screen(id){if(id!=='ascent')Ascent.leave();if(id!=='join')Join.leave();['public','auth','space','ascent','join'].forEach(s=>$('#'+s).hidden=s!==id)}
 let lastScreen=null,routeAgain=false;
 const AUTH_H=['connexion','inscription','oubli','reinit'];
-function currentHash(){let h=decodeURIComponent(location.hash.slice(1));if(!h&&isAdminHost)h='espace';if(B.recovery)h='reinit';return h}
+function currentHash(){let h=decodeURIComponent(location.hash.slice(1));if(!h&&isAdminHost)h='espace';if(B.recovery)h='reinit';
+  if(!MEMBERS_ON&&(h==='espace'||h.startsWith('espace/')||AUTH_H.includes(h))){history.replaceState(null,'','#accueil');h='accueil'}return h}
 function targetScreen(){const h=currentHash();
   if(h==='espace'||h.startsWith('espace/'))return B.user?'space':'auth';
   if(AUTH_H.includes(h))return B.user&&h!=='reinit'?'space':'auth';
@@ -3309,7 +3456,7 @@ function renderSite(){
 }
 $('#site-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-st]');if(!b)return;siteTab=b.dataset.st;renderSite()});
 $('#site-form').addEventListener('submit',async e=>{e.preventDefault();const d=formData(e.target);d.objectif=Math.max(0,+d.objectif||25000);
-  ['helloasso','dossier'].forEach(k=>{if(d[k]&&!safeUrl(d[k]))d[k]=''});
+  ['helloasso','dossier','formCandidature'].forEach(k=>{if(d[k]&&!safeUrl(d[k]))d[k]=''});
   try{await saveSite(d);toast('Publié sur le site')}catch(err){fail(err)}});
 $('#legal-form').addEventListener('submit',async e=>{e.preventDefault();try{await saveSite(formData(e.target));toast('Mentions publiées')}catch(err){fail(err)}});
 $('#act-form').addEventListener('submit',async e=>{e.preventDefault();
@@ -3364,30 +3511,20 @@ let rzT,lastNarrow=innerWidth<700;addEventListener('resize',()=>{clearTimeout(rz
 renderPublic();
 subscribeAll();
 route();
-// ---------- Nous rejoindre : candidature (arrive dans les messages du Bureau) ----------
-{const dlg=$('#jn-dlg'),f=$('#jn-form');
-  const mail=()=>S.site.email||'alpinisemnormandie@gmail.com';
-  const setMail=()=>{const a=$('#jn-mail');a.textContent=mail();a.href='mailto:'+mail()};setMail();
-  $('#jn-go').onclick=()=>{setMail();$('#jn-done').hidden=true;f.querySelector('[type=submit]').disabled=false;dlg.showModal();setTimeout(()=>$('#jn-name').focus(),50)};
-  $('#jn-x').onclick=()=>dlg.close();
-  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
-  f.addEventListener('submit',async e=>{e.preventDefault();
-    const pole=$('#jn-pole').value,prog=$('#jn-prog').value.trim();
-    const msg={nom:$('#jn-name').value.trim(),email:$('#jn-mail-in').value.trim(),type:'Candidature · '+pole,
-      message:'Pôle souhaité : '+pole+'\nFormation : '+(prog||'non précisée')+'\n\n'+$('#jn-why').value.trim(),date:today(),lu:false};
-    if(!msg.nom||!msg.email.includes('@')||!$('#jn-why').value.trim()){toast('Indique ton nom, un e-mail valide et quelques lignes de motivation.');return}
-    const btn=f.querySelector('[type=submit]');btn.disabled=true;
-    try{if(B.mode==='claude'){if(!myId())throw new Error('anon');await B.set('messages',myId(),msg)}else await B.add('messages',msg);
-      f.reset();$('#jn-done').hidden=false}
-    catch(err){btn.disabled=false;if(B.mode==='claude'){toast('Envoi impossible ici : écris-nous à '+mail());return}
-      location.href='mailto:'+mail()+'?subject='+encodeURIComponent('[Candidature] '+pole+' · '+msg.nom)+'&body='+encodeURIComponent(msg.message+'\n\n'+msg.nom+' · '+msg.email);toast('Ta messagerie s\'ouvre pour envoyer la candidature.')}
-  })}
+// ---------- Nous rejoindre : les boutons « Nous rejoindre » ouvrent le Google Form de candidature ----------
+{const mail=()=>S.site.email||'alpinisemnormandie@gmail.com';
+  const form=()=>safeUrl(S.site.formCandidature)||safeUrl(JOIN_FORM_URL);
+  const sync=()=>{$('#jn-mail').textContent=mail();const u=form();
+    ['#jn-go','#jn-go2'].forEach(s=>{const a=$(s);if(u){a.href=u;a.removeAttribute('aria-disabled')}else{a.href='#';a.setAttribute('aria-disabled','true')}})};
+  Join.onSync(sync);sync();
+  ['#jn-go','#jn-go2'].forEach(s=>$(s).addEventListener('click',e=>{if(!form()){e.preventDefault();toast('Le formulaire ouvre très bientôt. En attendant, écris-nous à '+mail()+'.')}}))}
 
 })();
 
 // ---------- Section « Soutenir » masquée pour le moment (passer SUPPORT_ON à true pour la réafficher) ----------
 const SUPPORT_ON=false;
 document.documentElement.classList.toggle('sup-hidden',!SUPPORT_ON);
+document.documentElement.classList.toggle('mem-hidden',!MEMBERS_ON);
 // Sections masquées pour le moment : un lien direct ramène à l'accueil
 const HIDDEN_SECTIONS=['#partenaires','#equipe','#carnet','#contact'].concat(SUPPORT_ON?[]:['#soutenir']);
 const skipHidden=()=>{if(HIDDEN_SECTIONS.includes(location.hash))location.hash='#accueil'};skipHidden();addEventListener('hashchange',skipHidden);
